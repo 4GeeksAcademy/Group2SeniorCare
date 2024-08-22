@@ -5,3 +5,155 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 1rem;
+    background: radial-gradient(ellipse, white, skyblue);
+}
+header, footer {
+    background-color: whitesmoke;
+    padding: 10px;
+    border-bottom: 5px solid #dce1e5;
+    height: 200px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+
+} 
+.container-1 {
+        /* max-width: 1200px; */
+        /* margin: 0 auto; */
+        /* padding: 10px; */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 1rem;
+        
+    
+}
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-logo h2 {
+    margin: 0;
+}
+.header-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #111517;
+}
+.header-nav a:hover {
+    text-decoration: underline;
+}
+.cta-button {
+    background-color: #359de3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    
+}
+.cta-button-1 {
+    background-color: #359de3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.hero {
+     background: url('https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center; 
+    background-size: cover;
+    color: rgb(245, 245, 248);
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    height: 350px;
+}
+.section {
+    margin-bottom: 20px;
+    
+
+}
+.section-1 {
+    margin-bottom: 20px;
+    display: flex;
+}
+.section h1 {
+    margin: 0 0 10px;
+}
+.section p {
+    margin: 0;
+}
+.card {
+    border: 1px solid #dce1e5;
+    border-radius: 10px;
+    /* padding: 20px; */
+    margin: 10px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    
+    
+    
+    
+}
+.card img {
+    max-width: 100px;
+    border-radius: 50%;
+}
+footer {
+    text-align: center;
+    color: #647987;
+}
+.end {
+    text-align: center;
+}
+/*  */
+.text-custom {
+    color: #111517;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+
+}
+/* cover-image text custimization(find a caregiver in 24 hours or less) */
+.text-custom-1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-item {
+    max-width: 600px;
+    max-height: 500px;
+
+}
+.carousel{
+    max-width: fit-content;
+}
+.carousel slide{
+    align-items: center;
+    display: flex
+
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 1rem); /* Two cards per row on medium screens */
+    }
+}
