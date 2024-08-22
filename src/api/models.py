@@ -63,8 +63,8 @@ class UserRequestCaregiver(db.Model):
     request_status=db.Column(db.String(80), nullable=False, default='Pending')
     request_time=db.Column(db.Integer, nullable=True)
     # 
-    user=db.relationship("User", back_populates="caring_caregiver")
-    caregiver=db.relationship("Caregiver", back_populates="caring_user")
+    user=db.relationship("User", back_populates="requests")
+    caregiver=db.relationship("Caregiver", back_populates="requests")
 
 
     def accept_request(self):
