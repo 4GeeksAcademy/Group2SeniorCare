@@ -5,17 +5,24 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+/*
+    home.css: This website contains selectors only used in home.css
+
+    All pages share the styles on index.css but you should create 
+    one more css for each page that will contain the selected used 
+    on that page only (the ones not reused in other pages).
+*/
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 1rem;
-    background: radial-gradient(ellipse, white, skyblue);
+    background: linear-gradient(to bottom, skyblue 30%, white 40%);
 }
 header, footer {
-    background-color: whitesmoke;
-    padding: 10px;
-    border-bottom: 5px solid #dce1e5;
-    height: 200px;
+    /* background-color: skyblue; */
+    /* padding: 10px; */
+    /* border-bottom: 5px solid #dce1e5; */
+    height: 130px;
 }
 .container {
     max-width: 1200px;
@@ -79,35 +86,55 @@ header, footer {
     text-align: center;
     border-radius: 20px;
     margin-bottom: 20px;
-    height: 350px;
+    height: 400px;
+    width: 100vw; /* Add this line to make the hero section full screen width */
+    padding: 0;
 }
 .section {
     margin-bottom: 20px;
+    max-width: 1200px;
+    padding: 50px 100px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    float: left; /* Add this line to float the section to the right */
+    width: 50%; /* Add this line to set the width of the section */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 300px
+}
+/*  */
+.text-custom {
+    color: #111517;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+/* .section-1 {
+    margin: 20px auto;
+    display: center;
+    max-height: fit-content;
     
-
-}
-.section-1 {
-    margin-bottom: 20px;
-    display: flex;
-}
+    align-items: center;
+} */
 .section h1 {
     margin: 0 0 10px;
 }
-.section p {
-    margin: 0;
-}
-.card {
-    border: 1px solid #dce1e5;
-    border-radius: 10px;
-    /* padding: 20px; */
-    margin: 10px;
+.section h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
     text-align: center;
-    border: 1px solid lightgrey;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    
-    
-    
-    
+  }
+
+.section p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: black;
 }
 .card img {
     max-width: 100px;
@@ -116,16 +143,11 @@ header, footer {
 footer {
     text-align: center;
     color: #647987;
+    padding-top: 300px
 }
 .end {
     text-align: center;
-}
-/*  */
-.text-custom {
-    color: #111517;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.2;
+
 
 }
 /* cover-image text custimization(find a caregiver in 24 hours or less) */
@@ -144,16 +166,25 @@ footer {
 }
 .carousel{
     max-width: fit-content;
-}
-.carousel slide{
-    align-items: center;
-    display: flex
-
-}
-
+    margin: 0 auto; /* center horizontally */
+    margin-top: 20px; /* add some space after section-1 */
+  }
+ 
 
 @media (max-width: 768px) {
     .card {
-        width: calc(50% - 1rem); /* Two cards per row on medium screens */
+        max-width: 100%;
     }
+}
+
+
+.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
