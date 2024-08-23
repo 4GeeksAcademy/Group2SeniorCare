@@ -15,17 +15,14 @@
 body {
     font-family: sans-serif;
     margin: 0;
-
-    footer {
-        background-color: #0F4C81;
-        color: #FFFFFF;
-        padding: 65px;
-        text-align: center;
-    }
- 
-
-
-   
+    padding: 1rem;
+    background: linear-gradient(to bottom, skyblue 30%, white 40%);
+}
+header, footer {
+    /* background-color: skyblue; */
+    /* padding: 10px; */
+    /* border-bottom: 5px solid #dce1e5; */
+    height: 130px;
 }
 
 .container {
@@ -228,6 +225,26 @@ body:hover .container-backround {
     max-width: 1200px;
     padding: 20px;
     text-align: center;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    height: 400px;
+    width: 100vw; /* Add this line to make the hero section full screen width */
+    padding: 0;
+}
+.section {
+    margin-bottom: 20px;
+    max-width: 1200px;
+    padding: 50px 100px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    float: left; /* Add this line to float the section to the right */
+    width: 50%; /* Add this line to set the width of the section */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 300px
 }
 /*  */
 .text-custom {
@@ -236,27 +253,13 @@ body:hover .container-backround {
     font-weight: 700;
     line-height: 1.2;
 }
-.section-1 { 
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 40px 0;
-    flex-wrap: wrap;
-} 
-
-
-
-
-
-
-.section-2 img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-}
-
-
+/* .section-1 {
+    margin: 20px auto;
+    display: center;
+    max-height: fit-content;
+    
+    align-items: center;
+} */
 .section h1 {
     margin: 0 0 10px;
 }
