@@ -15,14 +15,15 @@
 body {
     font-family: sans-serif;
     margin: 0;
-    padding: 1rem;
-    background: linear-gradient(to bottom, skyblue 30%, white 40%);
+
+   
 }
-header, footer {
-    /* background-color: skyblue; */
+header {
+    background-color: rgb(72, 14, 248);
     /* padding: 10px; */
     /* border-bottom: 5px solid #dce1e5; */
-    height: 130px;
+    height: 120px;
+    width: 100vw;
 }
 
 .container {
@@ -225,18 +226,43 @@ body:hover .container-backround {
     max-width: 1200px;
     padding: 20px;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px;
-    height: 400px;
-    width: 100vw; /* Add this line to make the hero section full screen width */
-    padding: 0;
+    height: 15vw;
+    width: fit-content;
+}
+
+.card-body {
+    background: none;
+    color: white;
+    font-style: italic;
+}
+
+.card-body-1 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+
+.undercover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-left: 100px;
+
+}
+
+.hero-text {
+    margin-left: 35vw;
 }
 .section {
     margin-bottom: 20px;
     max-width: 1200px;
-    padding: 50px 100px;
+    /* padding: 50px 100px; */
     font-family: Arial, sans-serif;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 1.5;
     color: #333;
     text-align: left;
@@ -244,7 +270,7 @@ body:hover .container-backround {
     width: 50%; /* Add this line to set the width of the section */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 300px
+    /* padding-left: 300px */
 }
 /*  */
 .text-custom {
@@ -253,13 +279,27 @@ body:hover .container-backround {
     font-weight: 700;
     line-height: 1.2;
 }
-/* .section-1 {
-    margin: 20px auto;
+.section-1 { 
+    /* margin: 20px auto; */
     display: center;
-    max-height: fit-content;
+    max-width: fit-content;
     
-    align-items: center;
-} */
+    /* align-items: center; */
+} 
+
+
+
+
+
+
+.section-2 img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+
 .section h1 {
     margin: 0 0 10px;
 }
