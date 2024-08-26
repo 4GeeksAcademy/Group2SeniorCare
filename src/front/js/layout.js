@@ -21,7 +21,7 @@ const Layout = () => {
     if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
 
     return (
-        <div  style={{ zoom: 1.3 }}>
+        <div  style={{ zoom: .99 }}>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
