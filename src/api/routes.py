@@ -16,7 +16,7 @@ CORS(api)
 
 @api.route('/user/signup', methods=['POST'])
 @jwt_required()
-def Users(request):
+def signup_user(request):
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -56,7 +56,7 @@ def login (request):
 
 @api.route('/login/cargiver', methods=['POST'])
 @jwt_required()
-def login (request):
+def login_caregiver (request):
     print("login route hit")
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -74,7 +74,7 @@ def login (request):
 
 @api.route('/caregiver/signup', methods=['POST'])
 @jwt_required()
-def Users(request):
+def signup_caregiver (request):
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -94,10 +94,13 @@ def Users(request):
          return jsonify({'error': 'Username and password are required'}), 400
 
 
-@api.route('/caregiver/:id', methods=['GET'])
-def Profile(request):
-     
+@api.route('/caregiver', methods=['GET'])
+@jwt_required()
+def get_profile ():
+     caregiver_id = get_jwt_identity()
 
+     
+     
     
 @api.route("/hello", methods=["GET"])
 @jwt_required()
