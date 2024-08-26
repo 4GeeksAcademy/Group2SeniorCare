@@ -179,35 +179,43 @@ const Home = () => {
             
                     </div>
                 </div>
+            </div>
 
-               
-               
-                   
-
-
+            <style>
                 
+            </style>
                 <div className="section-1">
-                    <div className="card-1">
+              
+                    <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
                      
-                        <h2 className=""><i class="fa-solid fa-user-group"></i>Fast Matching</h2>
-                        <p>We'll match you with a caregiver within 24 hours</p>
+                        <h4 className="card-title"><i class="fa-solid fa-user-group"></i>Fast Matching</h4>
+                        <p className="card-text">We'll match you with a caregiver within 24 hours</p>
                     </div>
-                    <div className="card-1">
+                    <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
                     
-                        <h2 className=""><i class="fa-solid fa-heart"></i>Experienced Caregivers</h2>
-                        <p>All caregivers have at least 2 years of experience and have completed a background check</p>
+                        <h4 className="card-title"><i class="fa-solid fa-heart"></i>Experienced Caregivers</h4>
+                        <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
                     </div>
-                    <div className="card-1">
+                    <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
                         
-                        <h2 className=""><i class="fa-solid fa-helmet-safety"></i>Safety First</h2>
-                        <p>We require all caregivers to be fully vaccinated for COVID-19</p>
+                        <h4 className="card-title"><i class="fa-solid fa-helmet-safety"></i>Safety First</h4>
+                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
                     </div>
-                    <div className="card-1">
-                       
-                        <h2 className=""><i class="fa-solid fa-check"></i>Convenient</h2>
-                        <p>Find a caregiver who can work on your schedule, whether it's weekdays, weekends, or evenings</p>
+                
                     </div>
                     </div>
+                    
+                    <div>
+                    
+
+                    <div className="section" style={{backgroundColor: "#fff"}}>
+                    <h2>Why Choose Us</h2>
+                    <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
+                    <div class="card" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover"}}>
+                    
+                    </div>
+                </div>
+
                     </div>
 
                     
