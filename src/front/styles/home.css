@@ -5,3 +5,357 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+/*
+    home.css: This website contains selectors only used in home.css
+
+    All pages share the styles on index.css but you should create 
+    one more css for each page that will contain the selected used 
+    on that page only (the ones not reused in other pages).
+*/
+body {
+    font-family: sans-serif;
+    margin: 0;
+
+   
+}
+header {
+    background-color: rgb(72, 14, 248);
+    /* padding: 10px; */
+    /* border-bottom: 5px solid #dce1e5; */
+    height: 120px;
+    width: 100vw;
+}
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 10px 0 10px 1px;
+
+} 
+.container-1 {
+        /* max-width: 1200px; */
+        /* margin: 0 auto; */
+        /* padding: 10px; */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 1rem;
+        padding-right: 1rem;
+
+}
+
+.container-2 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.container-backround {
+    z-index: -1;
+    background-color: rgb(72, 14, 248);
+    height: 20rem;
+}
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-logo h2 {
+    margin: 0;
+}
+.header-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #111517;
+}
+.header-nav a:hover {
+    text-decoration: underline;
+}
+.cta-button {
+    background-color: #359de3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    
+}
+.cta-button-1 {
+    background-color: #359de3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.hero {
+    display: flex;
+    background: url('https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat left 10%; 
+    background-size: 30vw;
+    /* padding: 10px 10px; */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    height: 18vw;
+    width: fit-content;
+}
+
+.card-1 {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.card-1:hover {
+    animation: hoverScale 0.3s ease-in-out;
+}
+
+@keyframes hoverScale {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.card-body {
+    background: none;
+    color: white;
+    font-style: italic;
+}
+
+.card-body-1 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+
+.undercover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-left: 100px;
+
+}
+
+.hero-text {
+    margin-left: 35vw;
+}
+.section {
+    margin-bottom: 20px;
+    max-width: 1200px;
+    /* padding: 50px 100px; */
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    float: left; /* Add this line to float the section to the right */
+    width: 50%; /* Add this line to set the width of the section */
+    margin-left: auto;
+    margin-right: auto;
+    /* padding-left: 300px */
+}
+/*  */
+.text-custom {
+    color: #111517;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+.section-1 { 
+    /* margin: 20px auto; */
+    display: center;
+    max-width: fit-content;
+    
+    /* align-items: center; */
+} 
+
+
+
+
+
+
+.section-2 img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+
+.section h1 {
+    margin: 0 0 10px;
+}
+.section h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
+.section p {
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: black;
+}
+.card img {
+    max-width: 100px;
+    border-radius: 50%;
+}
+footer {
+    text-align: center;
+    color: #647987;
+    padding-top: 300px
+}
+.end {
+    text-align: center;
+
+
+}
+/* cover-image text custimization(find a caregiver in 24 hours or less) */
+.text-custom-1 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-item {
+    max-width: 600px;
+    max-height: 500px;
+
+}
+.carousel{
+    max-width: fit-content;
+    margin: 0 auto; /* center horizontally */
+    margin-top: 20px; /* add some space after section-1 */
+  }
+ 
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+}
+
+
+.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.animation-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.animation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.animation-text {
+    color: white;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.animation-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.animation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.animation-list li {
+    margin-bottom: 1rem;
+}
+
+.animation-image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.animation-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.animation-container:hover .animation {
+    background-color: rgba(0, 0, 0, 0.7);
+}

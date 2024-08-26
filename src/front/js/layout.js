@@ -3,14 +3,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
-import { Home } from "./pages/home";
+import  Home  from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
+import { CaregiverProfilePage } from "./pages/CaregiverProfilePage.jsx";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import  Carousel  from "./component/carousel";
 import { SignUp } from "./component/Signup";
+
 
 //create your first component
 const Layout = () => {
@@ -21,7 +25,7 @@ const Layout = () => {
     if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
 
     return (
-        <div>
+        <div  style={{ zoom: .99 }}>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
@@ -30,6 +34,8 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<SignUp />} path="/signup" />
+                        {/* Mariano */}
+                        <Route element={<CaregiverProfilePage />} path="/caregiver"/>
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
