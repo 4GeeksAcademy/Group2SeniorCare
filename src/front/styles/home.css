@@ -44,16 +44,16 @@ header {
 
 .container-2 {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
 }
 
 .container-backround {
     z-index: -1;
     background-color: rgb(72, 14, 248);
-    height: 40vh;
+    height: 20rem;
 }
 .header-logo {
     display: flex;
@@ -102,8 +102,55 @@ header {
     border-radius: 10px;
     box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px;
-    height: 15vw;
+    height: 18vw;
     width: fit-content;
+}
+
+.card-1 {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.card-1:hover {
+    animation: hoverScale 0.3s ease-in-out;
+}
+
+@keyframes hoverScale {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
 }
 
 .card-body {
@@ -241,4 +288,74 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+.animation-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.animation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.animation-text {
+    color: white;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.animation-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.animation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.animation-list li {
+    margin-bottom: 1rem;
+}
+
+.animation-image {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.animation-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.animation-container:hover .animation {
+    background-color: rgba(0, 0, 0, 0.7);
 }

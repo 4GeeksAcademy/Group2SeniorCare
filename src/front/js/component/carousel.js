@@ -51,7 +51,7 @@ const Carousel = () => {
                         </div>
                 </div>
                 <div className="end">
-                <button className="cta-button">get started</button>
+               
                 </div>
             </div>
         </div>
