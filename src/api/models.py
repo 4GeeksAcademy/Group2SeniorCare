@@ -56,10 +56,11 @@ class Caregiver(db.Model):
     qualifications =db.Column(db.String(120), unique=True, nullable=False)
     availability =db.Column(db.String(120), unique=True, nullable=False)
     password =db.Column(db.String(80), unique=False, nullable=False)
-    # experience =db.Column(db.Numeric(), nullable=False)
+    credentials =db.Column(db.String(120), unique=False, nullable=False)
+    experience =db.Column(db.Numeric(), nullable=False)
     location = db.Column(db.String(120), nullable=False)
 
-    is_active =db.Column(db.Boolean(), unique=False, nullable=True)
+    is_active =db.Column(db.Boolean(), unique=False, nullable=False)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
     caring_users =db.relationship("User")
