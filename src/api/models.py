@@ -16,7 +16,7 @@ class User(db.Model):
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="user")
     caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'))
-    caring_caregiver = db.relationship('Caregiver', backref="caring_users")
+    
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -39,10 +39,13 @@ class Caregiver(db.Model):
     email =db.Column(db.String(120), unique=True, nullable=False)
     password =db.Column(db.String(80), unique=False, nullable=False)
     credentials =db.Column(db.String(120), unique=False, nullable=False)
+    experience =db.Column(db.Numeric(), nullable=False)
+    location = db.Column(db.String(120), nullable=False)
+
     is_active =db.Column(db.Boolean(), unique=False, nullable=False)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
-
+    caring_users =db.relationship("User")
     def __repr__(self):
         return f'<Caregiver {self.email}>'
 
@@ -51,6 +54,9 @@ class Caregiver(db.Model):
             "id": self.id,
             "email": self.email,
             "credentials": self.credentials,
+            "experience": self.experience,
+            "location": self.location,
+            "caring_users": [user.serialize() for user in self.caring_users]
             # do not serialize the password, its a security breach
         }
 
