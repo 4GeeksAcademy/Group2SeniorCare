@@ -53,7 +53,7 @@ header {
 .container-backround {
     z-index: -1;
     background-color: rgb(72, 14, 248);
-    min-height: 20rem;
+    min-height: 20rem;git status
 }
 .header-logo {
     display: flex;
