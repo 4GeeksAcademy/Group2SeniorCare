@@ -14,7 +14,9 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
-import { SignUp } from "./component/Signup";
+import { SignUp } from "./pages/caregiverSignup";
+
+import { PatientSignUp } from "./pages/patientSignup.js";
 
 
 //create your first component
@@ -37,6 +39,9 @@ const Layout = () => {
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<CaregiverPortal />} path="/caregiver"/>
                         <Route element={<PatientPortal />} path="/patient" />
+                        <Route element={<PatientSignUp />} path="/signup-patient" />
+                        {/* Mariano */}
+                        <Route element={<CaregiverProfilePage />} path="/caregiver"/>
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
