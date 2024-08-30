@@ -15,6 +15,10 @@ import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
 import { SignUp } from "./component/Signup";
 
+import PatientLogin from "./pages/patientlogin.js";
+import CaregiverLogin from "./pages/caregiverlogin.js";
+import AboutUs from "./pages/aboutus.js";
+
 
 //create your first component
 const Layout = () => {
@@ -34,7 +38,12 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<SignUp />} path="/signup" />
-                        {/* Mariano */}
+                        <Route element={<PatientLogin />} path="/patient-login" />
+                        <Route element={<CaregiverLogin />} path="/caregiver-login" />
+                        <Route element={<AboutUs />} path="/about-us" />
+
+                        
+                          {/* Mariano */}
                         <Route element={<CaregiverProfilePage />} path="/caregiver"/>
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

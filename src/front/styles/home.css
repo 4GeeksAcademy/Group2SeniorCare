@@ -15,6 +15,8 @@
 body {
     font-family: sans-serif;
     margin: 0;
+ 
+
 
    
 }
@@ -53,7 +55,51 @@ header {
 .container-backround {
     z-index: -1;
     background-color: rgb(72, 14, 248);
-    min-height: 20rem;git status
+    min-height: 40rem;
+    background-image:
+        radial-gradient(farthest-side at 50% 50%, rgba(14, 142, 247, 0.397) 99%, transparent 100%),
+        repeating-linear-gradient(
+            30deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(255, 255, 255, 0.05) 10px,
+            transparent 10px,
+            transparent 15px
+        ),
+        repeating-linear-gradient(
+            150deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(255, 255, 255, 0.05) 10px,
+            transparent 10px,
+            transparent 15px
+        );
+    background-size: 50px 50px;
+    transition: background-position 0.1s ease-out;
+}
+.container-backround:hover {
+    background-image:
+        radial-gradient(farthest-side at 50% 50%, rgba(14, 142, 247, 0.397) 99%, transparent 100%),
+        repeating-linear-gradient(
+            30deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(255, 255, 255, 0.05) calc(var(--mouse-x) * 5px),
+            transparent calc(var(--mouse-x) * 10px),
+            transparent calc(var(--mouse-x) * 1px + 10px)
+        ),
+        repeating-linear-gradient(
+            150deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(255, 255, 255, 0.05) calc(var(--mouse-x) * 1px),
+            transparent calc(var(--mouse-x) * 1px),
+            transparent calc(var(--mouse-x) * 1px + 10px)
+        );
+}
+
+.container-backround:hover {
+    background-position: -20px -20px;
+}
+
+body:hover .container-backround {
+    background-position: -10px -10px;
 }
 .header-logo {
     display: flex;
@@ -95,14 +141,12 @@ header {
 }
 .hero {
     display: flex;
-    background: url('https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat left 10%; 
-    background-size: cover;
-    /* padding: 10px 10px; */
+    background: url('https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat left 10%; 
+    background-size: ;
+    padding-top: 35px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-    height: 18vw;
+    height: 20vw;
     width: fit-content;
 }
 
@@ -170,12 +214,13 @@ header {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding-left: 100px;
+    margin-left: 100px;
 
 }
 
 .hero-text {
     margin-left: 35vw;
+    margin-top: 10vh;
 }
 .section {
     margin-bottom: 20px;
