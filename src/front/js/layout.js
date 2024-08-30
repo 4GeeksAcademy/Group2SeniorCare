@@ -15,6 +15,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
 import { SignUp } from "./component/Signup";
+import PatientLogin from "./pages/patientlogin.js";
+import CaregiverLogin from "./pages/caregiverlogin.js";
 
 
 //create your first component
@@ -37,6 +39,8 @@ const Layout = () => {
                         <Route element={<SignUp />} path="/signup" />
                         <Route element={<CaregiverPortal />} path="/caregiver"/>
                         <Route element={<PatientPortal />} path="/patient" />
+                        <Route element={<PatientLogin />} path="/patient-login" />
+                        <Route element={<CaregiverLogin />} path="/caregiver-login" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

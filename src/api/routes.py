@@ -78,7 +78,7 @@ def signup_caregiver ():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    location= data.get('location')
+    location = data.get('location')
 
     if username and password: 
         existing_user = Caregiver.query.filter_by(username=username).first()
