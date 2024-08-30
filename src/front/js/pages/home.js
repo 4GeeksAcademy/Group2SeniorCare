@@ -25,7 +25,7 @@ const Home = () => {
                     
                 </div>
             </header>
-            <div className="container-backround">
+            <div className="container-backround" style={{position: "relative"}}>
             <div className="hero container">
                 
                       
@@ -123,7 +123,6 @@ const Home = () => {
 };
 
 export default Home;
-
 
 
 
