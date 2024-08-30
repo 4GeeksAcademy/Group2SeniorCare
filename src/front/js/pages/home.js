@@ -18,13 +18,15 @@ const Home = () => {
                         {/* Logo SVG goes here */}
                         <h2 style={{color: "white"}}>Caregiver Connect</h2>
                     </div>
-                   
-                    <button className="cta-button-1">Become A Caregiver</button>
+                   <div style={{padding: "10px"}}>
+                   <button className="cta-button-1">Become A Caregiver</button>
+                   </div>
+                    
                     
                     
                 </div>
             </header>
-            <div className="container-backround">
+            <div className="container-backround" style={{position: "relative"}}>
             <div className="hero container">
                 
                       
@@ -122,7 +124,6 @@ const Home = () => {
 };
 
 export default Home;
-
 
 
 
