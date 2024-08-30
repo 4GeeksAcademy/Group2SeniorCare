@@ -8,6 +8,7 @@ db =SQLAlchemy()
 class User(db.Model):
     __tablename__ ='user'
     id =db.Column(db.Integer, primary_key=True)
+<<<<<<< HEAD
     name =db.Column(db.String(120), unique=False, nullable=False )
     date_of_birth=db.Column(db.Date(), unique=False, nullable=False)
     email =db.Column(db.String(120), unique=True, nullable=False)
@@ -16,12 +17,21 @@ class User(db.Model):
     password =db.Column(db.String(80), unique=False, nullable=False)
     allergies=db.Column(db.String(120), unique=False, nullable=True)
     bloodType=db.Column(db.String(120), unique=False, nullable=True)
+=======
+    email =db.Column(db.String(120), unique=True, nullable=False, )
+    password =db.Column(db.String(80), unique=False, nullable=False)
+    allergies=db.Column(db.String(120), unique=False, nullable=True)
+>>>>>>> 8558a9d (model testing)
     hobbies=db.Column(db.String(300),unique=False, nullable=True)
     is_active =db.Column(db.Boolean(), unique=False, nullable=False)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="user")
     caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'))
+<<<<<<< HEAD
     
+=======
+    caring_caregiver = db.relationship('Caregiver', backref="caring_users")
+>>>>>>> 8558a9d (model testing)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -32,6 +42,7 @@ class User(db.Model):
             "name": self.name,
             "date_of_birth": self.date_of_birth,
             "email": self.email,
+<<<<<<< HEAD
             "phone": self.phone,
             "emergencyContact": self.emergencyContact,
             "allergies": self.allergies,
@@ -42,6 +53,13 @@ class User(db.Model):
             # do not serialize the password, it's a security breach
         }
 
+=======
+            "allergies": self.allergies,
+            "hobbies": self.hobbies,
+
+            # do not serialize the password, its a security breach
+        }
+>>>>>>> 8558a9d (model testing)
     
 
 # 3RD MODEL
@@ -69,6 +87,7 @@ class Caregiver(db.Model):
 
 
     def serialize(self):
+<<<<<<< HEAD
         return { 
             "id": self.id,
             "fullname": self.fullname,
@@ -80,6 +99,49 @@ class Caregiver(db.Model):
             "location": self.location,
             "caring_users": [user.serialize() for user in self.caring_users],
             
+=======
+        return {
+            "id": self.id,
+            "email": self.email,
+            "credentials": self.credentials,
+            # do not serialize the password, its a security breach
+        }
+
+# 3RD MODEL
+class UserRequestCaregiver(db.Model):
+    __tablename__ ='user_request_caregiver'
+    id=db.Column(db.Integer, primary_key=True)
+    user_id=db.Column(db.Integer, ForeignKey('user.id'), nullable=False)
+    caregiver_id=db.Column(db.Integer, ForeignKey('caregiver.id'), nullable=False)
+    request_status=db.Column(db.String(80), nullable=False, default='Pending')
+    request_time=db.Column(db.Integer, nullable=True)
+    # 
+    user=db.relationship("User", back_populates="caring_caregiver")
+    caregiver=db.relationship("Caregiver", back_populates="caring_user")
+
+
+    def accept_request(self):
+        self.request_status = 'Accepted'
+        User.caring_caregiver_id = self.caregiver_id
+        db.session.commit()
+        
+    def denied_request(self):
+        self.request_status = 'Denied'
+        db.session.commit()
+        
+    def __repr__(self):
+        return f'<User {self.user} is undercare for Caregiver {self.caregiver}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "caregiver_id": self.caregiver_id,
+            "request_status": self.request_status,
+            "request_time": self.request_time,
+            "user_assigned": self.user,
+            "caregiver_assigned": self.caregiver
+>>>>>>> 8558a9d (model testing)
             # do not serialize the password, its a security breach
         }
 
