@@ -1,0 +1,36 @@
+.caregivers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* text-align: center; */
+    margin-top: 2rem;
+}
+
+.caregiver-list {
+    width: 80%;
+
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+.caregiver-list .card {
+    width: 100%;
+
+    /* max-width: 100%; */
+
+    max-width: 540px;
+    margin-bottom: 1rem;
+}
+
+.request-button {
+    width: 80%;
+    
+}
