@@ -22,10 +22,15 @@ const Home = () => {
                    <Link to="/signup-caregiver">
                     <button className="cta-button-1">Become A Caregiver</button>
                     </Link>
+                   <div style={{padding: "10px"}}>
+                   <button className="cta-button-1">Become A Caregiver</button>
+                   </div>
+                    
+                    
                     
                 </div>
             </header>
-            <div className="container-backround">
+            <div className="container-backround" style={{position: "relative"}}>
             <div className="hero container">
                 
                       
@@ -123,7 +128,6 @@ const Home = () => {
 };
 
 export default Home;
-
 
 
 

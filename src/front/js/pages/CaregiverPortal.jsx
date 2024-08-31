@@ -5,21 +5,21 @@ import { Context } from '../store/appContext';
 export const CaregiverPortal = () => {
     const { store, actions } = useContext(Context);
     let getCaregiverInfo = async () => {
-            let success = await actions.getCaregiverProfile();
-            if (!success) {
-                alert('There was a problem retrieving your data. Please try again later!');
-            }
-        };
+        let success = await actions.getCaregiverProfile();
+        if (!success) {
+            alert('There was a problem retrieving your data. Please try again later!');
+        }
+    };
     useEffect(() => {
-        
+
         getCaregiverInfo();
     }, []); // Added 'actions' to the dependency array
 
-    const handleReply= async(patientId, requestId ,reply)=>{
-        let success = await actions.replyRequest(patientId, requestId ,reply)
-        if(success){
+    const handleReply = async (patientId, requestId, reply) => {
+        let success = await actions.replyRequest(patientId, requestId, reply)
+        if (success) {
             getCaregiverInfo()
-        }else{
+        } else {
             alert("An error ocurred while attempting to reply to this request! Please try agin later.")
         }
     }
@@ -49,7 +49,7 @@ export const CaregiverPortal = () => {
 
 
                                         </ul>
-                                        <div className="navbar"><button  onClick={()=>{handleReply(item.patient.id,item.request_id,"accept")}}className="btn btn-success">Accept</button> <button onClick={()=>{handleReply(item.patient.id,item.request_id,"deny")}} className="btn btn-secondary">Deny</button></div>
+                                        <div className="navbar"><button onClick={() => { handleReply(item.patient.id, item.request_id, "accept") }} className="btn btn-success">Accept</button> <button onClick={() => { handleReply(item.patient.id, item.request_id, "deny") }} className="btn btn-secondary">Deny</button></div>
 
                                     </div>
                                 </div>
@@ -62,6 +62,7 @@ export const CaregiverPortal = () => {
             <h3>Current Patients:</h3>
             <div>
                 {store.caregiver?.caring_users?.map((item, index) => {
+                    console.log(item.is_active)
                     return (
                         <div className="card mb-3" style={{ maxWidth: '540px' }} key={index}>
                             <div className="row g-0">
@@ -95,4 +96,3 @@ export const CaregiverPortal = () => {
         </div>
     );
 };
-
