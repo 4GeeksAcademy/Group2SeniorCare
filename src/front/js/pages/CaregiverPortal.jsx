@@ -4,6 +4,7 @@ import { Context } from '../store/appContext';
 
 export const CaregiverPortal = () => {
     const { store, actions } = useContext(Context);
+
     let getCaregiverInfo = async () => {
         let success = await actions.getCaregiverProfile();
         if (!success) {
@@ -25,10 +26,9 @@ export const CaregiverPortal = () => {
     }
     return (
         <div>
-            <h1>Welcome Caregiver!</h1>
+            <h1>Welcome {store.caregiver?.email} Caregiver!</h1>
             <h3>Here are your current requests:</h3>
             <div>
-
                 {store.caregiver?.requests?.map((item, index) => {
                     return (
                         <div className="card mb-3" style={{ maxWidth: '540px' }} key={index}>
@@ -46,18 +46,17 @@ export const CaregiverPortal = () => {
                                             <li className="list-group-item">Phone: {item.patient.phone}</li>
                                             <li className="list-group-item">Time: {item.request_time}</li>
                                             <li className="list-group-item">Status: {item.request_status}</li>
-
-
                                         </ul>
-                                        <div className="navbar"><button onClick={() => { handleReply(item.patient.id, item.request_id, "accept") }} className="btn btn-success">Accept</button> <button onClick={() => { handleReply(item.patient.id, item.request_id, "deny") }} className="btn btn-secondary">Deny</button></div>
-
+                                        <div className="navbar">
+                                            <button onClick={() => { handleReply(item.patient.id, item.request_id, "accept") }} className="btn btn-success">Accept</button>
+                                            <button onClick={() => { handleReply(item.patient.id, item.request_id, "deny") }} className="btn btn-secondary">Deny</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    )
-                })
-                }
+                    );
+                })}
             </div>
             <h3>Current Patients:</h3>
             <div>
