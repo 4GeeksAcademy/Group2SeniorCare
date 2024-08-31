@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import Carousel from "../component/carousel";
+import { Link } from "react-router-dom";
 
 
 
@@ -18,9 +19,9 @@ const Home = () => {
                         {/* Logo SVG goes here */}
                         <h2 style={{color: "white"}}>Caregiver Connect</h2>
                     </div>
-                   
+                   <Link to="/signup-caregiver">
                     <button className="cta-button-1">Become A Caregiver</button>
-                    
+                    </Link>
                     
                 </div>
             </header>
