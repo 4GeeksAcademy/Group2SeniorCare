@@ -98,7 +98,7 @@ export const PatientSignUp = () => {
             name="city"
             placeholder="Enter your city" />
         </div>
-        <button class="patient-signup-button" type="submit" onClick={() => actions.createPatient(formData)}>Sign Up</button> 
+        <button class="patient-signup-button"  type="submit" onClick={() => actions.createPatient(formData)}>Sign Up</button> 
         {/* This onClick will send the information to Flux where you will have a function that will make the fetch request to the API and create a user or reject */}
       </form>
 
