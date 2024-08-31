@@ -14,6 +14,9 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
+import { SignUp } from "./pages/caregiverSignup";
+
+import { PatientSignUp } from "./pages/patientSignup.js";
 import { SignUp } from "./component/Signup";
 import PatientLogin from "./pages/patientlogin.js";
 import CaregiverLogin from "./pages/caregiverlogin.js";
@@ -36,7 +39,8 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<SignUp />} path="/signup" />
+                        <Route element={<SignUp />} path="/signup-caregiver" />
+                        <Route element={<PatientSignUp />} path="/signup-patient" />
                         <Route element={<CaregiverPortal />} path="/caregiver"/>
                         <Route element={<PatientPortal />} path="/patient" />
                         <Route element={<PatientLogin />} path="/patient-login" />

@@ -19,7 +19,7 @@ export const Navbar = () => {
           </ul>
         </div>
         <div class="ms-auto">
-            <Link class="btn btn-primary" to="/join-patient">Join as a patient</Link>
+            <Link class="btn btn-primary" to="/signup-patient">Join as a patient</Link>
           </div>
       </div>
     </nav>
