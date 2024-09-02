@@ -136,6 +136,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+			loginCaregiver: async (email, password) => {
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password,
+					}),
+				};
+
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/login/caregiver`, options);
+
+					if (response.status !== 200) {
+						console.log("Login failed", response.status);
+						return false;
+					}
+
+					const data = await response.json();
+					console.log("Login successful", data);
+					setStore({ token: data.access_token });
+
+					return true;
+				} catch (error) {
+					console.log("Error during login", error);
+					return false;
+				}
+			},
 
 			caregiverSignup: async (caregiverdata) => {
 				const options = {
