@@ -45,7 +45,12 @@ export const PatientSignUp = () => {
           <label for="name">Full Name</label>
           <input
             type="text"
-            id="name"
+            id="fullName"
+            value={formData.fullName}
+            onChange={(e) => {
+              handleChange(e);
+              console.log(formData.fullName, ": is the input value", e.target.id, ",: is the input property name")
+            }}
             name="name"
             placeholder="Enter your full name"
             value={formData.name}
@@ -86,14 +91,15 @@ export const PatientSignUp = () => {
         </div>
 
         <div className="form-group">
-                    <label htmlFor="city">City</label>
-                    <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder="Enter your city"/>
+          <label htmlFor="city">City</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Enter your city" />
         </div>
-        <button class="patient-signup-button"type="submit">Sign Up</button>
+        <button class="patient-signup-button" type="submit" onClick={() => actions.createPatient(formData)}>Sign Up</button> 
+        {/* This onClick will send the information to Flux where you will have a function that will make the fetch request to the API and create a user or reject */}
       </form>
 
       <div class="form-footer">

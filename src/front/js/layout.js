@@ -2,20 +2,16 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
-
 import  Home  from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { CaregiverPortal} from "./pages/CaregiverPortal.jsx";
 import { PatientPortal } from "./pages/PatientPortal.jsx";
-
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
 import { SignUp } from "./pages/caregiverSignup";
-
 import { PatientSignUp } from "./pages/patientSignup.js";
 import PatientLogin from "./pages/patientlogin.js";
 import CaregiverLogin from "./pages/caregiverlogin.js";
