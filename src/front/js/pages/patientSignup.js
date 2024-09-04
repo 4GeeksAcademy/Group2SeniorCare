@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/patientSignup.css"
 
-export const PatientSignUp =()=>{
-    return(
-        <div class="signup-container">
+
+export const PatientSignUp = () => {
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    dob: "",
+    email: "",
+    password: "",
+    city: ""
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+
+  return (
+    <div class="signup-container">
       <h2>Patient Sign Up</h2>
       <form>
         <div class="form-group">
           <label for="name">Full Name</label>
           <input
             type="text"
-            id="name"
+            id="fullName"
+            value={formData.fullName}
+            onChange={(e) => {
+              handleChange(e);
+              console.log(formData.fullName, ": is the input value", e.target.id, ",: is the input property name")
+            }}
             name="name"
             placeholder="Enter your full name"
             required
@@ -45,19 +68,20 @@ export const PatientSignUp =()=>{
         </div>
 
         <div className="form-group">
-                    <label htmlFor="city">City</label>
-                    <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        placeholder="Enter your city"/>
+          <label htmlFor="city">City</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Enter your city" />
         </div>
-        <button class="patient-signup-button"type="submit">Sign Up</button>
+        <button class="patient-signup-button" type="submit" onClick={() => actions.createPatient(formData)}>Sign Up</button> 
+        {/* This onClick will send the information to Flux where you will have a function that will make the fetch request to the API and create a user or reject */}
       </form>
 
       <div class="form-footer">
         <p>Already have an account? <a href="#">Log in here</a>.</p>
       </div>
     </div>
-    )
+  )
 }
