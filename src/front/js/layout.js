@@ -17,7 +17,6 @@ import  Carousel  from "./component/carousel";
 import { SignUp } from "./pages/caregiverSignup";
 
 import { PatientSignUp } from "./pages/patientSignup.js";
-import { SignUp } from "./component/Signup";
 import PatientLogin from "./pages/patientlogin.js";
 import CaregiverLogin from "./pages/caregiverlogin.js";
 
