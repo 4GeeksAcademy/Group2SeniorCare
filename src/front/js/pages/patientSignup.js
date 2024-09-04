@@ -85,7 +85,15 @@ export const PatientSignUp = () => {
           />
         </div>
 
-        <button class="patient-signup-button" type="submit">Sign Up</button>
+        <div className="form-group">
+                    <label htmlFor="city">City</label>
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        placeholder="Enter your city"/>
+        </div>
+        <button class="patient-signup-button"type="submit">Sign Up</button>
       </form>
 
       <div class="form-footer">
