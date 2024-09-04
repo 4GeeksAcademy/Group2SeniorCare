@@ -22,9 +22,7 @@ const Home = () => {
                    <Link to="/signup-caregiver">
                     <button className="cta-button-1">Become A Caregiver</button>
                     </Link>
-                   <div style={{padding: "10px"}}>
-                   <button className="cta-button-1">Become A Caregiver</button>
-                   </div>
+                   
                     
                     
                     
