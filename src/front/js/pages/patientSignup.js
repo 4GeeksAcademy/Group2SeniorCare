@@ -45,12 +45,6 @@ export const PatientSignUp = () => {
           <label for="name">Full Name</label>
           <input
             type="text"
-            id="fullName"
-            value={formData.fullName}
-            onChange={(e) => {
-              handleChange(e);
-              console.log(formData.fullName, ": is the input value", e.target.id, ",: is the input property name")
-            }}
             name="name"
             placeholder="Enter your full name"
             value={formData.name}
