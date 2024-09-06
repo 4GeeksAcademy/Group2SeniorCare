@@ -224,20 +224,18 @@ body:hover .container-backround {
 }
 .section {
     margin-bottom: 20px;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     /* padding: 50px 100px; */
     font-family: Arial, sans-serif;
     font-size: 24px;
-    line-height: 1.5;
     color: #333;
-    text-align: left;
-    float: left; /* Add this line to float the section to the right */
-    width: 50%; /* Add this line to set the width of the section */
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    /* padding-left: 300px */
 }
-/*  */
+
+
+
 .text-custom {
     color: #111517;
     font-size: 1rem;
@@ -246,11 +244,11 @@ body:hover .container-backround {
 }
 .section-1 { 
     /* margin: 20px auto; */
-    display: center;
-    max-width: fit-content;
+    /* display: center;
+    max-width: fit-content; */
     
     /* align-items: center; */
-} 
+}
 
 
 
@@ -305,11 +303,6 @@ footer {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-.carousel-item {
-    max-width: 600px;
-    max-height: 500px;
-
-}
 .carousel{
     max-width: fit-content;
     margin: 0 auto; /* center horizontally */
@@ -403,4 +396,13 @@ footer {
 
 .animation-container:hover .animation {
     background-color: rgba(0, 0, 0, 0.7);
+}
+.carousel-item{
+    width: 70rem;
+}
+
+#testimonial-img {
+    border-radius: 50%;
+    width: 79%;
+    height: 13rem;
 }

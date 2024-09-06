@@ -2,12 +2,70 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import Carousel from "../component/carousel";
+import { Testimonial } from "../component/testimonial";
 
 
 
 
 const Home = () => {
     const { store, actions } = useContext(Context);
+
+    const caretakerPoints = [
+
+                                        "Personalized care tailored to your needs",
+                                "Increased independence and autonomy",
+                                "Companionship and social interaction",
+                                "Light housekeeping and meal preparation",
+                                "Medication reminders and management",
+                                "Transportation to appointments and errands",
+
+        
+    ]
+
+    const testimonialData = [
+        {
+          name: "John Rivers",
+          description: "A 34-year-old software engineer who loves hiking and photography. Known for his calm demeanor and problem-solving skills."
+        },
+        {
+          name: "Sarah Collins",
+          description: "A 28-year-old graphic designer with a passion for modern art. She enjoys painting and often volunteers at local art galleries."
+        },
+        {
+          name: "David Thompson",
+          description: "A 42-year-old history professor with a deep knowledge of ancient civilizations. He enjoys traveling and exploring historical landmarks."
+        },
+        {
+          name: "Emily Rodriguez",
+          description: "A 30-year-old marketing specialist with a knack for social media strategy. She’s an avid reader and frequently attends book clubs."
+        },
+        {
+          name: "Michael Adams",
+          description: "A 25-year-old fitness instructor who’s passionate about health and wellness. He enjoys running marathons and teaching yoga."
+        },
+        {
+          name: "Lisa White",
+          description: "A 37-year-old event planner who loves organizing weddings and corporate events. She’s known for her creativity and attention to detail."
+        },
+        {
+          name: "Jason Lee",
+          description: "A 40-year-old chef who specializes in fusion cuisine. He enjoys experimenting with flavors and has a popular food blog."
+        },
+        {
+          name: "Olivia Brown",
+          description: "A 32-year-old journalist who covers global politics. She’s known for her investigative reporting and passion for uncovering the truth."
+        },
+        {
+          name: "Robert Wilson",
+          description: "A 45-year-old architect with a love for sustainable design. He’s an advocate for green buildings and enjoys mentoring young architects."
+        },
+        {
+          name: "Sophia Martinez",
+          description: "A 27-year-old entrepreneur who runs a successful online fashion boutique. She’s known for her innovative designs and strong business sense."
+        }
+      ];
+      
+
 
     return (
         <>
@@ -45,18 +103,62 @@ const Home = () => {
             </div>
             </div>
 
-            <div className="undercover">
-            <div class="card-body-1">
-                                <blockquote class="blockquote mb-0" style={{color: "black"}}>
-                                <h2>“We are dedicated to <br/> providing exceptional in-home<br/> care precisely when you need it,<br/> ensuring your comfort and enhancing your quality of life.” </h2>
-                                </blockquote>
+            <div className=" row">
+                <div className="col-5 d-flex justify-content-center align-items-center">
+                    <div className="text-dark">
+                            <h2>“We are dedicated to <br/> providing exceptional in-home<br/> care precisely when you need it,<br/> ensuring your comfort and enhancing your quality of life.” </h2>
+                    </div>
+                </div>
+
+                <div className="col-7">
+                        {/* <Carousel /> */}
+                        <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+                        <div className="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1606940743881-b33f4b04d661?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D" className="d-block w-100" alt="..."></img>
+                            <div className="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Some representative placeholder content for the first slide.</p>
                             </div>
-                <Carousel />
+                            </div>
+                            <div className="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1606940743881-b33f4b04d661?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D" className="d-block w-100" alt="..."></img>
+                            <div className="carousel-caption d-none d-md-block">
+                                <h5>Second slide label</h5>
+                                <p>Some representative placeholder content for the second slide.</p>
+                            </div>
+                            </div>
+                            <div className="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1606940743881-b33f4b04d661?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D" className="d-block w-100" alt="..."></img>
+                            <div className="carousel-caption d-none d-md-block">
+                                <h5>Third slide label</h5>
+                                <p>Some representative placeholder content for the third slide.</p>
+                            </div>
+                            </div>
+                        </div>
+                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
+                        </div>
+
+                </div>
+            
+               
             </div>
 
             <div className="container-2" style={{backgroundColor: "#f5f5f5"}}>
             
-            <div className="container-3" style={{width: "100%", height: "600px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#f5f5f5"}}>
+            <div className="container-3" style={{width: "100%", height: "650px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#f5f5f5"}}>
                 <div className="animation-container">
                     <div className="animation">
                         <div className="animation-image">
@@ -65,12 +167,18 @@ const Home = () => {
                         <div className="animation-text">
                             <h2 className="animation-title">Why Choose a Caretaker?</h2>
                             <ul className="animation-list">
-                                <li>Personalized care tailored to your needs</li>
-                                <li>Increased independence and autonomy</li>
-                                <li>Companionship and social interaction</li>
-                                <li>Light housekeeping and meal preparation</li>
-                                <li>Medication reminders and management</li>
-                                <li>Transportation to appointments and errands</li>
+                                {caretakerPoints.map(
+                                    (points, index)=> {
+                                        return (
+                                            <div key = {index}>  
+                                                 <li>{points}</li>
+
+                                            </div>
+                                        )
+                                    }
+                                )}
+                             
+
                             </ul>
                         </div>
                     </div>
@@ -84,17 +192,17 @@ const Home = () => {
               
                     <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
                      
-                        <h4 className="card-title"><i class="fa-solid fa-user-group"></i>Fast Matching</h4>
+                        <h5 className="card-title"><i class="fa-solid fa-user-group p-2"></i>Fast Matching</h5>
                         <p className="card-text">We'll match you with a caregiver within 24 hours</p>
                     </div>
                     <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
                     
-                        <h4 className="card-title"><i class="fa-solid fa-heart"></i>Experienced Caregivers</h4>
+                        <h5 className="card-title font-size"><i class="fa-solid fa-heart p-2"></i>Experienced Caregivers</h5>
                         <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
                     </div>
                     <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
                         
-                        <h4 className="card-title"><i class="fa-solid fa-helmet-safety"></i>Safety First</h4>
+                        <h5 className="card-title"><i class="fa-solid fa-helmet-safety p-2"></i>Safety First</h5>
                         <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
                     </div>
                 
@@ -113,6 +221,19 @@ const Home = () => {
                 </div>
 
                     </div>
+
+                   <div className=" d-flex Testimonial-container">
+                    {testimonialData.map(
+                        (testData, index) => {
+                            return (
+                                <div key={index}>
+                                   <Testimonial data= {testData} />
+
+                                </div>
+                            )
+                        }
+                    )}
+                    </div> 
 
                     
                    
