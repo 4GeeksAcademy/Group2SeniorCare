@@ -46,18 +46,21 @@ class User(db.Model):
 
 # 3RD MODEL
 class Caregiver(db.Model):
-    __tablename__ ='caregiver'
-    id =db.Column(db.Integer, primary_key=True)
-    email =db.Column(db.String(120), unique=True, nullable=False)
-    password =db.Column(db.String(80), unique=False, nullable=False)
-    credentials =db.Column(db.String(120), unique=False, nullable=False)
-    experience =db.Column(db.Numeric(), nullable=False)
+    __tablename__ = 'caregiver'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    credentials = db.Column(db.String(120), unique=False, nullable=False)
+    experience = db.Column(db.Integer, nullable=False)  # Changed to Integer for years of experience
     location = db.Column(db.String(120), nullable=False)
+    gender = db.Column(db.String(10), nullable=False)  # New gender field
 
-    is_active =db.Column(db.Boolean(), unique=False, nullable=False)
-    # 
-    requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
-    caring_users =db.relationship("User")
+    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+
+    # Relationships
+    requests = db.relationship("UserRequestCaregiver", back_populates="caregiver")
+    caring_users = db.relationship("User")
+
     def __repr__(self):
         return f'<Caregiver {self.email}>'
 
@@ -68,6 +71,7 @@ class Caregiver(db.Model):
             "credentials": self.credentials,
             "experience": self.experience,
             "location": self.location,
+            "gender": self.gender,  
             "caring_users": [user.serialize() for user in self.caring_users],
             
             # do not serialize the password, its a security breach

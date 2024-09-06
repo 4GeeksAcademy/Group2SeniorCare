@@ -117,15 +117,37 @@ def get_profile():
     serialized_caregiver["requests"] = serialized_requests
     return jsonify({'msg': 'Caregiver profile info', 'caregiver': serialized_caregiver}), 200
     
-@api.route('/caregivers', methods=['GET'])   
-# @jwt_required() 
+@api.route('/caregivers', methods=['GET'])
+# @jwt_required()
 def get_caregivers():
-    caregivers = Caregiver.query.all()
-    if not caregivers:
-        return jsonify({'msg': 'No caregivers found'}), 404
+    # Get query parameters from the request
+    location = request.args.get('location')
+    experience = request.args.get('experience', type=int)  # Ensure experience is treated as an integer
+    gender = request.args.get('gender')
 
-    caregivers_list = [caregiver.serialize() for caregiver in caregivers]  
-    return jsonify({'caregivers': caregivers_list}), 200 
+    # Build the query
+    query = Caregiver.query
+
+    # Apply filters based on the query parameters
+    if location:
+        query = query.filter_by(location=location)
+    
+    if experience:
+        query = query.filter(Caregiver.experience >= experience)
+    
+    if gender:
+        query = query.filter_by(gender=gender)
+
+    # Execute the query and get all matching caregivers
+    caregivers = query.all()
+
+    if not caregivers:
+        return jsonify({'caregivers': []}), 200  # Return an empty list if no caregivers match
+
+    # Serialize the caregivers and return the response
+    caregivers_list = [caregiver.serialize() for caregiver in caregivers]
+    
+    return jsonify({'caregivers': caregivers_list}), 200
 
 #This is for the user to request for an appointment from the caregiver 
 @api.route('/request-caregiver', methods=['POST'])
