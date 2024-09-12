@@ -12,7 +12,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
 import { SignUp } from "./pages/caregiverSignup";
-import { PatientSignUp } from "./pages/patientSignup.js";
+import { SignUp as PatientSignUp } from "./pages/patientSignup";
 import PatientLogin from "./pages/patientlogin.js";
 import CaregiverLogin from "./pages/caregiverlogin.js";
 

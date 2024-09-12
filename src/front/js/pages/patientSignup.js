@@ -1,104 +1,155 @@
 import React, { useState } from "react";
-import "../../styles/patientSignup.css"
 
-export const PatientSignUp = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    dob: "",
-    email: "",
-    password: ""
-  });
+export const SignUp = () => {
+	// State to store form data locally
+	const [formData, setFormData] = useState({
+		fullName: "",
+		email: "",
+		phone: "",
+		location: "",
+		experience: "",
+		qualifications: "",
+		availability: ""
+	});
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+	
+	const handleChange = (e) => {
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value 
+		});
+	};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log("Form Data Submitted: ", formData);
 
-    try {
-      const response = await fetch(`${process.env.BACKEND_URL}/api/user/signup`, {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-      if (response.status !== 200) {
-        console.log("sign up failed", response.status);
-        return;
-      }
-      const data = await response.json();
-      console.log('sign up successful', data)
-    } catch (error) {
-      console.log("error during sign up", error)
-    }
-  };
-  return (
-    <div class="signup-container">
-      <h2>Patient Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your full name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+		
+		localStorage.setItem("caregiverData", JSON.stringify(formData));
+		alert("Form data saved locally!");
+	};
 
-        <div class="form-group">
-          <label for="dob">Date of Birth</label>
-          <input type="date" id="dob" name="dob" value={formData.dob} onChange={handleChange} required />
-        </div>
+	return (
+		<div className="text-center mt-5">
+			<div className="container">
+				{/* Image Section */}
+				<img
+					src="/path/to/your/image.png"
+					alt="Caregiver"
+					style={{ width: "100%", borderRadius: "10px 10px 0 0" }}
+				/>
 
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+				{/* Form Section */}
+				<h1>Become a Caregiver</h1>
+				<form onSubmit={handleSubmit}>
+					<div className="form-group">
+						<label htmlFor="full-name">Full Name</label>
+						<input
+							type="text"
+							id="fullName"
+							name="fullName"
+							value={formData.fullName}
+							onChange={handleChange}
+							placeholder="Enter your full name"
+							className="form-control"
+						/>
+					</div>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="text"
-            id="password"
-            name="password"
-            placeholder="Create a password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+					<div className="form-group">
+						<label htmlFor="email">Email</label>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							value={formData.email}
+							onChange={handleChange}
+							placeholder="Enter your email"
+							className="form-control"
+						/>
+					</div>
 
-        <div className="form-group">
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            placeholder="Enter your city" />
-        </div>
-        <button class="patient-signup-button" type="submit" onClick={() => actions.createPatient(formData)}>Sign Up</button> 
-        {/* This onClick will send the information to Flux where you will have a function that will make the fetch request to the API and create a user or reject */}
-      </form>
+					<div className="form-group">
+						<label htmlFor="phone">Phone Number</label>
+						<input
+							type="tel"
+							id="phone"
+							name="phone"
+							value={formData.phone}
+							onChange={handleChange}
+							placeholder="Enter your phone number"
+							className="form-control"
+						/>
+					</div>
 
-      <div class="form-footer">
-        <p>Already have an account? <a href="#">Log in here</a>.</p>
-      </div>
-    </div>
-    )
-}
+					<div className="form-group">
+						<label htmlFor="location">Location</label>
+						<input
+							type="text"
+							id="location"
+							name="location"
+							value={formData.location}
+							onChange={handleChange}
+							placeholder="Enter your location"
+							className="form-control"
+						/>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="experience">Experience Level</label>
+						<select
+							id="experience"
+							name="experience"
+							value={formData.experience}
+							onChange={handleChange}
+							className="form-control"
+						>
+							<option>Select your experience level</option>
+							<option>Beginner</option>
+							<option>Intermediate</option>
+							<option>Expert</option>
+						</select>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="qualifications">Qualifications</label>
+						<select
+							id="qualifications"
+							name="qualifications"
+							value={formData.qualifications}
+							onChange={handleChange}
+							className="form-control"
+						>
+							<option>Select your qualifications</option>
+							<option>CNA</option>
+							<option>RN</option>
+							<option>Caregiving Certificate</option>
+						</select>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="availability">Availability</label>
+						<select
+							id="availability"
+							name="availability"
+							value={formData.availability}
+							onChange={handleChange}
+							className="form-control"
+						>
+							<option>Select your availability</option>
+							<option>Full-time</option>
+							<option>Part-time</option>
+							<option>Flexible</option>
+						</select>
+					</div>
+
+					<div className="form-group">
+						<button type="submit" className="btn btn-dark">
+							Sign Up
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
+};
