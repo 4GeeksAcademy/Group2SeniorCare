@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // import { FaCheck, FaTrashAlt } from 'react-icons/fa';
 import './PatientPortal.css'
 import { CaregiversList } from '../component/CaregiversList';
+import { Link } from 'react-router-dom';
 
 export const PatientPortal = () => {
     const [showCaregivers, setShowCaregivers] = useState(false)
@@ -17,7 +18,7 @@ export const PatientPortal = () => {
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         {/* need to make a page with list of caregivers */}
-                        <button className={`nav-link  ${showCaregivers ?  "active" : ""}`} onClick={handleShowCaregivers}>Look for a Caregiver</button> 
+                        <button className={`nav-link  ${showCaregivers ? "active" : ""}`} onClick={handleShowCaregivers}>Look for a Caregiver</button>
                     </li>
                     <li className="nav-item">
                         {/* this will need to be another page or view that shows their current appointments or even modal */}
@@ -29,7 +30,7 @@ export const PatientPortal = () => {
                     </li>
                     <li className="nav-item">
                         {/* this should take them to their profile where they can update their medical records and personal info */}
-                        <a className="nav-link" href="#">See my Profile</a>
+                        <Link to="/patient-profile"><a className="nav-link" href="#">See my Profile</a></Link>
                     </li>
                     {/* Potential feature */}
                     {/* <li className="nav-item">

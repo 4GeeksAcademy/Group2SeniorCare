@@ -7,32 +7,32 @@ export const Navbar = () => {
     setNavbarOpen(!navbarOpen);
   };
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid d-flex justify-content-between">
-        <div class="d-flex align-items-center">
-          <h1 class="text-white">CareConnect</h1>
-        </div>
-        <button class="navbar-toggler" type="button" onClick={handleToggle}>
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class={navbarOpen ? "collapse navbar-collapse show" : "collapse navbar-collapse"} id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <Link class="nav-link active" aria-current="page" to="/">Home |</Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/patient-login">Patient Login |</Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/caregiver-login">Caregiver Login |</Link>
-            </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/about-us">About Us |</Link>
-            </li>
-          </ul>
-          
-        </div>
-      </div>
-    </nav>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      < div className="container-fluid d-flex justify-content-between" >
+        <div className="d-flex align-items-center" >
+          <h1 className="text-white" > CareConnect</h1 >
+        </div >
+        <button className="navbar-toggler" type="button" onClick={handleToggle} >
+          <span className="navbar-toggler-icon" ></span >
+        </button >
+        <div className={navbarOpen ? "collapse navbar-collapse show" : "collapse navbar-collapse"} id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className="nav-link" aria-current="page" to="/">Home |</Link>
+            </li >
+            <li className="nav-item" >
+              <Link className="nav-link" to="/patient-login" > Patient Login |</Link >
+            </li >
+            <li className="nav-item" >
+              <Link className="nav-link" to="/caregiver-login" > Caregiver Login |</Link >
+            </li >
+            <li className="nav-item" >
+              <Link className="nav-link" to="/about-us" > About Us |</Link >
+            </li >
+          </ul >
+
+        </div >
+      </div >
+    </nav >
   );
 };
