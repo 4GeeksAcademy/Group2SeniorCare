@@ -68,14 +68,6 @@ const Home = () => {
                 </div>
 
                 <div className="section-1">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <img src="https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" className="card-img-top" alt="Caretaker helping elderly person" />
-                        <div className="card-body">
-                            <h5 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h5>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" className="btn btn-primary">We'll match you with a caregiver within 24 hours</a>
-                        </div>
-                    </div>
 
                     <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
                         <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>

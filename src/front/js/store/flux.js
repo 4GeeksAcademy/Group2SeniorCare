@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			caregiver: null
+			caregiver: null,
+			getPatientAppointments: [],
 		},
 		actions: {
 			getCaregiverProfile: async () => {
@@ -21,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ caregiver: data.caregiver })
 				return true
 			},
-			requestCaregiver: async (caregiverId) => {
+			requestCaregiver: async (formData) => {
 				let options = {
 					method: "POST",
 					headers: {
@@ -29,12 +30,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// "Authorization": "Bearer " + sessionStorage.getItem("token")
 					},
 					body: JSON.stringify({
-						caregiver_id: caregiverId,
-						request_status: "Pending"
+						caregiver_id: formData.caregiverId,
+						date_time:  formData.dateTime,
+						appointment_reason: formData.appointmentReason,
+						is_current: formData.is_current
 					})
 				};
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/request/caregiver", options);
+					let response = await fetch(process.env.BACKEND_URL + "api/request-caregiver", options);
 					if (response.status !== 200) {
 						console.log("failed to request caregiver", response.status);
 						return false;
@@ -51,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let options = {
 					method: "PUT",
 					headers: {
-						"Content-Type": "application/json",
+						"Content-Type": "application/json"
 						// "Authorization": "Bearer " + sessionStorage.getItem("token")
 					},
 					body: JSON.stringify(
@@ -61,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					)
 				};
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "/api/caregiver/request-reply", options);
+					let response = await fetch(process.env.BACKEND_URL + "api/caregiver/request-reply", options);
 					if (response.status !== 200) {
 						console.log("failed to reply to request", response.status);
 						return false;
@@ -72,6 +75,71 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log("Error requesting Caregiver", error);
 					return false;
+				}
+			},
+
+			// Get appointments without patient id
+			getAppointments: async () => {
+				let options = {
+					headers: {
+						"Content-Type": "application/json",
+					}
+				};
+				try {
+					let response = await fetch(`${process.env.BACKEND_URL}api/appointments`, options);
+					if (response.status !== 200) {
+						console.log("Failed to fetch appointments", response.status);
+						return [];
+					}
+					let data = await response.json();
+					setStore({ getPatientAppointments: data });  // Changed this line
+					console.log("dataset in store", data);
+					return data;  // Changed this line
+				} catch (error) {
+					console.log("Error fetching patient appointments", error);
+					return [];
+				}
+			},
+			// getPatientAppointments: async (patientId) => {
+			// 	let options = {
+			// 	  headers: {
+			// 		"Content-Type": "application/json",
+			// 	  },
+			// 	};
+			// 	try {
+			// 	  let response = await fetch(`${process.env.BACKEND_URL}api/patient/appointments?id=${patientId}`, options);
+			// 	  if (response.status !== 200) {
+			// 		console.log("Failed to fetch appointments", response.status);
+			// 		return [];
+			// 	  }
+			// 	  let data = await response.json();
+			// 	  setStore({ getPatientAppointments: data.appointments });
+			// 	  return data.appointments;
+			// 	} catch (error) {
+			// 	  console.log("Error fetching patient appointments", error);
+			// 	  return [];
+			// 	}
+			//   },
+
+			getPatientProfile: async () => {
+				let options = {
+				  headers: {
+					'Content-Type': 'application/json'
+				  }
+				};
+				try {
+				  let response = await fetch(`${process.env.BACKEND_URL}api/patient/profile`, options);
+				  if (response.status !== 200) {
+					console.log('Failed to fetch patient profile', response.status);
+					return false;
+				  }
+				  let data = await response.json();
+				  console.log('Patient profile fetched', data);
+				  setStore({ patient: data.patient });
+				  return data.patient;
+				} catch (error) {
+				  console.log('Error fetching patient profile', error);
+				  return false;
 				}
 			}
 		}

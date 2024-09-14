@@ -26,20 +26,43 @@ header {
     color: white;
 }
 
-/* For the carousel images */
+/* Ensure the carousel image fills the container */
 .carousel .carousel-item img {
-    width: 40%; /* Decrease the width further */
+    width: 100%;
     height: auto;
-    max-height: 200px; /* Restrict the height */
+    max-height: 500px; /* Ensures consistency across slides */
     object-fit: cover;
-    margin: 0 auto;
-    display: block;
 }
 
-/* Optional: Add padding to give some spacing */
-.carousel .carousel-item {
+/* Style for card */
+.card {
+    margin-top: 20px;
+}
+
+/* Custom carousel controls to bring them closer to the content */
+.custom-carousel-control {
+    width: 5%; /* Reduce size of the arrows */
+    color: #000;
+    opacity: 0.7; /* Slightly transparent */
+}
+
+/* Carousel control icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000; /* Dark background for better visibility */
+    border-radius: 50%;
     padding: 10px;
 }
+
+/* Adjust carousel-indicators */
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000;
+    opacity: 0.7;
+}
+
 
 /* Hero Section */
 .container-backround {

@@ -1,0 +1,13 @@
+.accepted {
+  background: rgba(34, 164, 53, 0.6);
+  padding: 5px;
+  border-radius: 4px;
+}
+.rejected {
+  background: red;
+  padding: 5px;
+  border-radius: 4px;
+}
+.btnGroup {
+  margin-left: 42.5px;
+}

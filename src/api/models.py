@@ -1,10 +1,16 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Column, Integer, String, DateTime
+from datetime import datetime
 
 db =SQLAlchemy()
 
+caregiver_user = db.Table(
+    "caregiver_user",
+    db.Column("user_id", ForeignKey("user.id")),
+    db.Column("caregiver_id", ForeignKey("caregiver.id")),
+)
 
-# 3RD MODEL
+# 3RD MODEL Patient
 class User(db.Model):
     __tablename__ ='user'
     id =db.Column(db.Integer, primary_key=True)
@@ -18,9 +24,12 @@ class User(db.Model):
     bloodType=db.Column(db.String(120), unique=False, nullable=True)
     hobbies=db.Column(db.String(300),unique=False, nullable=True)
     is_active =db.Column(db.Boolean(), unique=False, nullable=False)
+    is_current =db.Column(db.Boolean(), unique=False, nullable=False)
+
+
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="user")
-    caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'))
+    caregivers = db.relationship("Caregiver", secondary=caregiver_user, overlaps="caring_users")
     
 
     def __repr__(self):
@@ -38,7 +47,7 @@ class User(db.Model):
             "bloodType": self.bloodType,
             "hobbies": self.hobbies,
             "is_active": self.is_active,
-            "caring_caregiver_id": self.caring_caregiver_id,
+            "is_current": self.is_current, 
             # do not serialize the password, it's a security breach
         }
 
@@ -48,6 +57,7 @@ class User(db.Model):
 class Caregiver(db.Model):
     __tablename__ = 'caregiver'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     credentials = db.Column(db.String(120), unique=False, nullable=False)
@@ -59,7 +69,9 @@ class Caregiver(db.Model):
 
     # Relationships
     requests = db.relationship("UserRequestCaregiver", back_populates="caregiver")
-    caring_users = db.relationship("User")
+    caring_users = db.relationship("User", secondary=caregiver_user, overlaps="caregivers")
+
+
 
     def __repr__(self):
         return f'<Caregiver {self.email}>'
@@ -67,6 +79,7 @@ class Caregiver(db.Model):
     def serialize(self):
         return { 
             "id": self.id,
+            "name":self.name,
             "email": self.email,
             "credentials": self.credentials,
             "experience": self.experience,
@@ -79,28 +92,32 @@ class Caregiver(db.Model):
 
 # 3RD MODEL
 class UserRequestCaregiver(db.Model):
-    __tablename__ ='user_request_caregiver'
-    id=db.Column(db.Integer, primary_key=True)
-    user_id=db.Column(db.Integer, ForeignKey('user.id'), nullable=False)
-    caregiver_id=db.Column(db.Integer, ForeignKey('caregiver.id'), nullable=False)
-    request_status=db.Column(db.String(80), nullable=False, default='Pending')
-    request_time=db.Column(db.Integer, nullable=True)
-    # 
-    user=db.relationship("User", back_populates="requests")
-    caregiver=db.relationship("Caregiver", back_populates="requests")
+    __tablename__ = 'user_request_caregiver'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, ForeignKey('user.id'), nullable=False)  # This connects the request to a Patient
+    caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'), nullable=False)  # This connects the request to a Caregiver
+    request_status = db.Column(db.String(80), nullable=False, default='Pending')
+    date_time = db.Column(db.DateTime, nullable=False)
+    appointment_reason = db.Column(db.String(150), nullable=False)
 
+    # Relationships
+    user = db.relationship("User", back_populates="requests")
+    caregiver = db.relationship("Caregiver", back_populates="requests")
 
     def accept_request(self):
+        """Accept the request and assign the caregiver to the user."""
         self.request_status = 'Accepted'
-        User.caring_caregiver_id = self.caregiver_id
+        if self.caregiver not in self.user.caregivers:
+            self.user.caregivers.append(self.caregiver)  
         db.session.commit()
-        
-    def denied_request(self):
+
+    def deny_request(self):
+        """Deny the request and remove the caregiver assignment if necessary."""
         self.request_status = 'Denied'
         db.session.commit()
-        
+
     def __repr__(self):
-        return f'<User {self.user} is undercare for Caregiver {self.caregiver}>'
+        return f'<UserRequestCaregiver {self.user_id} - {self.caregiver_id}>'
 
     def serialize(self):
         return {
@@ -108,35 +125,7 @@ class UserRequestCaregiver(db.Model):
             "user_id": self.user_id,
             "caregiver_id": self.caregiver_id,
             "request_status": self.request_status,
-            "request_time": self.request_time,
-            "user_assigned": self.user,
-            "caregiver_assigned": self.caregiver
-            # do not serialize the password, its a security breach
+            "date_time": self.date_time.strftime('%Y-%m-%d %H:%M:%S') if self.date_time else None,
+            "appointment_reason": self.appointment_reason,
+            "caregiver": self.caregiver.serialize() if self.caregiver else None
         }
-
-# class Appointment(db.Model):
-#     __tablename__ ='appointment'
-#     id=db.Column(db.Integer, primary_key=True)
-#     caregiver_id=db.Column(db.Integer, ForeignKey('caregiver.id'), nullable=False)
-#     user_id=db.Column(db.Integer, ForeignKey('user.id'), nullable=False)
-#     time=db.Column(db.Integer, nullable=False)
-#     appointment_reason=db.Column(db.String(120), nullable=False)
-#     user=db.relationship("User", back_populates="requests")
-#     caregiver=db.relationship("Caregiver", back_populates="requests")
-
-#     def __repr__(self):
-#         return f'<User {self.user} is undercare for Caregiver {self.caregiver}>'
-
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "user_id": self.user_id,
-#             "caregiver_id": self.caregiver_id,
-#             "time": self.time,
-#             "appointment_reason": self.appointment_reason,
-#             "user": self.user.serialize(),
-#             # do not serialize the password, its a security breach
-#         }
-
-    
-

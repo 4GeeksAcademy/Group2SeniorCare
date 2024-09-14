@@ -8,7 +8,7 @@ body {
 
 /* Main container for the patient portal */
 .patient-portal {
-    padding: 20px;
+    padding: 30px;
     background-color: #f8f9fa; /* Subtle off-white background */
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #0f4c81;
+    background: linear-gradient(to bottom, #0f4c81, #0f6e99);;
     color: #ffffff;
     border-color: #dee2e6 #dee2e6 #ffffff;
 }

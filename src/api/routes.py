@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Caregiver, UserRequestCaregiver
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from sqlalchemy import func 
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 
@@ -109,8 +110,9 @@ def get_profile():
         if patient:
             request_details = {
                 "request_status": request.request_status,
-                "request_time": request.request_time,
+                "date_time": request.date_time,
                 "request_id": request.id,
+                "appointment_reason":request.appointment_reason,
                 "patient": patient.serialize()
             }
             serialized_requests.append(request_details)
@@ -125,7 +127,7 @@ def get_caregivers():
     experience = request.args.get('experience', type=int)  # Ensure experience is treated as an integer
     gender = request.args.get('gender')
 
-    # Build the query
+    # Build the query. Obtains all caregivers in database. 
     query = Caregiver.query
 
     # Apply filters based on the query parameters
@@ -150,14 +152,18 @@ def get_caregivers():
     return jsonify({'caregivers': caregivers_list}), 200
 
 #This is for the user to request for an appointment from the caregiver 
-@api.route('/request-caregiver', methods=['POST'])
 # @jwt_required()
+@api.route('/request-caregiver', methods=['POST'])
 def request_caregiver():
-    current_user_id = get_jwt_identity()
+    current_user_id = 1
     data = request.get_json()
 
     caregiver_id = data.get('caregiver_id')
-    request_status = data.get('request_status', "Pending")
+    date_time=data.get("date_time")
+    appointment_reason=data.get("appointment_reason")
+    
+
+    print("received date_time:", date_time)
 
     if not caregiver_id:
         return jsonify({'error': "caregiver id is required."}), 400
@@ -165,14 +171,17 @@ def request_caregiver():
     new_request = UserRequestCaregiver(
         user_id = current_user_id, 
         caregiver_id = caregiver_id,
-        request_status = request_status
+        request_status = "Pending",
+        date_time = date_time,
+        appointment_reason = appointment_reason,
     )
+
     db.session.add(new_request)
     db.session.commit()
 
     return jsonify({'message': "request sent successfully." , "request": new_request.serialize()}), 200
 
-@api.route('/caregiver/request-reply', methods=['PUT'])
+@api.route('caregiver/request-reply', methods=['PUT'])
 # @jwt_required()
 def handle_reply():
      # caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()
@@ -198,15 +207,59 @@ def handle_reply():
         return jsonify({'message': "request denied successfully."}), 200
 
     else:
-        patient.caring_caregiver_id=caregiver.id
-        request_to_delete = UserRequestCaregiver.query.filter_by(id=request_id).first()
-        if request_to_delete is None:
-            return jsonify("Request does not exist"), 404
-        db.session.delete(request_to_delete)
+        if patient.caregivers is None:
+            patient.caregivers = []
+        patient.caregivers.append(caregiver)
+        request_to_accept = UserRequestCaregiver.query.filter_by(id=request_id).first()
+        request_to_accept.request_status = "Accepted"
         db.session.commit()
         return jsonify({'message': "request accepted successfully."}), 200
 
+# @api.route('/patient/appointments', methods=['GET'])
+@api.route('/appointments', methods=['GET'])
+def get_appointments():
+    userRequestCaregivers = UserRequestCaregiver.query.all()
 
-       
+    return jsonify([userRequestCaregiver.serialize() for userRequestCaregiver in userRequestCaregivers]), 200
+
+# def get_patient_appointments():
+#     patient_id = request.args.get('id', None)  # We'll fetch by patient ID
+
+#     if not patient_id:
+#         return jsonify({'msg': 'Patient ID is required'}), 400
+
+#     # Find the patient by ID
+#     patient = User.query.get(patient_id)
+
+#     if not patient:
+#         return jsonify({'msg': 'Patient not found'}), 404
+
+#     # Get all accepted appointments for the patient
+#     accepted_requests = UserRequestCaregiver.query.filter_by(
+#         user_id=patient.id, request_status="Accepted"
+#     ).all()
+
+#     # Serialize the appointments
+#     serialized_appointments = [request.serialize() for request in accepted_requests]
+
+#     return jsonify({'appointments': serialized_appointments}), 200
+
+
+@api.route('/patient/profile', methods=['GET'])
+def get_patient_profile():
+    patient_email = request.args.get('email', None)
+
+    # if not patient_email:
+    #     return jsonify({'msg': 'Patient email is required'}), 400
+
+    # Use case-insensitive email comparison
+    patient = User.query.filter(func.lower(User.email) == func.lower(patient_email)).first()
+
+    if not patient:
+        return jsonify({'msg': 'Patient not found'}), 404
+
+    return jsonify({
+        'patient': patient.serialize()
+    }), 200
     
 
