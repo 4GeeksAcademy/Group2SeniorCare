@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let options = {
 					headers: {
 						'Content-Type': 'application/json',
-						// Authorization: 'Bearer ' + sessionStorage.getItem('token')
+						Authorization: 'Bearer ' + sessionStorage.getItem('token')
 					}
 				};
 				let response = await fetch(`${process.env.BACKEND_URL}/api/caregiver`, options);
@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						// "Authorization": "Bearer " + sessionStorage.getItem("token")
+						Authorization: 'Bearer ' + sessionStorage.getItem('token')
 					},
 					body: JSON.stringify({
 						caregiver_id: caregiverId,
@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "PUT",
 					headers: {
 						"Content-Type": "application/json",
-						// "Authorization": "Bearer " + sessionStorage.getItem("token")
+						Authorization: 'Bearer ' + sessionStorage.getItem('token')
 					},
 					body: JSON.stringify({
 						patientId: patientId,
@@ -135,6 +135,78 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error during login", error);
 					return false;
 				}
+			},
+
+			caregiverSignup: async (username,email,phonenumber, password,experience,qualifications,availability,location) => {
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						username:username, 
+						password:password,
+						email : email,
+						phonenumber : phonenumber,
+						experience : experience,
+						qualifications : qualifications,
+						availability : availability,
+						location : location,
+					})
+				};
+
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/caregiver/signup`, options);
+
+					if (response.status !== 200) {
+						console.log("Login failed", response.status);
+						return false;
+					}
+
+					const data = await response.json();
+					console.log("Signup successful", data);
+	
+
+					return true;
+				} catch (error) {
+					console.log("Error during login", error);
+					return false;
+				}
+			},
+
+			getPatientProfile: async () => {
+				let options = {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: 'Bearer ' + sessionStorage.getItem('token')
+					}
+				};
+				let response = await fetch(`${process.env.BACKEND_URL}/api/user`, options);
+				if (response.status !== 200) {
+					console.log('Unable to access your account', response.status);
+					return false;
+				}
+				let data = await response.json();
+				console.log(data);
+				setStore({ patient: data.user });
+				return true;
+			},
+			getCaregiverProfile: async () => {
+				let options = {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: 'Bearer ' + sessionStorage.getItem('token')
+					}
+				};
+				let response = await fetch(`${process.env.BACKEND_URL}/api/caregiver`, options);
+				if (response.status !== 200) {
+					console.log('Unable to access your account', response.status);
+					return false;
+				}
+				let data = await response.json();
+				console.log(data);
+				setStore({ caregiver: data.caregiver });
+				return true;
 			}
 		}
 	};

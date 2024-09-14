@@ -21,6 +21,7 @@ import PatientLogin from "./pages/patientlogin.js";
 import CaregiverLogin from "./pages/caregiverlogin.js";
 import AboutUs from "./pages/aboutus.js";
 import PatientProfile from "./pages/patientprofile.js";
+import { ProfileSettings } from "./pages/profilesettings.js";
 
 
 //create your first component
@@ -47,6 +48,7 @@ const Layout = () => {
                         <Route element={<PatientLogin />} path="/patient-login" />
                         <Route element={<CaregiverLogin />} path="/caregiver-login" />
                         <Route element={<PatientProfile />} path="/patient-profile" />
+                        <Route element={<ProfileSettings />} path="/profilesettings" />
                         <Route element={<AboutUs />} path="/about-us" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

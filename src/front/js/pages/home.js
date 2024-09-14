@@ -57,13 +57,22 @@ const Home = () => {
                         {/* Logo SVG goes here */}
                         <h2 style={{ color: "white" }}></h2>
                     </div>
+
+                    <div  className="d-flex signupbutton">
                     <Link to="/signup-caregiver">
                         <div className="header-buttons" d-flex justify-content-center>
                         <button className="cta-button-1 ">Become A Caregiver</button>
-                        <button className="cta-button-1">Join As a Patient</button>
+                        
                         </div>
-                       
                     </Link>
+                    <Link to="/signup-patient">
+                        <div className="header-buttons" d-flex justify-content-center>
+                        
+                        <button className="cta-button-1">Join As a Patient</button>
+                        </div>  
+                    </Link>
+                    </div>
+
                 </div>
             </header>
             <div className="container-background" style={{ position: "relative" }}>

@@ -48,13 +48,18 @@ class User(db.Model):
 class Caregiver(db.Model):
     __tablename__ ='caregiver'
     id =db.Column(db.Integer, primary_key=True)
+    username =db.Column(db.String(50), unique=False, nullable=False)
     email =db.Column(db.String(120), unique=True, nullable=False)
+    phonenumber =db.Column(db.String(10), unique=True, nullable=False)
+    experience =db.Column(db.String(120), unique=True, nullable=False)
+    qualifications =db.Column(db.String(120), unique=True, nullable=False)
+    availability =db.Column(db.String(120), unique=True, nullable=False)
     password =db.Column(db.String(80), unique=False, nullable=False)
     credentials =db.Column(db.String(120), unique=False, nullable=False)
-    experience =db.Column(db.Numeric(), nullable=False)
+    # experience =db.Column(db.Numeric(), nullable=False)
     location = db.Column(db.String(120), nullable=False)
 
-    is_active =db.Column(db.Boolean(), unique=False, nullable=False)
+    is_active =db.Column(db.Boolean(), unique=False, nullable=True)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
     caring_users =db.relationship("User")
@@ -64,9 +69,13 @@ class Caregiver(db.Model):
     def serialize(self):
         return { 
             "id": self.id,
+            "username": self.username,
             "email": self.email,
-            "credentials": self.credentials,
+            "phonenumber": self.phonenumber,
             "experience": self.experience,
+            "qualifications": self.qualifications,
+            "availability": self.availability,
+            "credentials": self.credentials,
             "location": self.location,
             "caring_users": [user.serialize() for user in self.caring_users],
             

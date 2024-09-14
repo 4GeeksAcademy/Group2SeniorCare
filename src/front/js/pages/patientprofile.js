@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/patientprofile.css";
+import { ProfileSettings } from "./profilesettings";
+import { Link } from "react-router-dom";
 
 
 
@@ -16,7 +18,7 @@ const PatientProfile = () => {
                 <ul className="list-group">
                   <li className="list-group-item">Home</li>
                   <li className="list-group-item">Activities</li>
-                  <li className="list-group-item">Profile Settings</li>
+                  <Link to= "/profilesettings"> <li className="list-group-item">Profile Settings</li> </Link>
                 </ul>
               </div>
             </div>

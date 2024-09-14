@@ -27,7 +27,7 @@ export const SignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Call the action to send form data (e.g., to the backend)
-		actions.signUp(formData); // Example action
+		actions.caregiverSignup(formData); // Example action
 		console.log("Form submitted", formData);
 	};
 
