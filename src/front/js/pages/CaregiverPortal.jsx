@@ -13,6 +13,7 @@ export const CaregiverPortal = () => {
       );
     }
   };
+  
   useEffect(() => {
     getCaregiverInfo();
   }, []); // Added 'actions' to the dependency array
@@ -23,7 +24,7 @@ export const CaregiverPortal = () => {
       getCaregiverInfo();
     } else {
       alert(
-        "An error ocurred while attempting to reply to this request! Please try agin later."
+        "An error occurred while attempting to reply to this request! Please try again later."
       );
     }
   };
@@ -119,7 +120,7 @@ export const CaregiverPortal = () => {
           >
             <div>
               {store.caregiver?.requests
-                ?.filter((item) => item.request_status == "Pending")
+                ?.filter((item) => item.request_status === "Pending")
                 .map((item, index) => {
                   return (
                     <div
@@ -207,6 +208,8 @@ export const CaregiverPortal = () => {
                 })}
             </div>
           </div>
+
+          {/* Patients tab */}
           <div
             className="tab-pane fade"
             id="appointments-tab-pane"
@@ -214,55 +217,50 @@ export const CaregiverPortal = () => {
             aria-labelledby="appointments-tab"
             tabindex="0"
           >
-            <div>
+            <div className="accordion accordion-flush" id="accordionFlushExample">
               {store.caregiver?.caring_users?.map((item, index) => {
-                console.log(item.is_active);
+                const collapseId = `flush-collapse-${index}`;
+                const headingId = `flush-heading-${index}`;
                 return (
-                  <div
-                    className="card mb-3 mx-auto"
-                    style={{ maxWidth: "540px" }}
-                    key={index}
-                  >
-                    <div className="row g-0">
-                      <div className="col-md-4">
-                        <img
-                          src="..."
-                          className="img-fluid rounded-start"
-                          alt="Patient"
-                        />
-                      </div>
-                      <div className="col-md-8">
-                        <div className="card-body">
-                          <ul className="list-group list-group-flush">
-                            <li className="list-group-item">
-                              <h5 className="card-title">{item.name}</h5>
-                            </li>
-                            <li className="list-group-item">
-                              Date of Birth: {item.date_of_birth}
-                            </li>
-                            <li className="list-group-item">
-                              Email: {item.email}
-                            </li>
-                            <li className="list-group-item">
-                              Phone: {item.phone}
-                            </li>
-                            <li className="list-group-item">
-                              Emergency Contact: {item.emergencyContact}
-                            </li>
-                            <li className="list-group-item">
-                              Allergies: {item.allergies}
-                            </li>
-                            <li className="list-group-item">
-                              Blood Type: {item.bloodType}
-                            </li>
-                            <li className="list-group-item">
-                              Hobbies: {item.hobbies}
-                            </li>
-                            <li className="list-group-item">
-                              Status: {item.is_active ? "Active" : "Inactive"}
-                            </li>
-                          </ul>
-                        </div>
+                  <div className="accordion-item" key={index}>
+                    <h2 className="accordion-header" id={headingId}>
+                      <button
+                        className="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#${collapseId}`} 
+                        aria-expanded="false"
+                        aria-controls={collapseId}
+                      >
+                        <h5 className="card-title">{item.name}</h5>
+                      </button>
+                    </h2>
+                    <div
+                      id={collapseId}
+                      className="accordion-collapse collapse"
+                      aria-labelledby={headingId}
+                      data-bs-parent="#accordionFlushExample"
+                    >
+                      <div className="accordion-body">
+                        <ul className="list-group list-group-flush">
+                          <li className="list-group-item">
+                            <h5 className="card-title">{item.name}</h5>
+                          </li>
+                          <li className="list-group-item">
+                            Date of Birth: {item.date_of_birth}
+                          </li>
+                          <li className="list-group-item">Email: {item.email}</li>
+                          <li className="list-group-item">Phone: {item.phone}</li>
+                          <li className="list-group-item">
+                            Emergency Contact: {item.emergencyContact}
+                          </li>
+                          <li className="list-group-item">Allergies: {item.allergies}</li>
+                          <li className="list-group-item">Blood Type: {item.bloodType}</li>
+                          <li className="list-group-item">Hobbies: {item.hobbies}</li>
+                          <li className="list-group-item">
+                            Status: {item.is_active ? "Active" : "Inactive"}
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -270,6 +268,8 @@ export const CaregiverPortal = () => {
               })}
             </div>
           </div>
+
+          {/* Appointments tab */}
           <div
             className="tab-pane fade"
             id="records-tab-pane"
@@ -279,9 +279,8 @@ export const CaregiverPortal = () => {
           >
             <div>
               {store.caregiver?.requests
-                .filter((item) => item.request_status == "Accepted")
+                .filter((item) => item.request_status === "Accepted")
                 ?.map((item, index) => {
-                  console.log(item.is_active);
                   return (
                     <div
                       className="card mb-3 mx-auto"
@@ -309,46 +308,40 @@ export const CaregiverPortal = () => {
                             <ul className="list-group list-group-flush">
                               <li className="list-group-item">
                                 Reason for the Appointment:{" "}
-                                {item.appointment_reason}
+                                <i className="float-end">
+                                  {item.appointment_reason}
+                                </i>
                               </li>
 
                               <li className="list-group-item">
-                                Date and Time:
-                                {new Date(item.date_time).toLocaleString()}
+                                Date and Time:{" "}
+                                <span className="float-end">
+                                  {new Date(item.date_time).toLocaleString(
+                                    "en-US",
+                                    {
+                                      year: "numeric",
+                                      month: "2-digit",
+                                      day: "2-digit",
+                                      hour: "numeric",
+                                      minute: "numeric",
+                                      hour12: true,
+                                    }
+                                  )}
+                                </span>
                               </li>
                               <li className="list-group-item">
-                                Status:{" "}
-                                <span
-                                  className={
-                                    item.request_status == "Accepted"
-                                      ? "accepted"
-                                      : "rejected"
-                                  }
-                                >
-                                  {item.request_status}
-                                </span>
+                                Status: {item.request_status}
                               </li>
                             </ul>
                           </div>
                         </div>
-                        <button
-                          onClick={() => {
-                            handleReply(
-                              item.patient.id,
-                              item.request_id,
-                              "deny"
-                            );
-                          }}
-                          className="btn btn-danger mx-5 w-75 mb-3"
-                        >
-                          Cancel Appointment
-                        </button>
                       </div>
                     </div>
                   );
                 })}
             </div>
           </div>
+
           <div
             className="tab-pane fade"
             id="profile-tab-pane"
@@ -356,7 +349,9 @@ export const CaregiverPortal = () => {
             aria-labelledby="profile-tab"
             tabindex="0"
           >
-            {/* Profile content */}
+            <h2>{store.caregiver?.name}</h2>
+            <p>Email: {store.caregiver?.email}</p>
+            <p>Phone: {store.caregiver?.phone}</p>
           </div>
           <div
             className="tab-pane fade"
@@ -365,7 +360,8 @@ export const CaregiverPortal = () => {
             aria-labelledby="settings-tab"
             tabindex="0"
           >
-            {/* Settings content */}
+            <h3>Settings</h3>
+            <p>Here you can manage your settings.</p>
           </div>
         </div>
       </div>

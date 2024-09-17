@@ -17,7 +17,7 @@ export const CaregiversList = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(filters).toString();
-            const url = `${process.env.BACKEND_URL}api/caregivers${query}`;
+            const url = `${process.env.BACKEND_URL}api/caregivers?${query}`;
             let response = await fetch(url, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -104,9 +104,9 @@ export const CaregiversList = () => {
                         onChange={(e) => setGender(e.target.value)}
                     >
                         <option value="">Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div className='nav-item'>
@@ -160,6 +160,7 @@ export const CaregiversList = () => {
                                                 <li className="list-group-item">Credentials: {caregiver.credentials}</li>
                                                 <li className="list-group-item">Years of experience: {caregiver.experience}</li>
                                                 <li className="list-group-item">Location: {caregiver.location}</li>
+                                                <li className="list-group-item">Location: {caregiver.gender}</li>
                                             </ul>
                                         </div>
                                     </div>
