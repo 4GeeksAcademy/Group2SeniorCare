@@ -68,6 +68,11 @@ button:hover {
     margin-bottom: 15px;
 }
 
+#city, #state {
+    background-color: #f9f9f9;
+    border-color: #d1d1d1;
+}
+
 .form-footer {
     text-align: center;
 }
