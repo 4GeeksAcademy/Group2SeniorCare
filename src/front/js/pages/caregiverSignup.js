@@ -6,8 +6,9 @@ export const SignUp = () => {
 
 	// State to capture form inputs
 	const [formData, setFormData] = useState({
-		fullName: "",
+		fullname: "",
 		email: "",
+		password: "",
 		phone: "",
 		location: "",
 		experience: "",
@@ -27,7 +28,7 @@ export const SignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Call the action to send form data (e.g., to the backend)
-		actions.signUp(formData); // Example action
+		actions.caregiverSignup(formData); // Example action
 		console.log("Form submitted", formData);
 	};
 
@@ -46,8 +47,8 @@ export const SignUp = () => {
 								<label htmlFor="full-name"><strong>Full Name</strong></label>
 								<input
 									type="text"
-									id="fullName"
-									value={formData.fullName}
+									id="fullname"
+									value={formData.fullname}
 									onChange={handleChange}
 									placeholder="Enter your full name"
 									className="form-control bg-light"
@@ -61,6 +62,17 @@ export const SignUp = () => {
 									value={formData.email}
 									onChange={handleChange}
 									placeholder="Enter your email"
+									className="form-control bg-light"
+								/>
+							</div>
+							<div className="form-group my-2">
+								<label htmlFor="password"><strong>Password</strong></label>
+								<input
+									type="password"
+									id="password"
+									value={formData.password}
+									onChange={handleChange}
+									placeholder="Enter your password"
 									className="form-control bg-light"
 								/>
 							</div>
@@ -129,7 +141,7 @@ export const SignUp = () => {
 								</select>
 							</div>
 							<div className="form-group">
-								<button type="submit" className="btn btn-dark">Sign Up</button>
+								<button onClick= {() => actions.caregiverSignup(formData)} type="submit" className="btn btn-dark">Sign Up</button>
 							</div>
 						</form>
 					</div>

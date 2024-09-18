@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import Carousel from "../component/carousel";
 import { Testimonial } from "../component/testimonial";
+import { Link } from "react-router-dom";
 
 
 
@@ -12,7 +13,7 @@ const Home = () => {
 
     const caretakerPoints = [
 
-                                        "Personalized care tailored to your needs",
+                                "Personalized care tailored to your needs",
                                 "Increased independence and autonomy",
                                 "Companionship and social interaction",
                                 "Light housekeeping and meal preparation",
@@ -43,26 +44,7 @@ const Home = () => {
           name: "Michael Adams",
           description: "A 25-year-old fitness instructor who’s passionate about health and wellness. He enjoys running marathons and teaching yoga."
         },
-        {
-          name: "Lisa White",
-          description: "A 37-year-old event planner who loves organizing weddings and corporate events. She’s known for her creativity and attention to detail."
-        },
-        {
-          name: "Jason Lee",
-          description: "A 40-year-old chef who specializes in fusion cuisine. He enjoys experimenting with flavors and has a popular food blog."
-        },
-        {
-          name: "Olivia Brown",
-          description: "A 32-year-old journalist who covers global politics. She’s known for her investigative reporting and passion for uncovering the truth."
-        },
-        {
-          name: "Robert Wilson",
-          description: "A 45-year-old architect with a love for sustainable design. He’s an advocate for green buildings and enjoys mentoring young architects."
-        },
-        {
-          name: "Sophia Martinez",
-          description: "A 27-year-old entrepreneur who runs a successful online fashion boutique. She’s known for her innovative designs and strong business sense."
-        }
+
       ];
       
 
@@ -70,45 +52,51 @@ const Home = () => {
     return (
         <>
             <header>
-				
                 <div className="container">
                     <div className="header-logo">
                         {/* Logo SVG goes here */}
-                        <h2 style={{color: "white"}}>Caregiver Connect</h2>
+                        <h2 style={{ color: "white" }}></h2>
                     </div>
-                   <div style={{padding: "10px"}}>
-                   <button className="cta-button-1">Become A Caregiver</button>
-                   </div>
-                    
-                    
-                    
+
+                    <div  className="d-flex signupbutton justify-content-space-between">
+                    <Link to="/signup-caregiver">
+                        <div className="header-buttons d-flex justify-content-center" >
+                        <button className="cta-button-1  ">Become A Caregiver</button>
+                        
+                        </div>
+                    </Link>
+                    <Link to="/signup-patient">
+                        <div className="header-buttons  d-flex justify-content-center">
+                        
+                        <button className="cta-button-1 ">Join As a Patient</button>
+                        </div>  
+                    </Link>
+                    </div>
+
                 </div>
             </header>
-            <div className="container-backround" style={{position: "relative"}}>
-            <div className="hero container">
-                
-                      
-                        <div className="hero-text">
-                            <h1 className= "text-custom-1">Find a caregiver in 24 hours or less</h1>
-                            <input type="text" placeholder="Enter city or zip code" />
-                            <button className="cta-button">Find a caregiver now!</button>
-                            <div class="card-body">
-                                <blockquote class="blockquote mb-0">
+            <div className="container-background" style={{ position: "relative" }}>
+                <div className="hero container">
+                    <div className="hero-text">
+                        <h1 className="text-custom-1">Find a caregiver in 24 hours or less</h1>
+                        <input type="text" placeholder="Enter city or zip code" />
+                        <button className="cta-button">Find a caregiver now!</button>
+                        <div className="card-body">
+                            <blockquote className="blockquote mb-0">
                                 <p>“One person caring about another represents life’s most significant value.” – Jim Rohn</p>
-                                </blockquote>
-                            </div>
+                            </blockquote>
                         </div>
-
-            
+                    </div>
+                </div>
             </div>
-            </div>
-
             <div className=" row">
                 <div className="col-5 d-flex justify-content-center align-items-center">
                     <div className="text-dark">
-                            <h2>“We are dedicated to <br/> providing exceptional in-home<br/> care precisely when you need it,<br/> ensuring your comfort and enhancing your quality of life.” </h2>
+                            <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
                     </div>
                 </div>
+                    
+                
 
                 <div className="col-7">
                         {/* <Carousel /> */}
@@ -156,7 +144,56 @@ const Home = () => {
                
             </div>
 
-            <div className="container-2" style={{backgroundColor: "#f5f5f5"}}>
+
+                    
+                    <div>
+                    
+                    <div className="section-1">
+                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                        <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>
+                        <p className="card-text">We'll match you with a caregiver within 24 hours</p>
+                    </div>
+                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                        <h4 className="card-title"><i className="fa-solid fa-heart p-2"></i>Experienced Caregivers</h4>
+                        <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
+                    </div>
+                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
+                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
+                    </div>
+                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
+                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
+                    </div>
+                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
+                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className="section" style={{ backgroundColor: "#fff" }}>
+                    <h2>Why Choose Us</h2>
+                    <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
+                </div>
+            </div>
+        
+
+                    
+
+                   <div className=" d-flex Testimonial-container ">
+                    {testimonialData.map(
+                        (testData, index) => {
+                            return (
+                                <div key={index}>
+                                   <Testimonial data= {testData} />
+
+                                </div>
+                            )
+                        }
+                    )}
+                    </div> 
+                                <div className="container-2" style={{backgroundColor: "#f5f5f5"}}>
             
             <div className="container-3" style={{width: "100%", height: "650px", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#f5f5f5"}}>
                 <div className="animation-container">
@@ -188,59 +225,14 @@ const Home = () => {
             <style>
                 
             </style>
-                <div className="section-1">
-              
-                    <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
-                     
-                        <h5 className="card-title"><i class="fa-solid fa-user-group p-2"></i>Fast Matching</h5>
-                        <p className="card-text">We'll match you with a caregiver within 24 hours</p>
+             
                     </div>
-                    <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
-                    
-                        <h5 className="card-title font-size"><i class="fa-solid fa-heart p-2"></i>Experienced Caregivers</h5>
-                        <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
-                    </div>
-                    <div className="card-1" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff"}}>
-                        
-                        <h5 className="card-title"><i class="fa-solid fa-helmet-safety p-2"></i>Safety First</h5>
-                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
-                    </div>
-                
-                    </div>
-                    </div>
-                    
-                    <div>
-                    
-
-                    <div className="section" style={{backgroundColor: "#fff"}}>
-                    <h2>Why Choose Us</h2>
-                    <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
-                    <div class="card" style={{borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover"}}>
-                    
-                    </div>
-                </div>
-
-                    </div>
-
-                   <div className=" d-flex Testimonial-container">
-                    {testimonialData.map(
-                        (testData, index) => {
-                            return (
-                                <div key={index}>
-                                   <Testimonial data= {testData} />
-
-                                </div>
-                            )
-                        }
-                    )}
-                    </div> 
 
                     
                    
-            <footer>
-               
-            </footer>
-        </>
+                    <footer></footer>
+                    </>
+        
     );
 };
 

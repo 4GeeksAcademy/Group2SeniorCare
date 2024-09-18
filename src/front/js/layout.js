@@ -6,18 +6,23 @@ import { BackendURL } from "./component/backendURL";
 import  Home  from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import { CaregiverProfilePage } from "./pages/CaregiverProfilePage.jsx";
+import { CaregiverPortal} from "./pages/CaregiverPortal.jsx";
+import { PatientPortal } from "./pages/PatientPortal.jsx";
 
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import  Carousel  from "./component/carousel";
-import { SignUp } from "./component/Signup";
+import { SignUp } from "./pages/caregiverSignup";
 
+import { PatientSignUp } from "./pages/patientSignup.js";
 import PatientLogin from "./pages/patientlogin.js";
 import CaregiverLogin from "./pages/caregiverlogin.js";
 import AboutUs from "./pages/aboutus.js";
+import PatientProfile from "./pages/patientprofile.js";
+import { ProfileSettings } from "./pages/profilesettings.js";
+import CaregiverProfile from "./pages/caregiverprofile.js";
 
 
 //create your first component
@@ -37,17 +42,19 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<SignUp />} path="/signup" />
+                        <Route element={<SignUp />} path="/signup-caregiver" />
+                        <Route element={<PatientSignUp />} path="/signup-patient" />
+                        <Route element={<CaregiverPortal />} path="/caregiver"/>
+                        <Route element={<PatientPortal />} path="/patient" />
                         <Route element={<PatientLogin />} path="/patient-login" />
                         <Route element={<CaregiverLogin />} path="/caregiver-login" />
+                        <Route element={<PatientProfile />} path="/patient-profile" />
+                        <Route element={<CaregiverProfile />} path="/caregiver-profile" />
+                        <Route element={<ProfileSettings />} path="/profilesettings" />
                         <Route element={<AboutUs />} path="/about-us" />
-
-                        
-                          {/* Mariano */}
-                        <Route element={<CaregiverProfilePage />} path="/caregiver"/>
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer />
+                    {/* <Footer /> */}
                 </ScrollToTop>
             </BrowserRouter>
         </div>
