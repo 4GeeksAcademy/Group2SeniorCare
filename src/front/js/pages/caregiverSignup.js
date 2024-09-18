@@ -39,10 +39,10 @@ export const SignUp = () => {
 
 				{/* Form Section */}
 				<h1>Become a Caregiver</h1>
-				<div className="row">
+				<div className="row d-flex justify-content-center">
 					<div className="col-6 text-start">
 						<form onSubmit={handleSubmit}>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="full-name"><strong>Full Name</strong></label>
 								<input
 									type="text"
@@ -53,7 +53,7 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="email"><strong>Email</strong></label>
 								<input
 									type="email"
@@ -64,7 +64,7 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="phone"><strong>Phone Number</strong></label>
 								<input
 									type="tel"
@@ -75,7 +75,7 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="location"><strong>Location</strong></label>
 								<input
 									type="text"
@@ -86,7 +86,7 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="experience"><strong>Experience Level</strong></label>
 								<select
 									id="experience"
@@ -100,7 +100,7 @@ export const SignUp = () => {
 									<option>Expert</option>
 								</select>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="qualifications"><strong>Qualifications</strong></label>
 								<select
 									id="qualifications"
@@ -114,7 +114,7 @@ export const SignUp = () => {
 									<option>Caregiving Certificate</option>
 								</select>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="availability"><strong>Availability</strong></label>
 								<select
 									id="availability"
@@ -128,7 +128,7 @@ export const SignUp = () => {
 									<option>Flexible</option>
 								</select>
 							</div>
-							<div className="form-group">
+							<div className="form-group d-flex justify-content-center">
 								<button type="submit" className="btn btn-dark">Sign Up</button>
 							</div>
 						</form>
