@@ -7,6 +7,9 @@ from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from sqlalchemy import func 
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from datetime import datetime
+from pytz import UTC
+
 
 
 api = Blueprint('api', __name__)
@@ -172,7 +175,7 @@ def request_caregiver():
         user_id = current_user_id, 
         caregiver_id = caregiver_id,
         request_status = "Pending",
-        date_time = date_time,
+        date_time=datetime.now(UTC),
         appointment_reason = appointment_reason,
     )
 

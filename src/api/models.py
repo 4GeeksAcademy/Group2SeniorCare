@@ -1,8 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey, Column, Integer, String, DateTime
 from datetime import datetime
+from flask import current_app
+from pytz import timezone
 
 db =SQLAlchemy()
+
 
 caregiver_user = db.Table(
     "caregiver_user",
@@ -120,12 +123,15 @@ class UserRequestCaregiver(db.Model):
         return f'<UserRequestCaregiver {self.user_id} - {self.caregiver_id}>'
 
     def serialize(self):
+        app_timezone = current_app.config['TIMEZONE']
+        localized_time = self.date_time.replace(tzinfo=timezone('UTC')).astimezone(app_timezone)
+        
         return {
             "id": self.id,
             "user_id": self.user_id,
             "caregiver_id": self.caregiver_id,
             "request_status": self.request_status,
-            "date_time": self.date_time.strftime('%Y-%m-%d %H:%M:%S') if self.date_time else None,
+            "date_time": localized_time.strftime('%Y-%m-%d %H:%M:%S'),
             "appointment_reason": self.appointment_reason,
             "caregiver": self.caregiver.serialize() if self.caregiver else None
         }

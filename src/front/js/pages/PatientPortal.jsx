@@ -2,6 +2,9 @@ import React, { useEffect, useState, useContext } from "react";
 import "./PatientPortal.css";
 import { CaregiversList } from "../component/CaregiversList";
 import { Context } from "../store/appContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faCheck, faUndo, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import the icons you need
+
 
 export const PatientPortal = () => {
   const { store, actions } = useContext(Context);
@@ -21,6 +24,23 @@ export const PatientPortal = () => {
   }, []);
   
   console.log("appointments in store", store.getPatientAppointments);
+  
+  // Function to format date without seconds
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    // Subtract 5 hours from the date
+    date.setHours(date.getHours() - 5);
+  
+    return date.toLocaleString(undefined, {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
 
   return (
     <div className="patient-portal">
@@ -121,18 +141,30 @@ export const PatientPortal = () => {
             <h3>Your Accepted Appointments:</h3>
             {acceptedAppointments.length > 0 ? (
               acceptedAppointments.map((appointment) => (
-                <div key={appointment.id} className="card mb-3" style={{ maxWidth: "540px" }}>
-                  <div className="row g-0">
-                    <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{appointment.caregiver.name}</h5>
-                        <h5>{appointment.caregiver.email}</h5>
-                        <p>Date and Time: {new Date(appointment.date_time).toLocaleString()}</p>
-                        <p>Reason: {appointment.appointment_reason}</p>
-                        <p>Status: {appointment.request_status}</p>
-                        <p>Location: {appointment.caregiver.location}</p>
+                <div key={appointment.id} className="card appointment-card mb-3">
+                  <div className="card-body">
+                    <h4 className="card-title">Appointment Details</h4>
+                    <div className="doctor-info d-flex align-items-center mb-3">
+                      <img src={appointment.caregiver.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt={appointment.caregiver.name} className="doctor-image me-3" />
+                      <div>
+                        <h5 className="mb-0">{appointment.caregiver.name}</h5>
+                        <p className="text-muted mb-0">{appointment.caregiver.email}</p>
+                        <button className="btn btn-outline-primary btn-sm mt-2">Contact</button>
                       </div>
                     </div>
+                    <div className="appointment-info">
+                      <p><strong>Date and time:</strong>{formatDate(appointment.date_time)}</p>
+                      <p><strong>Reason for visit:</strong> {appointment.appointment_reason}</p>
+                      <p><strong>Status:</strong> <span className={`status-badge ${appointment.request_status.toLowerCase()}`}>{appointment.request_status}</span></p>
+                      <p><strong>Location:</strong> {appointment.caregiver.location}</p>
+                    </div>
+                    <div className="d-flex justify-content-between mt-3">
+                      <button className="btn btn-primary">Confirm</button>
+                      <button className="btn btn-outline-secondary">Reschedule</button>
+                    </div>
+                    <button className="btn btn-link mt-2 w-100 text-center">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} /> View on map
+                    </button>
                   </div>
                 </div>
               ))

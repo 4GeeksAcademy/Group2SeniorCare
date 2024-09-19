@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			caregiver: null,
 			getPatientAppointments: [],
+			successMessage: ""
 		},
 		actions: {
 			getCaregiverProfile: async () => {
@@ -40,10 +41,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let response = await fetch(process.env.BACKEND_URL + "api/request-caregiver", options);
 					if (response.status !== 200) {
 						console.log("failed to request caregiver", response.status);
+						setStore({ successMessage: "Failed to request Caregiver. Try again in an hour!" });
 						return false;
 					}
 					let data = await response.json();
 					console.log("Request sent.", data)
+					setStore({ successMessage: "Request sent successfully." });
 					return true
 				} catch (error) {
 					console.log("Error requesting Caregiver", error);
@@ -100,26 +103,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return [];
 				}
 			},
-			// getPatientAppointments: async (patientId) => {
-			// 	let options = {
-			// 	  headers: {
-			// 		"Content-Type": "application/json",
-			// 	  },
-			// 	};
-			// 	try {
-			// 	  let response = await fetch(`${process.env.BACKEND_URL}api/patient/appointments?id=${patientId}`, options);
-			// 	  if (response.status !== 200) {
-			// 		console.log("Failed to fetch appointments", response.status);
-			// 		return [];
-			// 	  }
-			// 	  let data = await response.json();
-			// 	  setStore({ getPatientAppointments: data.appointments });
-			// 	  return data.appointments;
-			// 	} catch (error) {
-			// 	  console.log("Error fetching patient appointments", error);
-			// 	  return [];
-			// 	}
-			//   },
 
 			getPatientProfile: async () => {
 				let options = {
@@ -141,8 +124,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  console.log('Error fetching patient profile', error);
 				  return false;
 				}
+			},
+			updateSuccessMessage: (newMessage) => {
+				setStore({successMessage: newMessage})
 			}
 		}
+
 	}
 };
 export default getState;

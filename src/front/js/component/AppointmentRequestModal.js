@@ -3,7 +3,8 @@ import {Context} from "../store/appContext.js"
 
 export const AppointmentRequestModal= ({caregiver})=>{
     const {store,actions}=useContext(Context)
-
+    // actions.updateSuccessMessage("")
+    // <p>{store.successMessage == "" ? "": store.successMessage}</p>
     const getTodayDate = () => {
         const today = new Date();
         const yyyy = today.getFullYear();

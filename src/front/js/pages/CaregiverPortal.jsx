@@ -13,7 +13,7 @@ export const CaregiverPortal = () => {
       );
     }
   };
-  
+
   useEffect(() => {
     getCaregiverInfo();
   }, []); // Added 'actions' to the dependency array
@@ -27,6 +27,23 @@ export const CaregiverPortal = () => {
         "An error occurred while attempting to reply to this request! Please try again later."
       );
     }
+  };
+
+  // Function to format date without seconds
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    // Subtract 5 hours from the date
+    date.setHours(date.getHours());
+
+    return date.toLocaleString(undefined, {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
   };
 
   return (
@@ -157,17 +174,7 @@ export const CaregiverPortal = () => {
                               <li className="list-group-item">
                                 Date and Time:{" "}
                                 <span className="float-end">
-                                  {new Date(item.date_time).toLocaleString(
-                                    "en-US",
-                                    {
-                                      year: "numeric",
-                                      month: "2-digit",
-                                      day: "2-digit",
-                                      hour: "numeric",
-                                      minute: "numeric",
-                                      hour12: true,
-                                    }
-                                  )}
+                                  {formatDate(item.date_time)} 
                                 </span>
                               </li>
                               <li className="list-group-item">
@@ -217,7 +224,10 @@ export const CaregiverPortal = () => {
             aria-labelledby="appointments-tab"
             tabindex="0"
           >
-            <div className="accordion accordion-flush" id="accordionFlushExample">
+            <div
+              className="accordion accordion-flush"
+              id="accordionFlushExample"
+            >
               {store.caregiver?.caring_users?.map((item, index) => {
                 const collapseId = `flush-collapse-${index}`;
                 const headingId = `flush-heading-${index}`;
@@ -228,7 +238,7 @@ export const CaregiverPortal = () => {
                         className="accordion-button collapsed"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target={`#${collapseId}`} 
+                        data-bs-target={`#${collapseId}`}
                         aria-expanded="false"
                         aria-controls={collapseId}
                       >
@@ -249,14 +259,24 @@ export const CaregiverPortal = () => {
                           <li className="list-group-item">
                             Date of Birth: {item.date_of_birth}
                           </li>
-                          <li className="list-group-item">Email: {item.email}</li>
-                          <li className="list-group-item">Phone: {item.phone}</li>
+                          <li className="list-group-item">
+                            Email: {item.email}
+                          </li>
+                          <li className="list-group-item">
+                            Phone: {item.phone}
+                          </li>
                           <li className="list-group-item">
                             Emergency Contact: {item.emergencyContact}
                           </li>
-                          <li className="list-group-item">Allergies: {item.allergies}</li>
-                          <li className="list-group-item">Blood Type: {item.bloodType}</li>
-                          <li className="list-group-item">Hobbies: {item.hobbies}</li>
+                          <li className="list-group-item">
+                            Allergies: {item.allergies}
+                          </li>
+                          <li className="list-group-item">
+                            Blood Type: {item.bloodType}
+                          </li>
+                          <li className="list-group-item">
+                            Hobbies: {item.hobbies}
+                          </li>
                           <li className="list-group-item">
                             Status: {item.is_active ? "Active" : "Inactive"}
                           </li>

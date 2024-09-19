@@ -111,3 +111,43 @@ button:hover {
         padding: 15px;
     }
 }
+
+.appointment-card {
+    max-width: 540px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+  }
+  
+  .status-badge.confirmed {
+    background-color: rgba(34, 164, 53, 0.6);
+    color: white;
+  }
+  
+  .status-badge.not.confirmed {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .btn-link {
+    color: #0f4c81;
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  
