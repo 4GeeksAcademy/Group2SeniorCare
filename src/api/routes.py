@@ -63,6 +63,25 @@ def login ():
     access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token), 200
 
+@api.route('/User', methods=['GET'])
+@jwt_required()
+def get_userprofile():
+    user = User.query.filter_by(id = get_jwt_identity()).first()
+    if user is None:
+        return jsonify({'msg': "There's no patient with this id"}), 404
+        
+    return jsonify({'msg': 'User profile info', 'user': user.serialize()}), 200
+
+@api.route('/Caregiver', methods=['GET'])
+@jwt_required()
+def get_caregiverprofile():
+    user = Caregiver.query.filter_by(id = get_jwt_identity()).first()
+    if Caregiver is None:
+        return jsonify({'msg': "There's no cargiver with this id"}), 404
+        
+    return jsonify({'msg': 'Cargiver profile info', 'caegiver': user.serialize()}), 200
+    
+
 @api.route('/login/caregiver', methods=['POST'])
 def login_caregiver ():
     print("login route hit")
@@ -83,16 +102,33 @@ def login_caregiver ():
 @api.route('/caregiver/signup', methods=['POST'])
 def signup_caregiver ():
     data = request.get_json()
-    username = data.get('username')
-    password = data.get('password')
+    fullname = data.get('fullname')
+    email = data.get('email')
+    phone = data.get('phone')
+    experience = data.get('experience')
+    qualifications = data.get('qualifications')
+    availability = data.get('availability')
     location = data.get('location')
+    
+    password = data.get('password')
 
-    if username and password: 
-        existing_user = Caregiver.query.filter_by(username=username).first()
+
+    if fullname and password: 
+        existing_user = Caregiver.query.filter_by(fullname=fullname).first()
         if existing_user: 
                 return jsonify({'error': 'Username and password already exist'}), 400
         else:
-             new_user = Caregiver(username=username, password=password)
+             new_user = Caregiver(
+                 fullname=fullname, 
+                 password=password,
+                 email = email,
+                phone = phone,
+                experience = experience,
+                qualifications = qualifications,
+                availability = availability,
+                location = location,
+                 
+                 )
         db.session.add(new_user)
         db.session.commit()
         return jsonify({'message': 'Username and password successfully created'}), 200

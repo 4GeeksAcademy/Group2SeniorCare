@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 
-export const SignUp = () => {
+export const PatientSignUp = () => {
 	const { store, actions } = useContext(Context);
 
 	// State to capture form inputs

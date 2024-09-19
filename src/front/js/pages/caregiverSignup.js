@@ -1,13 +1,17 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
 	const { store, actions } = useContext(Context);
 
+	const navigate = useNavigate();
+
 	// State to capture form inputs
 	const [formData, setFormData] = useState({
-		fullName: "",
+		fullname: "",
 		email: "",
+		password: "",
 		phone: "",
 		location: "",
 		experience: "",
@@ -27,8 +31,14 @@ export const SignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Call the action to send form data (e.g., to the backend)
-		actions.signUp(formData); // Example action
+		const success = actions.caregiverSignup(formData); // Example action
 		console.log("Form submitted", formData);
+		if (success) {
+			navigate("/caregiver-login");
+
+		}else{
+			alert("There was a problem creating your account. Please try again later.")
+		}
 	};
 
 	return (
@@ -46,8 +56,8 @@ export const SignUp = () => {
 								<label htmlFor="full-name"><strong>Full Name</strong></label>
 								<input
 									type="text"
-									id="fullName"
-									value={formData.fullName}
+									id="fullname"
+									value={formData.fullname}
 									onChange={handleChange}
 									placeholder="Enter your full name"
 									className="form-control bg-light"
@@ -64,7 +74,18 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-4">
+							<div className="form-group my-2">
+								<label htmlFor="password"><strong>Password</strong></label>
+								<input
+									type="password"
+									id="password"
+									value={formData.password}
+									onChange={handleChange}
+									placeholder="Enter your password"
+									className="form-control bg-light"
+								/>
+							</div>
+							<div className="form-group my-2">
 								<label htmlFor="phone"><strong>Phone Number</strong></label>
 								<input
 									type="tel"
@@ -128,7 +149,7 @@ export const SignUp = () => {
 									<option>Flexible</option>
 								</select>
 							</div>
-							<div className="form-group d-flex justify-content-center">
+							<div className="form-group">
 								<button type="submit" className="btn btn-dark">Sign Up</button>
 							</div>
 						</form>
