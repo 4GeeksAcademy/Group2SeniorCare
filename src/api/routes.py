@@ -200,7 +200,7 @@ def get_caregivers():
 # @jwt_required()
 @api.route('/request-caregiver', methods=['POST'])
 def request_caregiver():
-    current_user_id = 2
+    current_user_id = 1
     data = request.get_json()
 
     caregiver_id = data.get('caregiver_id')

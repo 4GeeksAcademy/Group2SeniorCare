@@ -72,7 +72,7 @@ class Caregiver(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    credentials = db.Column(db.String(120), unique=False, nullable=False)
+    qualifications = db.Column(db.String(120), unique=False, nullable=False)
     phone =db.Column(db.String(10),  nullable=False)
     experience =db.Column(db.String(120),  nullable=False)
     availability =db.Column(db.String(120),  nullable=False)
@@ -83,15 +83,12 @@ class Caregiver(db.Model):
     gender = db.Column(db.String(10), nullable=False)  # New gender field
 
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    is_current = db.Column(db.Boolean(), unique=False, nullable=False)
 
     # Relationships
     requests = db.relationship("UserRequestCaregiver", back_populates="caregiver")
     caring_users = db.relationship("User", secondary=caregiver_user, overlaps="caregivers")
 
-
-
-
-    is_active =db.Column(db.Boolean(), unique=False, nullable=True)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
     caring_users =db.relationship("User")
@@ -112,6 +109,7 @@ class Caregiver(db.Model):
             "location": self.location,
             "gender": self.gender,  
             "is_active": self.is_active,
+            "is_current": self.is_current,
             "caring_users": [user.serialize() for user in self.caring_users],
             
             # do not serialize the password, its a security breach
