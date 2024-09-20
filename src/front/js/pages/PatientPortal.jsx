@@ -39,7 +39,7 @@ export const PatientPortal = () => {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true
-    });
+    });     
   };
 
   return (
@@ -79,20 +79,6 @@ export const PatientPortal = () => {
           <li className="nav-item" role="presentation">
             <button
               className="nav-link"
-              id="records-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#records-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="records-tab-pane"
-              aria-selected="false"
-            >
-              Medical Records
-            </button>
-          </li>
-          <li className="nav-item" role="presentation">
-            <button
-              className="nav-link"
               id="profile-tab"
               data-bs-toggle="tab"
               data-bs-target="#profile-tab-pane"
@@ -102,20 +88,6 @@ export const PatientPortal = () => {
               aria-selected="false"
             >
               See my Profile
-            </button>
-          </li>
-          <li className="nav-item" role="presentation">
-            <button
-              className="nav-link"
-              id="settings-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#settings-tab-pane"
-              type="button"
-              role="tab"
-              aria-controls="settings-tab-pane"
-              aria-selected="false"
-            >
-              Settings
             </button>
           </li>
         </ul>
@@ -175,32 +147,12 @@ export const PatientPortal = () => {
 
           <div
             className="tab-pane fade"
-            id="records-tab-pane"
-            role="tabpanel"
-            aria-labelledby="records-tab"
-            tabIndex="0"
-          >
-            Hello Medical Records
-          </div>
-
-          <div
-            className="tab-pane fade"
             id="profile-tab-pane"
             role="tabpanel"
             aria-labelledby="profile-tab"
             tabIndex="0"
           >
             {/* Profile content */}
-          </div>
-
-          <div
-            className="tab-pane fade"
-            id="settings-tab-pane"
-            role="tabpanel"
-            aria-labelledby="settings-tab"
-            tabIndex="0"
-          >
-            {/* Settings content */}
           </div>
         </div>
       </div>

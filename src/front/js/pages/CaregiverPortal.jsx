@@ -350,6 +350,9 @@ export const CaregiverPortal = () => {
                                 </span>
                               </li>
                               <li className="list-group-item">
+                                  Location: {"Austin"}
+                              </li>
+                              <li className="list-group-item">
                                 Status: {item.request_status}
                               </li>
                             </ul>

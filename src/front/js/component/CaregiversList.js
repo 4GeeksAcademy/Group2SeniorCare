@@ -161,7 +161,7 @@ export const CaregiversList = () => {
                                                 <li className="list-group-item">Credentials: {caregiver.credentials}</li>
                                                 <li className="list-group-item">Years of experience: {caregiver.experience}</li>
                                                 <li className="list-group-item">Location: {caregiver.location}</li>
-                                                <li className="list-group-item">Location: {caregiver.gender}</li>
+                                                <li className="list-group-item">Gender: {caregiver.gender}</li>
                                             </ul>
                                         </div>
                                     </div>
