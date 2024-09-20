@@ -1,19 +1,30 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/patientlogin.css";
+import "../../styles/home.css";
+
 
 const PatientLogin = () => {
     const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const success = await actions.loginPatient(e.target.email.value, e.target.password.value);
+        if (success) {
+            navigate("/patient")
+        } else {
+            console.log("log in failed")
+        }
+
+    };
 
     return (
         <div className="container-patientlogin">
-            <div className="row justify-content-center">
-                <div className="col-md-12"> 
+            <div className="row">
+                <div className="col-md-3 offset-md-3">
                     <h1 className="text-center">Patient Log-in</h1>
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        actions.loginPatient(e.target.email.value, e.target.password.value);
-                    }}>
+                    <form onSubmit={handleLogin}>
                         <div className="form-group">
                             <label htmlFor="email">Email address</label>
                             <input type="email" className="form-control" id="email" name="email" placeholder="Enter email" />
@@ -38,3 +49,4 @@ const PatientLogin = () => {
 };
 
 export default PatientLogin;
+

@@ -3,6 +3,7 @@ import "./CaregiverPortal.css";
 import { Context } from "../store/appContext";
 
 export const CaregiverPortal = () => {
+
   const { store, actions } = useContext(Context);
 
   let getCaregiverInfo = async () => {
@@ -391,3 +392,4 @@ export const CaregiverPortal = () => {
     </div>
   );
 };
+

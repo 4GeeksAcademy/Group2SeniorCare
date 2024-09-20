@@ -1,13 +1,19 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 export const SignUp = () => {
 	const { store, actions } = useContext(Context);
 
+
+	const navigate = useNavigate();
+
 	// State to capture form inputs
 	const [formData, setFormData] = useState({
-		fullName: "",
+		fullname: "",
 		email: "",
+		password: "",
 		phone: "",
 		location: "",
 		experience: "",
@@ -27,8 +33,15 @@ export const SignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Call the action to send form data (e.g., to the backend)
-		actions.signUp(formData); // Example action
+
+		const success = actions.caregiverSignup(formData); // Example action
 		console.log("Form submitted", formData);
+		if (success) {
+			navigate("/caregiver-login");
+
+		}else{
+			alert("There was a problem creating your account. Please try again later.")
+		}
 	};
 
 	return (
@@ -39,21 +52,21 @@ export const SignUp = () => {
 
 				{/* Form Section */}
 				<h1>Become a Caregiver</h1>
-				<div className="row">
+				<div className="row d-flex justify-content-center">
 					<div className="col-6 text-start">
 						<form onSubmit={handleSubmit}>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="full-name"><strong>Full Name</strong></label>
 								<input
 									type="text"
-									id="fullName"
-									value={formData.fullName}
+									id="fullname"
+									value={formData.fullname}
 									onChange={handleChange}
 									placeholder="Enter your full name"
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="email"><strong>Email</strong></label>
 								<input
 									type="email"
@@ -61,6 +74,17 @@ export const SignUp = () => {
 									value={formData.email}
 									onChange={handleChange}
 									placeholder="Enter your email"
+									className="form-control bg-light"
+								/>
+							</div>
+							<div className="form-group my-2">
+								<label htmlFor="password"><strong>Password</strong></label>
+								<input
+									type="password"
+									id="password"
+									value={formData.password}
+									onChange={handleChange}
+									placeholder="Enter your password"
 									className="form-control bg-light"
 								/>
 							</div>
@@ -75,7 +99,8 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+
+							<div className="form-group my-4">
 								<label htmlFor="location"><strong>Location</strong></label>
 								<input
 									type="text"
@@ -86,7 +111,7 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="experience"><strong>Experience Level</strong></label>
 								<select
 									id="experience"
@@ -100,7 +125,7 @@ export const SignUp = () => {
 									<option>Expert</option>
 								</select>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="qualifications"><strong>Qualifications</strong></label>
 								<select
 									id="qualifications"
@@ -114,7 +139,7 @@ export const SignUp = () => {
 									<option>Caregiving Certificate</option>
 								</select>
 							</div>
-							<div className="form-group my-2">
+							<div className="form-group my-4">
 								<label htmlFor="availability"><strong>Availability</strong></label>
 								<select
 									id="availability"
