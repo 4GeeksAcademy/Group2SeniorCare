@@ -1,0 +1,126 @@
+
+
+
+/* body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #000;
+} */
+
+.container-fluid-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #000;
+}
+
+/* Header Section */
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+}
+
+.list-group-item:hover {
+    background-color: #eee;
+}
+
+/* .active {
+    background-color: #ddd;
+} */
+
+/* Profile Section */
+
+.profile {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    flex: 1;
+    margin-left: 10px;
+    margin-top: 80px;
+}
+
+/* Stats Section */
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+}
+
+.stat {
+    text-align: center;
+    margin: 0 10px;
+    color: #000;
+}
+
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Interests Section */
+
+.interestsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.interest {
+    flex: 1;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.interest-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.interest-text {
+    font-size: 14px;
+}

@@ -45,29 +45,39 @@ class User(db.Model):
     
 
 # 3RD MODEL
+
+
 class Caregiver(db.Model):
-    __tablename__ ='caregiver'
-    id =db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(64),  nullable=False)
     email =db.Column(db.String(120), unique=True, nullable=False)
+    phone =db.Column(db.String(10),  nullable=False)
+    experience =db.Column(db.String(120),  nullable=False)
+    qualifications =db.Column(db.String(120),  nullable=False)
+    availability =db.Column(db.String(120),  nullable=False)
     password =db.Column(db.String(80), unique=False, nullable=False)
-    credentials =db.Column(db.String(120), unique=False, nullable=False)
-    experience =db.Column(db.Numeric(), nullable=False)
+    # experience =db.Column(db.Numeric(), nullable=False)
     location = db.Column(db.String(120), nullable=False)
 
-    is_active =db.Column(db.Boolean(), unique=False, nullable=False)
+    is_active =db.Column(db.Boolean(), unique=False, nullable=True)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
     caring_users =db.relationship("User")
     def __repr__(self):
         return f'<Caregiver {self.email}>'
 
+
     def serialize(self):
         return { 
             "id": self.id,
+            "fullname": self.fullname,
             "email": self.email,
-            "credentials": self.credentials,
+            "phone": self.phone,
             "experience": self.experience,
+            "qualifications": self.qualifications,
+            "availability": self.availability,
             "location": self.location,
+            "is_active": self.is_active,
             "caring_users": [user.serialize() for user in self.caring_users],
             
             # do not serialize the password, its a security breach
