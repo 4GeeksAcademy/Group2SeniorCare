@@ -9,19 +9,19 @@ class User(db.Model):
     __tablename__ ='user'
     id =db.Column(db.Integer, primary_key=True)
     name =db.Column(db.String(120), unique=False, nullable=False )
-    date_of_birth=db.Column(db.Date(), unique=False, nullable=False)
+    date_of_birth=db.Column(db.String(120), unique=False, nullable=False)
     email =db.Column(db.String(120), unique=True, nullable=False)
-    phone = db.Column(db.String(120), unique=False, nullable=True)
-    emergencyContact = db.Column(db.String(120), unique=False, nullable=True)
+    # phone = db.Column(db.String(120), unique=False, nullable=True)
+    # emergencyContact = db.Column(db.String(120), unique=False, nullable=True)
     password =db.Column(db.String(80), unique=False, nullable=False)
-    allergies=db.Column(db.String(120), unique=False, nullable=True)
-    bloodType=db.Column(db.String(120), unique=False, nullable=True)
-    hobbies=db.Column(db.String(300),unique=False, nullable=True)
+    # allergies=db.Column(db.String(120), unique=False, nullable=True)
+    # bloodType=db.Column(db.String(120), unique=False, nullable=True)
+    # hobbies=db.Column(db.String(300),unique=False, nullable=True)
     is_active =db.Column(db.Boolean(), unique=False, nullable=False)
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="user")
     caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'))
-    
+
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -32,17 +32,21 @@ class User(db.Model):
             "name": self.name,
             "date_of_birth": self.date_of_birth,
             "email": self.email,
-            "phone": self.phone,
-            "emergencyContact": self.emergencyContact,
-            "allergies": self.allergies,
-            "bloodType": self.bloodType,
-            "hobbies": self.hobbies,
+            # "phone": self.phone,
+            # "emergencyContact": self.emergencyContact,
+            # "allergies": self.allergies,
+            # "bloodType": self.bloodType,
+            # "hobbies": self.hobbies,
             "is_active": self.is_active,
             "caring_caregiver_id": self.caring_caregiver_id,
             # do not serialize the password, it's a security breach
         }
 
-    
+        #     name=name,
+        # date_of_birth=date_of_birth,
+        # email=email,
+        # password=password,
+        # is_active=True 
 
 # 3RD MODEL
 

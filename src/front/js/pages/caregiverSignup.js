@@ -17,6 +17,12 @@ export const SignUp = () => {
 		experience: "",
 		qualifications: "",
 		availability: ""
+
+		// name=name,
+        // date_of_birth=date_of_birth,
+        // email=email,
+        // password=password,
+        // is_active=True 
 	});
 
 	// Handle form input changes

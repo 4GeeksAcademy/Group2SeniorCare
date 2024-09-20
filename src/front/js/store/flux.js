@@ -202,6 +202,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+
+
+			patientSignUp: async (patientdata) => {
+				const options = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						name:patientdata.name,
+						dob:patientdata.date_of_birth,
+						email:patientdata.email,
+						password:patientdata.password,
+					}),
+				};
+			
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/user/signup`, options);
+			
+					if (response.status !== 200) {
+						console.log("Signup failed", response.status);
+						return false;
+					}
+			
+					const data = await response.json();
+					console.log("Signup successful", data);
+			
+					return true;
+				} catch (error) {
+					console.log("Error during signup", error); // Corrected the log message
+					return false;
+				}
+			},
 						getPatientProfile: async () => {
 				let options = {
 					headers: {
