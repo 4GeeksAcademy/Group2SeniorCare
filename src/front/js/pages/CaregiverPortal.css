@@ -1,0 +1,24 @@
+.accepted {
+  background: rgba(34, 164, 53, 0.6);
+  padding: 5px;
+  border-radius: 4px;
+}
+.rejected {
+  background: red;
+  padding: 5px;
+  border-radius: 4px;
+}
+.btnGroup {
+  margin-left: 42.5px;
+}
+
+.accordion-button:hover {
+  background-color: #0f4c81; /* Example: light gray */
+  color: white; /* Example: dark gray text */
+}
+
+/* Change background color for the active/opened state */
+.accordion-button:not(.collapsed) {
+  background-color: #0f4c81; /* Example: the color of your choice */
+  color: white; /* Text color for the active state */
+}

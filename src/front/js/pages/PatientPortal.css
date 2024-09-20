@@ -1,0 +1,153 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Light background for comfort */
+    margin: 0;
+    padding: 0;
+}
+
+/* Main container for the patient portal */
+.patient-portal {
+    padding: 30px;
+    background-color: #f8f9fa; /* Subtle off-white background */
+}
+
+/* Heading styling */
+.patient-portal h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #0f4c81; /* Deep blue for a medical look */
+    margin-bottom: 20px;
+}
+
+.patient-portal h3 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #343a40; /* Neutral grey for secondary text */
+    margin-bottom: 30px;
+}
+
+/* Navigation tabs */
+.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    color: #0f4c81;
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 10px 20px;
+}
+
+.nav-tabs .nav-link.active {
+    background: linear-gradient(to bottom, #0f4c81, #0f6e99);;
+    color: #ffffff;
+    border-color: #dee2e6 #dee2e6 #ffffff;
+}
+
+/* Tab content */
+.tab-content {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Individual tabs */
+.tab-pane {
+    padding: 20px;
+}
+
+.tab-pane h4 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #0f4c81;
+}
+
+/* Buttons within the tabs */
+button {
+    background-color: #0f4c81;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #359de3; /* Lighter blue on hover */
+}
+
+/* Ensure the container layout is responsive */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .nav-tabs .nav-link {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .patient-portal h1 {
+        font-size: 2rem;
+    }
+
+    .patient-portal h3 {
+        font-size: 1.2rem;
+    }
+
+    .tab-pane {
+        padding: 15px;
+    }
+}
+
+.appointment-card {
+    max-width: 540px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+  }
+  
+  .status-badge.confirmed {
+    background-color: rgba(34, 164, 53, 0.6);
+    color: white;
+  }
+  
+  .status-badge.not.confirmed {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .btn-link {
+    color: #0f4c81;
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  

@@ -2,8 +2,10 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Navigate, useNavigate } from "react-router-dom";
 
+
 export const SignUp = () => {
 	const { store, actions } = useContext(Context);
+
 
 	const navigate = useNavigate();
 
@@ -17,12 +19,6 @@ export const SignUp = () => {
 		experience: "",
 		qualifications: "",
 		availability: ""
-
-		// name=name,
-        // date_of_birth=date_of_birth,
-        // email=email,
-        // password=password,
-        // is_active=True 
 	});
 
 	// Handle form input changes
@@ -37,6 +33,7 @@ export const SignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Call the action to send form data (e.g., to the backend)
+
 		const success = actions.caregiverSignup(formData); // Example action
 		console.log("Form submitted", formData);
 		if (success) {
@@ -102,6 +99,7 @@ export const SignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
+
 							<div className="form-group my-4">
 								<label htmlFor="location"><strong>Location</strong></label>
 								<input

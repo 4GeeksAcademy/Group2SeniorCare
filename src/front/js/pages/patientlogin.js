@@ -4,9 +4,6 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
 
-
-
-
 const PatientLogin = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
@@ -52,8 +49,4 @@ const PatientLogin = () => {
 };
 
 export default PatientLogin;
-
-
-
-
 
