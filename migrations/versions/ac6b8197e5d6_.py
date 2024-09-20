@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f47dab47fade
+Revision ID: ac6b8197e5d6
 Revises: 
-Create Date: 2024-09-18 22:20:11.258957
+Create Date: 2024-09-20 20:14:53.833813
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f47dab47fade'
+revision = 'ac6b8197e5d6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,28 +22,28 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
+    sa.Column('qualifications', sa.String(length=120), nullable=False),
+    sa.Column('phone', sa.String(length=10), nullable=False),
+    sa.Column('experience', sa.String(length=120), nullable=False),
+    sa.Column('availability', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
-    sa.Column('credentials', sa.String(length=120), nullable=False),
-    sa.Column('experience', sa.Integer(), nullable=False),
     sa.Column('location', sa.String(length=120), nullable=False),
     sa.Column('gender', sa.String(length=10), nullable=False),
     sa.Column('is_active', sa.Boolean(), nullable=False),
+    sa.Column('is_current', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
-    sa.Column('date_of_birth', sa.Date(), nullable=False),
+    sa.Column('date_of_birth', sa.String(length=120), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('phone', sa.String(length=120), nullable=True),
-    sa.Column('emergencyContact', sa.String(length=120), nullable=True),
     sa.Column('password', sa.String(length=80), nullable=False),
-    sa.Column('allergies', sa.String(length=120), nullable=True),
-    sa.Column('bloodType', sa.String(length=120), nullable=True),
-    sa.Column('hobbies', sa.String(length=300), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=False),
     sa.Column('is_current', sa.Boolean(), nullable=False),
+    sa.Column('caring_caregiver_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['caring_caregiver_id'], ['caregiver.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )

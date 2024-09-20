@@ -17,7 +17,7 @@ export const CaregiversList = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(filters).toString();
-            const url = `${process.env.BACKEND_URL}api/caregivers?${query}`;
+            const url = `${process.env.BACKEND_URL}api/caregivers${query}`;
             let response = await fetch(url, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -158,7 +158,7 @@ export const CaregiversList = () => {
                                                 <li className="list-group-item">
                                                     <h5 className="card-title">{caregiver.email}</h5>
                                                 </li>
-                                                <li className="list-group-item">Credentials: {caregiver.credentials}</li>
+                                                <li className="list-group-item">Qualifications: {caregiver.qualifications}</li>
                                                 <li className="list-group-item">Years of experience: {caregiver.experience}</li>
                                                 <li className="list-group-item">Location: {caregiver.location}</li>
                                                 <li className="list-group-item">Gender: {caregiver.gender}</li>

@@ -464,6 +464,7 @@ footer {
         flex-direction: column;
         height: auto;
     }
+}
 
 .animation-container:hover .animation {
     background-color: rgba(0, 0, 0, 0.7);

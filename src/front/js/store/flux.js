@@ -4,8 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			caregiver: null,
 			getPatientAppointments: [],
 			successMessage: ""
-			token: null,
-			patient: null,
+			// token: null,
+			// patient: [],
 
 		},
 		actions: {
@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: 'Bearer ' + sessionStorage.getItem('token')
+						// Authorization: 'Bearer ' + sessionStorage.getItem('token')
 					},
 					body: JSON.stringify({
 						caregiver_id: formData.caregiverId,
@@ -130,8 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			updateSuccessMessage: (newMessage) => {
 				setStore({successMessage: newMessage})
-			}
-		},
+			},
 			loginPatient: async (email, password) => {
 				const options = {
 					method: "POST",
