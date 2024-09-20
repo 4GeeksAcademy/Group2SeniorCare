@@ -3,9 +3,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			caregiver: null,
 			getPatientAppointments: [],
-			successMessage: ""
-			// token: null,
-			// patient: [],
+			successMessage: "",
+			token: null,
+			patient: [],
 
 		},
 		actions: {
