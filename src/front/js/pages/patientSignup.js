@@ -1,18 +1,19 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 export const PatientSignUp = () => {
 	const { store, actions } = useContext(Context);
+	const navigate = useNavigate();
 
 	// State to capture form inputs
 	const [formData, setFormData] = useState({
-		fullName: "",
-		email: "",
-		phone: "",
-		location: "",
-		experience: "",
-		qualifications: "",
-		availability: ""
+		name: "",
+        date_of_birth: "",
+        email: "",
+        password: "",
+        is_active: "",
 	});
 
 	// Handle form input changes
@@ -27,8 +28,14 @@ export const PatientSignUp = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// Call the action to send form data (e.g., to the backend)
-		actions.signUp(formData); // Example action
+		const success = actions.patientSignUp(formData); // Example action
 		console.log("Form submitted", formData);
+		if (success) {
+			navigate("/patient-login");
+
+		}else{
+			alert("There was a problem creating your account. Please try again later.")
+		}
 	};
 
 	return (
@@ -43,11 +50,11 @@ export const PatientSignUp = () => {
 					<div className="col-6 text-start">
 						<form onSubmit={handleSubmit}>
 							<div className="form-group my-4">
-								<label htmlFor="full-name"><strong>Full Name</strong></label>
+								<label htmlFor="name"><strong>Full Name</strong></label>
 								<input
 									type="text"
-									id="fullName"
-									value={formData.fullName}
+									id="name"
+									value={formData.name}
 									onChange={handleChange}
 									placeholder="Enter your full name"
 									className="form-control bg-light"
@@ -64,7 +71,7 @@ export const PatientSignUp = () => {
 									className="form-control bg-light"
 								/>
 							</div>
-							<div className="form-group my-4">
+							{/* <div className="form-group my-4">
 								<label htmlFor="phone"><strong>Phone Number</strong></label>
 								<input
 									type="tel"
@@ -74,59 +81,29 @@ export const PatientSignUp = () => {
 									placeholder="Enter your phone number"
 									className="form-control bg-light"
 								/>
-							</div>
+							</div> */}
 							<div className="form-group my-4">
-								<label htmlFor="location"><strong>Location</strong></label>
+								<label htmlFor="password"><strong>Password</strong></label>
 								<input
 									type="text"
-									id="location"
-									value={formData.location}
+									id="password"
+									value={formData.password}
 									onChange={handleChange}
-									placeholder="Enter your location"
+									placeholder="Enter your password"
 									className="form-control bg-light"
 								/>
 							</div>
+
+
 							<div className="form-group my-4">
-								<label htmlFor="experience"><strong>Experience Level</strong></label>
-								<select
-									id="experience"
-									value={formData.experience}
+								<label htmlFor="date_of_birth"><strong>Date Of Birth</strong></label>
+								<input
+									id="date_of_birth"
+									value={formData.date_of_birth}
 									onChange={handleChange}
 									className="form-control bg-light"
-								>
-									<option>Select your experience level</option>
-									<option>Beginner</option>
-									<option>Intermediate</option>
-									<option>Expert</option>
-								</select>
-							</div>
-							<div className="form-group my-4">
-								<label htmlFor="qualifications"><strong>Qualifications</strong></label>
-								<select
-									id="qualifications"
-									value={formData.qualifications}
-									onChange={handleChange}
-									className="form-control bg-light"
-								>
-									<option>Select your qualifications</option>
-									<option>CNA</option>
-									<option>RN</option>
-									<option>Caregiving Certificate</option>
-								</select>
-							</div>
-							<div className="form-group my-4">
-								<label htmlFor="availability"><strong>Availability</strong></label>
-								<select
-									id="availability"
-									value={formData.availability}
-									onChange={handleChange}
-									className="form-control bg-light"
-								>
-									<option>Select your availability</option>
-									<option>Full-time</option>
-									<option>Part-time</option>
-									<option>Flexible</option>
-								</select>
+								
+								/>
 							</div>
 							<div className="form-group d-flex justify-content-center">
 								<button type="submit" className="btn btn-dark">Sign Up</button>
