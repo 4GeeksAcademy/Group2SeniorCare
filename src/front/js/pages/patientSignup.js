@@ -10,10 +10,10 @@ export const PatientSignUp = () => {
 	// State to capture form inputs
 	const [formData, setFormData] = useState({
 		name: "",
-        date_of_birth: "",
-        email: "",
-        password: "",
-        is_active: "",
+		date_of_birth: "",
+		email: "",
+		password: "",
+		// is_active: "",
 	});
 
 	// Handle form input changes
@@ -33,7 +33,7 @@ export const PatientSignUp = () => {
 		if (success) {
 			navigate("/patient-login");
 
-		}else{
+		} else {
 			alert("There was a problem creating your account. Please try again later.")
 		}
 	};
@@ -102,7 +102,7 @@ export const PatientSignUp = () => {
 									value={formData.date_of_birth}
 									onChange={handleChange}
 									className="form-control bg-light"
-								
+
 								/>
 							</div>
 							<div className="form-group d-flex justify-content-center">
