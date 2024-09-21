@@ -24,7 +24,7 @@ def signup_user():
     print("Received data:", data)
 
     name = data.get('name')
-    date_of_birth = data.get('dob')  
+    date_of_birth = data.get('date_of_birth')  
     email = data.get('email')
     password = data.get('password')
     if not name or not date_of_birth or not email or not password:
@@ -38,7 +38,7 @@ def signup_user():
         date_of_birth=date_of_birth,
         email=email,
         password=password,
-        is_active=True 
+        # is_active=True 
     )
 
     try:
@@ -103,13 +103,13 @@ def login_caregiver ():
     return jsonify(access_token=access_token), 200
 
 
-@api.route("/user", methods=["GET"])
-@jwt_required()
-def get_user():
-    user_id = get_jwt_identity()
-    print(user_id,"user!!!!!!!!!!!!!")
-    user = User.query.filter_by(id=user_id).first()
-    return jsonify(user.serialize())
+# @api.route("/user", methods=["GET"])
+# @jwt_required()
+# def get_user():
+#     user_id = get_jwt_identity()
+#     print(user_id,"user!!!!!!!!!!!!!")
+#     user = User.query.filter_by(id=user_id).first()
+#     return jsonify(user.serialize())
 
 
 @api.route('/caregiver/signup', methods=['POST'])

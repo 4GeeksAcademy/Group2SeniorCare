@@ -9,8 +9,8 @@ db =SQLAlchemy()
 
 caregiver_user = db.Table(
     "caregiver_user",
-    db.Column("user_id", ForeignKey("user.id")),
-    db.Column("caregiver_id", ForeignKey("caregiver.id")),
+    db.Column("user_id", db.ForeignKey("user.id")),
+    db.Column("caregiver_id", db.ForeignKey("caregiver.id")),
 )
 
 # 3RD MODEL Patient
@@ -26,15 +26,16 @@ class User(db.Model):
     # allergies=db.Column(db.String(120), unique=False, nullable=True)
     # bloodType=db.Column(db.String(120), unique=False, nullable=True)
     # hobbies=db.Column(db.String(300),unique=False, nullable=True)
-    is_active =db.Column(db.Boolean(), unique=False, nullable=False)
-    is_current =db.Column(db.Boolean(), unique=False, nullable=False)
+    # is_active =db.Column(db.Boolean(), unique=False, nullable=True)
+    # is_current =db.Column(db.Boolean(), unique=False, nullable=True)
 
 
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="user")
 
-    caregivers = db.relationship("Caregiver", secondary=caregiver_user, overlaps="caring_users")
-    caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'))
+    caregivers = db.relationship("Caregiver", secondary=caregiver_user, overlaps="caring_user")
+    caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'),nullable=True)
+    caring_caregiver=db.relationship("Caregiver", foreign_keys={caring_caregiver_id})
 
 
 
@@ -52,8 +53,8 @@ class User(db.Model):
             # "allergies": self.allergies,
             # "bloodType": self.bloodType,
             # "hobbies": self.hobbies,
-            "is_active": self.is_active,
-            "is_current": self.is_current, 
+            # "is_active": self.is_active,
+            # "is_current": self.is_current, 
             # do not serialize the password, it's a security breach
         }
 
@@ -88,10 +89,13 @@ class Caregiver(db.Model):
     # Relationships
     requests = db.relationship("UserRequestCaregiver", back_populates="caregiver")
     caring_users = db.relationship("User", secondary=caregiver_user, overlaps="caregivers")
+    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
+    # user = db.relationship("User", back_populates="caregivers")
+
 
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
-    caring_users =db.relationship("User")
+    # caring_users =db.relationship("User")
     
     def __repr__(self):
         return f'<Caregiver {self.email}>'
@@ -111,11 +115,10 @@ class Caregiver(db.Model):
             "is_active": self.is_active,
             "is_current": self.is_current,
             "caring_users": [user.serialize() for user in self.caring_users],
+            # "user": self.user
             
             # do not serialize the password, its a security breach
-        }
-
-# 3RD MODEL
+        }# 3RD MODEL
 class UserRequestCaregiver(db.Model):
     __tablename__ = 'user_request_caregiver'
     id = db.Column(db.Integer, primary_key=True)
@@ -128,6 +131,9 @@ class UserRequestCaregiver(db.Model):
     # Relationships
     user = db.relationship("User", back_populates="requests")
     caregiver = db.relationship("Caregiver", back_populates="requests")
+   
+
+    
 
     def accept_request(self):
         """Accept the request and assign the caregiver to the user."""

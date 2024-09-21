@@ -2,15 +2,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			caregiver: null,
+			patient: null,
 			getPatientAppointments: [],
 			successMessage: "",
 			token: null,
-			patient: [],
+			patients: [],
 
 		},
 		actions: {
 
-			
+
 
 
 			getCaregiverProfile: async () => {
@@ -26,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 				let data = await response.json();
-				console.log(data,"caregiver profile");
+				console.log(data, "caregiver profile");
 				setStore({ caregiver: data.caregiver });
 				return true;
 			},
@@ -118,7 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				try {
-					let response = await fetch(`${process.env.BACKEND_URL}/api/patient/profile`, options);
+					let response = await fetch(`${process.env.BACKEND_URL}/api/user`, options);
 					if (response.status !== 200) {
 						console.log('Failed to fetch patient profile', response.status);
 						return false;
@@ -218,7 +219,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const data = await response.json();
 					console.log("Login successful", data);
 					setStore({ token: data.access_token });
-					sessionStorage.setItem("token",data.access_token)
+					sessionStorage.setItem("token", data.access_token)
 
 					return true;
 				} catch (error) {
@@ -273,7 +274,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						name: patientdata.name,
-						dob: patientdata.date_of_birth,
+						date_of_birth: patientdata.date_of_birth,
 						email: patientdata.email,
 						password: patientdata.password,
 					}),
