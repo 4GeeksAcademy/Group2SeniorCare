@@ -3,7 +3,6 @@ import "./CaregiverPortal.css";
 import { Context } from "../store/appContext";
 
 export const CaregiverPortal = () => {
-
   const { store, actions } = useContext(Context);
 
   let getCaregiverInfo = async () => {
@@ -175,7 +174,7 @@ export const CaregiverPortal = () => {
                               <li className="list-group-item">
                                 Date and Time:{" "}
                                 <span className="float-end">
-                                  {formatDate(item.date_time)} 
+                                  {formatDate(item.date_time)}
                                 </span>
                               </li>
                               <li className="list-group-item">
@@ -229,64 +228,56 @@ export const CaregiverPortal = () => {
               className="accordion accordion-flush"
               id="accordionFlushExample"
             >
-              {store.caregiver?.caring_users?.map((item, index) => {
-                const collapseId = `flush-collapse-${index}`;
-                const headingId = `flush-heading-${index}`;
-                return (
-                  <div className="accordion-item" key={index}>
-                    <h2 className="accordion-header" id={headingId}>
-                      <button
-                        className="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target={`#${collapseId}`}
-                        aria-expanded="false"
-                        aria-controls={collapseId}
+              {store.caregiver?.requests
+                ?.filter((item) => item.request_status === "Accepted") // Use accepted requests
+                .map((item, index) => {
+                  const collapseId = `flush-collapse-${index}`;
+                  const headingId = `flush-heading-${index}`;
+                  return (
+                    <div className="accordion-item" key={index}>
+                      <h2 className="accordion-header" id={headingId}>
+                        <button
+                          className="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target={`#${collapseId}`}
+                          aria-expanded="false"
+                          aria-controls={collapseId}
+                        >
+                          <h5 className="card-title">{item.patient.name}</h5>
+                        </button>
+                      </h2>
+                      <div
+                        id={collapseId}
+                        className="accordion-collapse collapse"
+                        aria-labelledby={headingId}
+                        data-bs-parent="#accordionFlushExample"
                       >
-                        <h5 className="card-title">{item.name}</h5>
-                      </button>
-                    </h2>
-                    <div
-                      id={collapseId}
-                      className="accordion-collapse collapse"
-                      aria-labelledby={headingId}
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div className="accordion-body">
-                        <ul className="list-group list-group-flush">
-                          <li className="list-group-item">
-                            <h5 className="card-title">{item.name}</h5>
-                          </li>
-                          <li className="list-group-item">
-                            Date of Birth: {item.date_of_birth}
-                          </li>
-                          <li className="list-group-item">
-                            Email: {item.email}
-                          </li>
-                          <li className="list-group-item">
-                            Phone: {item.phone}
-                          </li>
-                          <li className="list-group-item">
-                            Emergency Contact: {item.emergencyContact}
-                          </li>
-                          <li className="list-group-item">
-                            Allergies: {item.allergies}
-                          </li>
-                          <li className="list-group-item">
-                            Blood Type: {item.bloodType}
-                          </li>
-                          <li className="list-group-item">
-                            Hobbies: {item.hobbies}
-                          </li>
-                          <li className="list-group-item">
-                            Status: {item.is_active ? "Active" : "Inactive"}
-                          </li>
-                        </ul>
+                        <div className="accordion-body">
+                          <ul className="list-group list-group-flush">
+                            <li className="list-group-item">
+                              <h5 className="card-title">
+                                {item.patient.name}
+                              </h5>
+                            </li>
+                            <li className="list-group-item">
+                              Date of Birth: {item.patient.date_of_birth}
+                            </li>
+                            <li className="list-group-item">
+                              Email: {item.patient.email}
+                            </li>
+                            <li className="list-group-item">
+                              Phone: {item.patient.phone}
+                            </li>
+                            <li className="list-group-item">
+                              Status: {item.request_status}
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
 
@@ -351,7 +342,7 @@ export const CaregiverPortal = () => {
                                 </span>
                               </li>
                               <li className="list-group-item">
-                                  Location: {"Austin"}
+                                Location: {"Austin"}
                               </li>
                               <li className="list-group-item">
                                 Status: {item.request_status}
@@ -392,4 +383,3 @@ export const CaregiverPortal = () => {
     </div>
   );
 };
-

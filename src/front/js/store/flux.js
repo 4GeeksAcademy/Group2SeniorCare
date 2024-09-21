@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "api/request-caregiver", options);
+					let response = await fetch(process.env.BACKEND_URL + "/api/request-caregiver", options);
 					if (response.status !== 200) {
 						console.log("failed to request caregiver", response.status);
 						setStore({ successMessage: "Failed to request Caregiver. Try again in an hour!" });
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try {
-					let response = await fetch(process.env.BACKEND_URL + "api/caregiver/request-reply", options);
+					let response = await fetch(process.env.BACKEND_URL + "/api/caregiver/request-reply", options);
 
 					if (response.status !== 200) {
 						console.log("Failed to reply to request", response.status);
@@ -92,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				try {
-					let response = await fetch(`${process.env.BACKEND_URL}api/appointments`, options);
+					let response = await fetch(`${process.env.BACKEND_URL}/api/appointments`, options);
 					if (response.status !== 200) {
 						console.log("Failed to fetch appointments", response.status);
 						return [];
@@ -114,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  }
 				};
 				try {
-				  let response = await fetch(`${process.env.BACKEND_URL}api/patient/profile`, options);
+				  let response = await fetch(`${process.env.BACKEND_URL}/api/patient/profile`, options);
 				  if (response.status !== 200) {
 					console.log('Failed to fetch patient profile', response.status);
 					return false;
