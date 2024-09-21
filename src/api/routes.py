@@ -67,7 +67,7 @@ def login ():
     access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token), 200
 
-@api.route('/User', methods=['GET'])
+@api.route('/user', methods=['GET'])
 @jwt_required()
 def get_userprofile():
     user = User.query.filter_by(id = get_jwt_identity()).first()
@@ -76,14 +76,14 @@ def get_userprofile():
         
     return jsonify({'msg': 'User profile info', 'user': user.serialize()}), 200
 
-@api.route('/Caregiver', methods=['GET'])
+@api.route('/caregiver', methods=['GET'])
 @jwt_required()
 def get_caregiverprofile():
     user = Caregiver.query.filter_by(id = get_jwt_identity()).first()
     if Caregiver is None:
         return jsonify({'msg': "There's no cargiver with this id"}), 404
         
-    return jsonify({'msg': 'Cargiver profile info', 'caegiver': user.serialize()}), 200
+    return jsonify({'msg': 'Cargiver profile info', 'caregiver': user.serialize()}), 200
     
 
 @api.route('/login/caregiver', methods=['POST'])
@@ -103,10 +103,19 @@ def login_caregiver ():
     return jsonify(access_token=access_token), 200
 
 
+@api.route("/user", methods=["GET"])
+@jwt_required()
+def get_user():
+    user_id = get_jwt_identity()
+    print(user_id,"user!!!!!!!!!!!!!")
+    user = User.query.filter_by(id=user_id).first()
+    return jsonify(user.serialize())
+
+
 @api.route('/caregiver/signup', methods=['POST'])
 def signup_caregiver ():
     data = request.get_json()
-    fullname = data.get('fullname')
+    name = data.get('name')
     email = data.get('email')
     phone = data.get('phone')
     experience = data.get('experience')
@@ -114,22 +123,29 @@ def signup_caregiver ():
     availability = data.get('availability')
     location = data.get('location')
     password = data.get('password')
+    gender = data.get('gender')
+
+    if name is None or email is None or phone is None or experience is None or qualifications is None or availability is None or location is None or password is None or gender is None : 
+        return jsonify({"msg":"some fields are missing in your request"}), 400
 
 
-    if fullname and password: 
-        existing_user = Caregiver.query.filter_by(fullname=fullname).first()
+    if name and password: 
+        existing_user = Caregiver.query.filter_by(name=name).first()
         if existing_user: 
                 return jsonify({'error': 'Username and password already exist'}), 400
         else:
              new_user = Caregiver(
-                 fullname=fullname, 
-                 password=password,
-                 email = email,
+                name=name, 
+                password=password,
+                email = email,
                 phone = phone,
                 experience = experience,
                 qualifications = qualifications,
                 availability = availability,
                 location = location,
+                gender = gender,
+                is_active= True,
+                is_current=False
                  
                  )
         db.session.add(new_user)
@@ -226,7 +242,7 @@ def request_caregiver():
 
     return jsonify({'message': "request sent successfully." , "request": new_request.serialize()}), 200
 
-@api.route('caregiver/request-reply', methods=['PUT'])
+@api.route('/caregiver/request-reply', methods=['PUT'])
 # @jwt_required()
 def handle_reply():
      # caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()

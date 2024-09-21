@@ -11,14 +11,17 @@ export const SignUp = () => {
 
 	// State to capture form inputs
 	const [formData, setFormData] = useState({
-		fullname: "",
+		name: "",
 		email: "",
 		password: "",
 		phone: "",
 		location: "",
 		experience: "",
 		qualifications: "",
-		availability: ""
+		availability: "",
+		location: "",
+		gender: ""
+
 	});
 
 	// Handle form input changes
@@ -39,7 +42,7 @@ export const SignUp = () => {
 		if (success) {
 			navigate("/caregiver-login");
 
-		}else{
+		} else {
 			alert("There was a problem creating your account. Please try again later.")
 		}
 	};
@@ -56,11 +59,11 @@ export const SignUp = () => {
 					<div className="col-6 text-start">
 						<form onSubmit={handleSubmit}>
 							<div className="form-group my-4">
-								<label htmlFor="full-name"><strong>Full Name</strong></label>
+								<label htmlFor="name"><strong>Full Name</strong></label>
 								<input
 									type="text"
-									id="fullname"
-									value={formData.fullname}
+									id="name"
+									value={formData.name}
 									onChange={handleChange}
 									placeholder="Enter your full name"
 									className="form-control bg-light"
@@ -151,6 +154,21 @@ export const SignUp = () => {
 									<option>Full-time</option>
 									<option>Part-time</option>
 									<option>Flexible</option>
+								</select>
+							</div>
+
+							<div className="form-group my-4">
+								<label htmlFor="gender"><strong>Gender</strong></label>
+								<select
+									id="gender"
+									value={formData.gender}
+									onChange={handleChange}
+									className="form-control bg-light"
+								>
+									<option>Select gender</option>
+									<option>Male</option>
+									<option>Female</option>
+
 								</select>
 							</div>
 							<div className="form-group">

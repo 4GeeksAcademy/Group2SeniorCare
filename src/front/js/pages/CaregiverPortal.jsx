@@ -16,6 +16,7 @@ export const CaregiverPortal = () => {
   };
 
   useEffect(() => {
+    console.log("caregiver useffect")
     getCaregiverInfo();
   }, []); // Added 'actions' to the dependency array
 
@@ -49,7 +50,7 @@ export const CaregiverPortal = () => {
 
   return (
     <div className="patient-portal">
-      <h1>Welcome {store.caregiver?.email} Caregiver!</h1>
+      <h1>Welcome {store.caregiver?.name} Caregiver!</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul
@@ -298,8 +299,12 @@ export const CaregiverPortal = () => {
             aria-labelledby="records-tab"
             tabindex="0"
           >
+        
+    
             <div>
-              {store.caregiver?.requests
+              {
+              store.caregiver?.requests ?
+              store.caregiver?.requests
                 .filter((item) => item.request_status === "Accepted")
                 ?.map((item, index) => {
                   return (
@@ -362,7 +367,9 @@ export const CaregiverPortal = () => {
                       </div>
                     </div>
                   );
-                })}
+                })
+              :"no request at this time"
+              }
             </div>
           </div>
 
