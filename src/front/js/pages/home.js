@@ -61,16 +61,16 @@ const Home = () => {
                         {/* <h2 style={{ color: "white" }}>Caregiver Connect</h2> */}
                     </div>
                     <div className="d-flex signupbutton justify-content-center">
-                        <Link to="/signup-caregiver">
-                            <div className="header-buttons d-flex justify-content-center" >
-                                <button className="cta-button-1  ">Become A Caregiver</button>
+                        <Link to="/signup-caregiver ">
+                            <div className="header-buttons d-flex justify-content-center">
+                                <button className="cta-button-1 text-decoration-none ">Become A Caregiver</button>
 
                             </div>
                         </Link>
                         <Link to="/signup-patient">
                             <div className="header-buttons  d-flex justify-content-center">
 
-                                <button className="cta-button-1 ">Join As a Patient</button>
+                                <button className="cta-button-1 ">Join As A Patient</button>
                             </div>
                         </Link>
                     </div>
@@ -92,10 +92,24 @@ const Home = () => {
                 </div>
             </div>
             <div className="row me-0">
+                
                 <div className="col-5 d-flex justify-content-center align-items-center">
-                    <div className="text-dark">
-                        <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner-text">
+                    <div class="carousel-item active">
+                    <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
                     </div>
+                    <div class="carousel-item">
+                    <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
+                    </div>
+                    <div class="carousel-item">
+                    <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
+                    </div>
+                </div>
+                </div>
+                    {/* <div className="text-dark"> */}
+                        {/* <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2> */}
+                    {/* </div> */}
                 </div>
 
 
@@ -172,9 +186,15 @@ const Home = () => {
                         <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
                     </div>
                 </div>
+                
+                <div className="row m-8">
+                    <div className="col-12">
+                        </div>
+
+                </div>
             
             <div>
-                <div className="section" style={{ backgroundColor: "#fff" }}>
+                <div className="section" >
                     <h2>Why Choose Us</h2>
                     <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
                     {/* <div class="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}> */}
