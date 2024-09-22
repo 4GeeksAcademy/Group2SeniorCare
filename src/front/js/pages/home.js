@@ -4,6 +4,7 @@ import "../../styles/home.css";
 // import Carousel from "../component/carousel";
 // import { Testimonial } from "../component/testimonial";
 import { Link } from "react-router-dom";
+import { Testimonial } from "../component/testimonal";
 
 const Home = () => {
     const { store, actions } = useContext(Context);
@@ -23,23 +24,28 @@ const Home = () => {
     const testimonialData = [
         {
             name: "John Rivers",
-            description: "A 34-year-old software engineer who loves hiking and photography. Known for his calm demeanor and problem-solving skills."
+            description: "A 34-year-old software engineer who loves hiking and photography. Known for his calm demeanor and problem-solving skills.",
+            image: "https://randomuser.me/api/portraits/women/2.jpg"
         },
         {
             name: "Sarah Collins",
-            description: "A 28-year-old graphic designer with a passion for modern art. She enjoys painting and often volunteers at local art galleries."
+            description: "A 28-year-old graphic designer with a passion for modern art. She enjoys painting and often volunteers at local art galleries.",
+            image: "https://randomuser.me/api/portraits/men/1.jpg"
         },
         {
             name: "David Thompson",
-            description: "A 42-year-old history professor with a deep knowledge of ancient civilizations. He enjoys traveling and exploring historical landmarks."
+            description: "A 42-year-old history professor with a deep knowledge of ancient civilizations. He enjoys traveling and exploring historical landmarks.",
+            image: "https://randomuser.me/api/portraits/men/5.jpg"
         },
         {
             name: "Emily Rodriguez",
-            description: "A 30-year-old marketing specialist with a knack for social media strategy. She’s an avid reader and frequently attends book clubs."
+            description: "A 30-year-old marketing specialist with a knack for social media strategy. She’s an avid reader and frequently attends book clubs.",
+            image: "https://randomuser.me/api/portraits/women/4.jpg"
         },
         {
             name: "Michael Adams",
-            description: "A 25-year-old fitness instructor who’s passionate about health and wellness. He enjoys running marathons and teaching yoga."
+            description: "A 25-year-old fitness instructor who’s passionate about health and wellness. He enjoys running marathons and teaching yoga.",
+            image: "https://randomuser.me/api/portraits/men/3.jpg"
         },
 
     ];
@@ -52,9 +58,9 @@ const Home = () => {
                 <div className="container">
                     <div className="header-logo">
                         {/* Logo SVG goes here */}
-                        <h2 style={{ color: "white" }}>Caregiver Connect</h2>
+                        {/* <h2 style={{ color: "white" }}>Caregiver Connect</h2> */}
                     </div>
-                    <div className="d-flex signupbutton justify-content-space-between">
+                    <div className="d-flex signupbutton justify-content-center">
                         <Link to="/signup-caregiver">
                             <div className="header-buttons d-flex justify-content-center" >
                                 <button className="cta-button-1  ">Become A Caregiver</button>
@@ -85,7 +91,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className=" row">
+            <div className="row me-0">
                 <div className="col-5 d-flex justify-content-center align-items-center">
                     <div className="text-dark">
                         <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
@@ -142,9 +148,9 @@ const Home = () => {
 
 
 
-            <div>
+          
 
-                <div className="section-1">
+                <div className="section-1 justify-content-center">
                     <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
                         <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>
                         <p className="card-text">We'll match you with a caregiver within 24 hours</p>
@@ -166,45 +172,20 @@ const Home = () => {
                         <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
                     </div>
                 </div>
-            </div>
+            
             <div>
                 <div className="section" style={{ backgroundColor: "#fff" }}>
                     <h2>Why Choose Us</h2>
                     <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
-                    <div class="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}>
+                    {/* <div class="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}> */}
 
-                    </div>
+                    {/* </div> */}
                 </div>
 
-                <div className="section-1">
-
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>
-                        <p className="card-text">We'll match you with a caregiver within 24 hours</p>
-                    </div>
-
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-heart p-2"></i>Experienced Caregivers</h4>
-                        <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
-                    </div>
-
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
-                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
-                    </div>
-
-                </div>
 
             </div>
-
-            <div>
-                <div className="section" style={{ backgroundColor: "#fff" }}>
-                    <h2>Why Choose Us</h2>
-                    <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
-                    <div className="card" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}>
-                    </div>
-                </div>
-            </div>
+            <div class="row me-0 justify-content-center">{testimonialData.map((testimonial)=> <Testimonial data = {testimonial}/> )}</div>
+            
 
             <footer></footer>
         </>
