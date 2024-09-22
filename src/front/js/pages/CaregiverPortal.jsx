@@ -383,6 +383,11 @@ export const CaregiverPortal = () => {
             <h2>{store.caregiver?.name}</h2>
             <p>Email: {store.caregiver?.email}</p>
             <p>Phone: {store.caregiver?.phone}</p>
+            <p>Location: {store.caregiver?.location}</p>
+            <p>Experience: {store.caregiver?.experience}</p>
+            <p>Qualifications: {store.caregiver?.qualifications}</p>
+            <p>Availability: {store.caregiver?.availability}</p>
+            <p>Gender: {store.caregiver?.gender}</p>
           </div>
           <div
             className="tab-pane fade"
