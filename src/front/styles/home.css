@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* outline: 1px solid red; */
 }
 
 /* Ensure body has a smooth flow */
@@ -171,7 +172,7 @@ body:hover .container-backround {
 }
 
 .card-1:hover {
-    animation: hoverScale 0.3s ease-in-out;
+    /* animation: hoverScale 0.3s ease-in-out; */
 }
 
 @keyframes hoverScale {
@@ -295,7 +296,7 @@ body:hover .container-backround {
     line-height: 1.5;
     color: #333;
     text-align: left;
-    float: left; /* Add this line to float the section to the right */
+    /* float: left; Add this line to float the section to the right */
     width: 50%; /* Add this line to set the width of the section */
     margin-left: auto;
     margin-right: auto;
@@ -311,7 +312,7 @@ body:hover .container-backround {
 .section-1 { 
     /* margin: 20px auto; */
     display: center;
-    max-width: fit-content;
+    /* max-width: fit-content; */
     
     /* align-items: center; */
 } 
@@ -350,7 +351,7 @@ body:hover .container-backround {
 footer {
     text-align: center;
     z-index: 2; 
-    position: relative;
+    /* position: relative; */
 }
 
 .hero-text h1 {
