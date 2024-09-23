@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
@@ -7,10 +7,12 @@ import "../../styles/home.css";
 const PatientLogin = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+    const [email,setEmail]=useState("")
+    const[password, setPassword]=useState("")
 
     const handleLogin = async (e) => {
-        e.preventDefault();
-        const success = await actions.loginPatient(e.target.email.value, e.target.password.value);
+        e.preventDefault()
+        const success = await actions.loginPatient(email,password);
         if (success) {
             navigate("/patient")
         } else {
@@ -27,12 +29,12 @@ const PatientLogin = () => {
                     <form onSubmit={handleLogin}>
                         <div className="form-group">
                             <label htmlFor="email">Email address</label>
-                            <input type="email" className="form-control" id="email" name="email" placeholder="Enter email" />
+                            <input type="email" className="form-control" id="email" name="email" placeholder="Enter email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
                             <div className="input-group mb-3">
-                                <input type="password" className="form-control" id="password" name="password" placeholder="Password" />
+                                <input type="password" className="form-control" id="password" name="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                                 <div className="input-group-append">
                                     <span className="input-group-text">
                                         <i className="far fa-eye"></i>

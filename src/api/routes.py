@@ -65,7 +65,7 @@ def login ():
         return jsonify({"msg": "The password provided does not match our records"}), 401
 
     access_token = create_access_token(identity=user.id)
-    return jsonify(access_token=access_token), 200
+    return jsonify({"token":access_token}), 200
 
 @api.route('/user', methods=['GET'])
 @jwt_required()
@@ -76,14 +76,14 @@ def get_userprofile():
         
     return jsonify({'msg': 'User profile info', 'user': user.serialize()}), 200
 
-@api.route('/caregiver', methods=['GET'])
-@jwt_required()
-def get_caregiverprofile():
-    user = Caregiver.query.filter_by(id = get_jwt_identity()).first()
-    if Caregiver is None:
-        return jsonify({'msg': "There's no cargiver with this id"}), 404
+# @api.route('/caregiver', methods=['GET'])
+# @jwt_required()
+# def get_caregiverprofile():
+#     user = Caregiver.query.filter_by(id = get_jwt_identity()).first()
+#     if Caregiver is None:
+#         return jsonify({'msg': "There's no cargiver with this id"}), 404
         
-    return jsonify({'msg': 'Cargiver profile info', 'caregiver': user.serialize()}), 200
+#     return jsonify({'msg': 'Cargiver profile info', 'caregiver': user.serialize()}), 200
     
 
 @api.route('/login/caregiver', methods=['POST'])
@@ -156,10 +156,9 @@ def signup_caregiver ():
          return jsonify({'error': 'Username and password are required'}), 400
 
 @api.route('/caregiver', methods=['GET'])
-# @jwt_required()
+@jwt_required()
 def get_profile():
-    # caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()
-    caregiver = Caregiver.query.filter_by(id=1).first()
+    caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()
     if caregiver is None:
         return jsonify({'msg': 'Caregiver with your id does not exist'}), 404
     serialized_caregiver = caregiver.serialize()
@@ -213,10 +212,11 @@ def get_caregivers():
     return jsonify({'caregivers': caregivers_list}), 200
 
 #This is for the user to request for an appointment from the caregiver 
-# @jwt_required()
+
 @api.route('/request-caregiver', methods=['POST'])
+@jwt_required()
 def request_caregiver():
-    current_user_id = 1
+    current_user_id = get_jwt_identity()
     data = request.get_json()
 
     caregiver_id = data.get('caregiver_id')
@@ -243,13 +243,12 @@ def request_caregiver():
     return jsonify({'message': "request sent successfully." , "request": new_request.serialize()}), 200
 
 @api.route('/caregiver/request-reply', methods=['PUT'])
-# @jwt_required()
+@jwt_required()
 def handle_reply():
-     # caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()
+    caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()
     patient_id=request.get_json().get("patientId")
     reply = request.get_json().get("reply")
     request_id = request.get_json().get("requestId")
-    caregiver = Caregiver.query.filter_by(id=1).first()
     patient = User.query.filter_by(id=patient_id).first()
 
     if caregiver is None:
