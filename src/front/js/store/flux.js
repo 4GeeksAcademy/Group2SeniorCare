@@ -11,10 +11,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
-
-
-
 			getCaregiverProfile: async () => {
+				// const token = localStorage.getItem("token");
 				let options = {
 					headers: {
 						'Content-Type': 'application/json',
@@ -36,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						// Authorization: 'Bearer ' + sessionStorage.getItem('token')
+						Authorization: 'Bearer ' + sessionStorage.getItem('token')
 					},
 					body: JSON.stringify({
 						caregiver_id: formData.caregiverId,
@@ -65,8 +63,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let options = {
 					method: "PUT",
 					headers: {
-						"Content-Type": "application/json"
-						// "Authorization": "Bearer " + sessionStorage.getItem("token")
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
 					},
 					body: JSON.stringify({
 						patientId: patientId,
@@ -119,7 +117,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				try {
-					let response = await fetch(`${process.env.BACKEND_URL}/api/user`, options);
+					// other code before merging
+					// let response = await fetch(`${process.env.BACKEND_URL}/api/patient/profile`, options);
+					// if (response.status !== 200) {
+					//   console.log('Failed to fetch patient profile', response.status);
+					//   return false;
+					// }
+					// let data = await response.json();
+					// console.log('Patient profile fetched', data);
+					// setStore({ patient: data.patient });
+					// return data.patient;
+					let response = await fetch(`${process.env.BACKEND_URL}/api/patient/profile`, options);
 					if (response.status !== 200) {
 						console.log('Failed to fetch patient profile', response.status);
 						return false;
@@ -158,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					const data = await response.json();
 					console.log("Login successful", data);
-					setStore({ token: data.access_token });
+					sessionStorage.setItem("token", data.token)
 
 					return true;
 				} catch (error) {

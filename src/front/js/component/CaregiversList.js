@@ -17,7 +17,7 @@ export const CaregiversList = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(filters).toString();
-            const url = `${process.env.BACKEND_URL}api/caregivers${query}`;
+            const url = `${process.env.BACKEND_URL}/api/caregivers${query}`;
             let response = await fetch(url, {
                 headers: {
                     'Content-Type': 'application/json'

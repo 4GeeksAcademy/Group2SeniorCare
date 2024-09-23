@@ -18,6 +18,7 @@ export const CaregiverPortal = () => {
   useEffect(() => {
     console.log("caregiver useffect")
     getCaregiverInfo();
+
   }, []); // Added 'actions' to the dependency array
 
   const handleReply = async (patientId, requestId, reply) => {
@@ -362,6 +363,18 @@ export const CaregiverPortal = () => {
                                 Status: {item.request_status}
                               </li>
                             </ul>
+                            <button
+                                onClick={() => {
+                                  handleReply(
+                                    item.patient.id,
+                                    item.request_id,
+                                    "deny"
+                                  );
+                                }}
+                                className="btn btn-danger m-1"
+                              >
+                                Cancel Appointment
+                              </button>
                           </div>
                         </div>
                       </div>

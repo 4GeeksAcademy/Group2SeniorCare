@@ -33,7 +33,7 @@ class User(db.Model):
     # 
     requests =db.relationship("UserRequestCaregiver", back_populates="user")
 
-    caregivers = db.relationship("Caregiver", secondary=caregiver_user, overlaps="caring_user")
+    caregivers = db.relationship("Caregiver", secondary=caregiver_user)
     caring_caregiver_id = db.Column(db.Integer, ForeignKey('caregiver.id'),nullable=True)
     caring_caregiver=db.relationship("Caregiver", foreign_keys={caring_caregiver_id})
 
@@ -88,14 +88,9 @@ class Caregiver(db.Model):
 
     # Relationships
     requests = db.relationship("UserRequestCaregiver", back_populates="caregiver")
-    caring_users = db.relationship("User", secondary=caregiver_user, overlaps="caregivers")
-    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
-    # user = db.relationship("User", back_populates="caregivers")
-
-
-    # 
+    caring_users = db.relationship("User", secondary=caregiver_user)
     requests =db.relationship("UserRequestCaregiver", back_populates="caregiver")
-    # caring_users =db.relationship("User")
+
     
     def __repr__(self):
         return f'<Caregiver {self.email}>'
@@ -115,7 +110,7 @@ class Caregiver(db.Model):
             "is_active": self.is_active,
             "is_current": self.is_current,
             "caring_users": [user.serialize() for user in self.caring_users],
-            # "user": self.user
+          
             
             # do not serialize the password, its a security breach
         }# 3RD MODEL
