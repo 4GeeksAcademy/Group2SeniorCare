@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import "./PatientPortal.css";
 import { CaregiversList } from "../component/CaregiversList";
 import { Context } from "../store/appContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faCheck, faUndo, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import the icons you need
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faTrash, faCheck, faUndo, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import the icons you need
 import { useNavigate } from "react-router-dom";
 import { UserProfile } from "../component/userProfile";
 
@@ -149,7 +149,7 @@ export const PatientPortal = () => {
                       <button className="btn btn-outline-secondary">Reschedule</button>
                     </div>
                     <button className="btn btn-link mt-2 w-100 text-center">
-                      <FontAwesomeIcon icon={faMapMarkerAlt} /> View on map
+                      <i class="fa-solid fa-map-location-dot"></i> View on map
                     </button>
                   </div>
                 </div>
