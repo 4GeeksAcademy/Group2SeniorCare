@@ -76,14 +76,44 @@ def get_userprofile():
         
     return jsonify({'msg': 'User profile info', 'user': user.serialize()}), 200
 
-# @api.route('/caregiver', methods=['GET'])
-# @jwt_required()
-# def get_caregiverprofile():
-#     user = Caregiver.query.filter_by(id = get_jwt_identity()).first()
-#     if Caregiver is None:
-#         return jsonify({'msg': "There's no cargiver with this id"}), 404
-        
-#     return jsonify({'msg': 'Cargiver profile info', 'caregiver': user.serialize()}), 200
+
+@api.route('/user', methods=['PUT'])
+@jwt_required()
+def edit_user():
+    # Get the current user based on JWT token
+    user_id = get_jwt_identity()
+    user = User.query.filter_by(id=user_id).first()
+    
+    # If the user doesn't exist, return a 404 error
+    if user is None:
+        return jsonify({'msg': "There's no user with this id"}), 404
+
+    # Get the data from the request
+    data = request.get_json()
+
+    # Check if the data exists
+    if not data:
+        return jsonify({'msg': 'No data provided'}), 400
+
+    # Update the user's fields based on the provided data
+    user.name = data.get('name', user.name)
+    user.date_of_birth = data.get('date_of_birth', user.date_of_birth)
+    user.email = data.get('email', user.email)
+    user.phone = data.get('phone', user.phone)
+    user.emergency_contact = data.get('emergency_contact', user.emergency_contact)
+    user.allergies = data.get('allergies', user.allergies)
+    user.blood_type = data.get('blood_type', user.blood_type)
+    user.hobbies = data.get('hobbies', user.hobbies)
+   
+
+    try:
+        # Commit the changes to the database
+        db.session.commit()
+        return jsonify({'msg': 'User updated successfully'}), 200
+    except Exception as e:
+        db.session.rollback()  # Roll back in case of error
+        return jsonify({'msg': 'Failed to update user', 'error': str(e)}), 500
+
     
 
 @api.route('/login/caregiver', methods=['POST'])

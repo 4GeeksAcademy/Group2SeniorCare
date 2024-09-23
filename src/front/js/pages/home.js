@@ -100,10 +100,10 @@ const Home = () => {
                     <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
                     </div>
                     <div class="carousel-item">
-                    <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
+                    <h2 className="quote-mid">"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease." </h2>
                     </div>
                     <div class="carousel-item">
-                    <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
+                    <h2 className="quote-mid">"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus." </h2>
                     </div>
                 </div>
                 </div>

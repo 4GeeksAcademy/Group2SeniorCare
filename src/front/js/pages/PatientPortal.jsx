@@ -4,34 +4,48 @@ import { CaregiversList } from "../component/CaregiversList";
 import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faCheck, faUndo, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import the icons you need
-
+import { useNavigate } from "react-router-dom";
+import { UserProfile } from "../component/userProfile";
 
 export const PatientPortal = () => {
   const { store, actions } = useContext(Context);
   const [acceptedAppointments, setAcceptedAppointments] = useState([]);
-
+  const [refresh, setRefresh] = useState(false)
+  const navigate = useNavigate()
   useEffect(() => {
-    const fetchAppointments = async () => {
-      try {
-        console.log("fetching appointments");
-        await actions.getAppointments();
-        setAcceptedAppointments(store.getPatientAppointments);
-      } catch (error) {
-        console.error("Failed to fetch appointments:", error);
+    const fetchUserProfile = async () => {
+      let success = await actions.getPatientProfile()
+
+      const fetchAppointments = async () => {
+        try {
+          console.log("fetching appointments");
+          await actions.getAppointments();
+          setAcceptedAppointments(store.getPatientAppointments);
+        } catch (error) {
+          console.error("Failed to fetch appointments:", error);
+        }
+      };
+      if (success) {
+        fetchAppointments();
+        setRefresh(true)
+      } else {
+        navigate("/patient-login")
       }
-    };
-    fetchAppointments();
+
+    }
+
+    fetchUserProfile()
   }, []);
-  
+
   console.log("appointments in store", store.getPatientAppointments);
-  
+
   // Function to format date without seconds
   const formatDate = (dateString) => {
     const date = new Date(dateString);
 
     // Subtract 5 hours from the date
     date.setHours(date.getHours() - 5);
-  
+
     return date.toLocaleString(undefined, {
       year: 'numeric',
       month: 'numeric',
@@ -39,12 +53,12 @@ export const PatientPortal = () => {
       hour: '2-digit',
       minute: '2-digit',
       hour12: true
-    });     
+    });
   };
 
   return (
     <div className="patient-portal">
-      <h1>Welcome Patient!</h1>
+      <h1>Welcome {store.patient?.name}</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -87,7 +101,7 @@ export const PatientPortal = () => {
               aria-controls="profile-tab-pane"
               aria-selected="false"
             >
-              See my Profile
+              My Profile
             </button>
           </li>
         </ul>
@@ -150,10 +164,11 @@ export const PatientPortal = () => {
             id="profile-tab-pane"
             role="tabpanel"
             aria-labelledby="profile-tab"
-            tabIndex="0"
+            tabindex="0"
           >
-            {/* Profile content */}
+            <UserProfile refresh={refresh} />
           </div>
+
         </div>
       </div>
     </div>

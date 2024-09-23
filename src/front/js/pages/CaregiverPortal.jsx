@@ -177,7 +177,7 @@ export const CaregiverPortal = () => {
                               <li className="list-group-item">
                                 Date and Time:{" "}
                                 <span className="float-end">
-                                  {formatDate(item.date_time)} 
+                                  {formatDate(item.date_time)}
                                 </span>
                               </li>
                               <li className="list-group-item">
@@ -269,19 +269,16 @@ export const CaregiverPortal = () => {
                             Phone: {item.phone}
                           </li>
                           <li className="list-group-item">
-                            Emergency Contact: {item.emergencyContact}
+                            Emergency Contact: {item.emergency_contact}
                           </li>
                           <li className="list-group-item">
                             Allergies: {item.allergies}
                           </li>
                           <li className="list-group-item">
-                            Blood Type: {item.bloodType}
+                            Blood Type: {item.blood_type}
                           </li>
                           <li className="list-group-item">
                             Hobbies: {item.hobbies}
-                          </li>
-                          <li className="list-group-item">
-                            Status: {item.is_active ? "Active" : "Inactive"}
                           </li>
                         </ul>
                       </div>
@@ -300,88 +297,88 @@ export const CaregiverPortal = () => {
             aria-labelledby="records-tab"
             tabindex="0"
           >
-        
-    
+
+
             <div>
               {
-              store.caregiver?.requests ?
-              store.caregiver?.requests
-                .filter((item) => item.request_status === "Accepted")
-                ?.map((item, index) => {
-                  return (
-                    <div
-                      className="card mb-3 mx-auto"
-                      style={{ maxWidth: "540px" }}
-                      key={index}
-                    >
-                      <div className="row g-0">
-                        <div className="col-md-6">
-                          <div className="card-body">
-                            <li className="list-group-item">
-                              <h5 className="card-title">
-                                {item.patient.name}
-                              </h5>
-                            </li>
-                            <li className="list-group-item">
-                              Email: {item.patient.email}
-                            </li>
-                            <li className="list-group-item">
-                              Phone: {item.patient.phone}
-                            </li>
-                          </div>
-                        </div>
-                        <div className="col-md-6">
-                          <div className="card-body">
-                            <ul className="list-group list-group-flush">
-                              <li className="list-group-item">
-                                Reason for the Appointment:{" "}
-                                <i className="float-end">
-                                  {item.appointment_reason}
-                                </i>
-                              </li>
+                store.caregiver?.requests ?
+                  store.caregiver?.requests
+                    .filter((item) => item.request_status === "Accepted")
+                    ?.map((item, index) => {
+                      return (
+                        <div
+                          className="card mb-3 mx-auto"
+                          style={{ maxWidth: "540px" }}
+                          key={index}
+                        >
+                          <div className="row g-0">
+                            <div className="col-md-6">
+                              <div className="card-body">
+                                <li className="list-group-item">
+                                  <h5 className="card-title">
+                                    {item.patient.name}
+                                  </h5>
+                                </li>
+                                <li className="list-group-item">
+                                  Email: {item.patient.email}
+                                </li>
+                                <li className="list-group-item">
+                                  Phone: {item.patient.phone}
+                                </li>
+                              </div>
+                            </div>
+                            <div className="col-md-6">
+                              <div className="card-body">
+                                <ul className="list-group list-group-flush">
+                                  <li className="list-group-item">
+                                    Reason for the Appointment:{" "}
+                                    <i className="float-end">
+                                      {item.appointment_reason}
+                                    </i>
+                                  </li>
 
-                              <li className="list-group-item">
-                                Date and Time:{" "}
-                                <span className="float-end">
-                                  {new Date(item.date_time).toLocaleString(
-                                    "en-US",
-                                    {
-                                      year: "numeric",
-                                      month: "2-digit",
-                                      day: "2-digit",
-                                      hour: "numeric",
-                                      minute: "numeric",
-                                      hour12: true,
-                                    }
-                                  )}
-                                </span>
-                              </li>
-                              <li className="list-group-item">
-                                  Location: {"Austin"}
-                              </li>
-                              <li className="list-group-item">
-                                Status: {item.request_status}
-                              </li>
-                            </ul>
-                            <button
-                                onClick={() => {
-                                  handleReply(
-                                    item.patient.id,
-                                    item.request_id,
-                                    "deny"
-                                  );
-                                }}
-                                className="btn btn-danger m-1"
-                              >
-                                Cancel Appointment
-                              </button>
+                                  <li className="list-group-item">
+                                    Date and Time:{" "}
+                                    <span className="float-end">
+                                      {new Date(item.date_time).toLocaleString(
+                                        "en-US",
+                                        {
+                                          year: "numeric",
+                                          month: "2-digit",
+                                          day: "2-digit",
+                                          hour: "numeric",
+                                          minute: "numeric",
+                                          hour12: true,
+                                        }
+                                      )}
+                                    </span>
+                                  </li>
+                                  <li className="list-group-item">
+                                    Location: {"Austin"}
+                                  </li>
+                                  <li className="list-group-item">
+                                    Status: {item.request_status}
+                                  </li>
+                                </ul>
+                                <button
+                                  onClick={() => {
+                                    handleReply(
+                                      item.patient.id,
+                                      item.request_id,
+                                      "deny"
+                                    );
+                                  }}
+                                  className="btn btn-danger m-1"
+                                >
+                                  Cancel Appointment
+                                </button>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  );
-                })
-              :"no request at this time"
+                      );
+                    })
+                  : "no request at this time"
               }
             </div>
           </div>

@@ -20,14 +20,14 @@ class User(db.Model):
     name =db.Column(db.String(120), unique=False, nullable=False )
     date_of_birth=db.Column(db.String(120), unique=False, nullable=False)
     email =db.Column(db.String(120), unique=True, nullable=False)
-    # phone = db.Column(db.String(120), unique=False, nullable=True)
-    # emergencyContact = db.Column(db.String(120), unique=False, nullable=True)
+    phone = db.Column(db.String(120), unique=False, nullable=True)
+    emergency_contact = db.Column(db.String(120), unique=False, nullable=True)
     password =db.Column(db.String(80), unique=False, nullable=False)
-    # allergies=db.Column(db.String(120), unique=False, nullable=True)
-    # bloodType=db.Column(db.String(120), unique=False, nullable=True)
-    # hobbies=db.Column(db.String(300),unique=False, nullable=True)
-    # is_active =db.Column(db.Boolean(), unique=False, nullable=True)
-    # is_current =db.Column(db.Boolean(), unique=False, nullable=True)
+    allergies=db.Column(db.String(120), unique=False, nullable=True)
+    blood_type=db.Column(db.String(120), unique=False, nullable=True)
+    hobbies=db.Column(db.String(300),unique=False, nullable=True)
+    is_active =db.Column(db.Boolean(), unique=False, nullable=True)
+    is_current =db.Column(db.Boolean(), unique=False, nullable=True)
 
 
     # 
@@ -48,13 +48,13 @@ class User(db.Model):
             "name": self.name,
             "date_of_birth": self.date_of_birth,
             "email": self.email,
-            # "phone": self.phone,
-            # "emergencyContact": self.emergencyContact,
-            # "allergies": self.allergies,
-            # "bloodType": self.bloodType,
-            # "hobbies": self.hobbies,
-            # "is_active": self.is_active,
-            # "is_current": self.is_current, 
+            "phone": self.phone,
+            "emergency_contact": self.emergency_contact,
+            "allergies": self.allergies,
+            "blood_type": self.blood_type,
+            "hobbies": self.hobbies,
+            "is_active": self.is_active,
+            "is_current": self.is_current, 
             # do not serialize the password, it's a security breach
         }
 

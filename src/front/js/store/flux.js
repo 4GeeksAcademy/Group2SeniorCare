@@ -321,6 +321,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(data);
 				setStore({ patient: data.user });
 				return true;
+				
+
+
 				// },
 				// getCaregiverProfile: async () => {
 				// 	let options = {
@@ -338,7 +341,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	console.log(data);
 				// 	setStore({ caregiver: data.caregiver });
 				// 	return true;
-			}
+			},
+
+			updatePatientProfile: async (patientdata) => {
+				const options = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					},
+					body: JSON.stringify(patientdata),
+				};
+
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/user`, options);
+
+					if (response.status !== 200) {
+						console.log("Edit failed", response.status);
+						return false;
+					}
+
+					const data = await response.json();
+					console.log("Edit successful", data);
+
+					getActions().getPatientProfile()
+
+					return true;
+				} catch (error) {
+					console.log("Error during Edit", error); // Corrected the log message
+					return false;
+				}
+			},
+
+
+
+
 		}
 	};
 };
