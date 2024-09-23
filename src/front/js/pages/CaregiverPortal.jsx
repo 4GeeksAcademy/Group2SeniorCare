@@ -1,10 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./CaregiverPortal.css";
 import { Context } from "../store/appContext";
+import { CaregiverProfile } from "../component/caregiverProfile";
+import { useNavigate } from "react-router-dom";
+
 
 export const CaregiverPortal = () => {
 
   const { store, actions } = useContext(Context);
+  const [refresh, setRefresh] = useState(false)
+  const navigate = useNavigate()
+
 
   let getCaregiverInfo = async () => {
     let success = await actions.getCaregiverProfile();
@@ -12,6 +18,10 @@ export const CaregiverPortal = () => {
       alert(
         "There was a problem retrieving your data. Please try again later!"
       );
+      navigate("/caregiver-login")
+
+    } else {
+      setRefresh(true)
     }
   };
 
@@ -389,15 +399,8 @@ export const CaregiverPortal = () => {
             role="tabpanel"
             aria-labelledby="profile-tab"
             tabindex="0"
-          >
-            <h2>{store.caregiver?.name}</h2>
-            <p>Email: {store.caregiver?.email}</p>
-            <p>Phone: {store.caregiver?.phone}</p>
-            <p>Location: {store.caregiver?.location}</p>
-            <p>Experience: {store.caregiver?.experience}</p>
-            <p>Qualifications: {store.caregiver?.qualifications}</p>
-            <p>Availability: {store.caregiver?.availability}</p>
-            <p>Gender: {store.caregiver?.gender}</p>
+          ><CaregiverProfile refresh={refresh} />
+
           </div>
           <div
             className="tab-pane fade"

@@ -372,6 +372,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+			updateCaregiverProfile: async (caregiverdata) => {
+				const options = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					},
+					body: JSON.stringify(caregiverdata),
+				};
+
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/caregiver`, options);
+
+					if (response.status !== 200) {
+						console.log("Edit failed", response.status);
+						return false;
+					}
+
+					const data = await response.json();
+					console.log("Edit successful", data);
+
+					getActions().getCaregiverProfile()
+
+					return true;
+				} catch (error) {
+					console.log("Error during Edit", error); // Corrected the log message
+					return false;
+				}
+			},
 
 
 

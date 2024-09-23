@@ -77,16 +77,16 @@ def get_userprofile():
     return jsonify({'msg': 'User profile info', 'user': user.serialize()}), 200
 
 
-@api.route('/user', methods=['PUT'])
+@api.route('/caregiver', methods=['PUT'])
 @jwt_required()
-def edit_user():
-    # Get the current user based on JWT token
-    user_id = get_jwt_identity()
-    user = User.query.filter_by(id=user_id).first()
+def edit_caregiver():
+    # Get the current caregiver based on JWT token
+    caregiver_id = get_jwt_identity()
+    caregiver = Caregiver.query.filter_by(id=caregiver_id).first()
     
-    # If the user doesn't exist, return a 404 error
-    if user is None:
-        return jsonify({'msg': "There's no user with this id"}), 404
+    # If the caregiver doesn't exist, return a 404 error
+    if caregiver is None:
+        return jsonify({'msg': "There's no caregiver with this id"}), 404
 
     # Get the data from the request
     data = request.get_json()
@@ -95,24 +95,24 @@ def edit_user():
     if not data:
         return jsonify({'msg': 'No data provided'}), 400
 
-    # Update the user's fields based on the provided data
-    user.name = data.get('name', user.name)
-    user.date_of_birth = data.get('date_of_birth', user.date_of_birth)
-    user.email = data.get('email', user.email)
-    user.phone = data.get('phone', user.phone)
-    user.emergency_contact = data.get('emergency_contact', user.emergency_contact)
-    user.allergies = data.get('allergies', user.allergies)
-    user.blood_type = data.get('blood_type', user.blood_type)
-    user.hobbies = data.get('hobbies', user.hobbies)
-   
+    # Update the caregiver's fields based on the provided data
+    caregiver.name = data.get('name', caregiver.name)
+    caregiver.email = data.get('email', caregiver.email)
+    caregiver.phone = data.get('phone', caregiver.phone)
+    caregiver.location = data.get('location', caregiver.location)
+    caregiver.experience = data.get('experience', caregiver.experience)
+    caregiver.qualifications = data.get('qualifications', caregiver.qualifications)
+    caregiver.availability = data.get('availability', caregiver.availability)
+    caregiver.gender = data.get('gender', caregiver.gender)
 
     try:
         # Commit the changes to the database
         db.session.commit()
-        return jsonify({'msg': 'User updated successfully'}), 200
+        return jsonify({'msg': 'Caregiver updated successfully'}), 200
     except Exception as e:
         db.session.rollback()  # Roll back in case of error
-        return jsonify({'msg': 'Failed to update user', 'error': str(e)}), 500
+        return jsonify({'msg': 'Failed to update caregiver', 'error': str(e)}), 500
+
 
     
 
