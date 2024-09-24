@@ -9,7 +9,7 @@ export const CaregiversList = () => {
     const [caregivers, setCaregivers] = useState([]);
     const [error, setError] = useState(null);
     const [usaState, setUsaState] = useState("");
-    const [experience, setExperience] = useState("");
+    const [yearsExp, setYearsExp] = useState(2);
     const [gender, setGender] = useState("");
     const [loading, setLoading] = useState(true);
 
@@ -44,7 +44,7 @@ export const CaregiversList = () => {
         const fetchData = async () => {
             const filters = {};
             if (usaState) filters.location = usaState;
-            if (experience) filters.experience = experience;
+            if (yearsExp > 0) filters.experience = yearsExp;
             if (gender) filters.gender = gender;
     
             try {
@@ -59,7 +59,7 @@ export const CaregiversList = () => {
         fetchData();
     
         return () => controller.abort();
-    }, [usaState, experience, gender]);
+    }, [usaState, yearsExp, gender]);
 
     const experienceOptions = [
         { value: "", label: "All" },
@@ -124,17 +124,17 @@ export const CaregiversList = () => {
                     </select>
                 </div>
                 <div className='me-3'>
-                    <select
-                        className="form-select"
-                        value={experience}
-                        onChange={(e) => setExperience(e.target.value)}
-                    >
-                        {experienceOptions.map(option => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </select>
+                    <label htmlFor="rangeInput">Years of experience: {yearsExp}</label>
+                    <input
+                        type="range"
+                        value={yearsExp}
+                        onChange={(e) => setYearsExp(parseInt(e.target.value))}
+                        className="form-range"
+                        min="2"
+                        max="10"
+                        step="1"
+                        id="customRange3"
+                    />
                 </div>
             </nav>
 

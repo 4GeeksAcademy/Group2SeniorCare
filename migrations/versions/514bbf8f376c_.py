@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: de68803a3840
+Revision ID: 514bbf8f376c
 Revises: 
-Create Date: 2024-09-21 17:15:45.667877
+Create Date: 2024-09-24 19:33:52.649085
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'de68803a3840'
+revision = '514bbf8f376c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('qualifications', sa.String(length=120), nullable=False),
     sa.Column('phone', sa.String(length=10), nullable=False),
-    sa.Column('experience', sa.String(length=120), nullable=False),
+    sa.Column('experience', sa.Integer(), nullable=False),
     sa.Column('availability', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
     sa.Column('location', sa.String(length=120), nullable=False),
@@ -39,7 +39,14 @@ def upgrade():
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('date_of_birth', sa.String(length=120), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
+    sa.Column('phone', sa.String(length=120), nullable=True),
+    sa.Column('emergency_contact', sa.String(length=120), nullable=True),
     sa.Column('password', sa.String(length=80), nullable=False),
+    sa.Column('allergies', sa.String(length=120), nullable=True),
+    sa.Column('blood_type', sa.String(length=120), nullable=True),
+    sa.Column('hobbies', sa.String(length=300), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.Column('is_current', sa.Boolean(), nullable=True),
     sa.Column('caring_caregiver_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['caring_caregiver_id'], ['caregiver.id'], ),
     sa.PrimaryKeyConstraint('id'),
