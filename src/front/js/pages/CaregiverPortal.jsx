@@ -19,10 +19,15 @@ export const CaregiverPortal = () => {
 
   useEffect(() => {
     actions.checkSessionStorage();
-    if(!store.token){
+    if (!store.token) {
       navigate("/caregiver-login");
-    } else{
-      console.log("caregiver useffect")
+    } 
+    // else if (store.userRole === "patient") {
+    //   alert("You are logged in as a patient. Redirecting to patient portal.");
+    //   // navigate("/patient-portal");
+    // }
+     else {
+      console.log("caregiver useEffect");
       getCaregiverInfo();
     }
   }, []); // Added 'actions' to the dependency array
