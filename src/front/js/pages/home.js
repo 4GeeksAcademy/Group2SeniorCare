@@ -5,6 +5,7 @@ import "../../styles/home.css";
 // import { Testimonial } from "../component/testimonial";
 import { Link } from "react-router-dom";
 import { Testimonial } from "../component/testimonal";
+import RecipesApi  from "../component/recipesApi";
 
 const Home = () => {
     const { store, actions } = useContext(Context);
@@ -201,6 +202,8 @@ const Home = () => {
 
                     {/* </div> */}
                 </div>
+
+                <RecipesApi/>
 
 
             </div>
