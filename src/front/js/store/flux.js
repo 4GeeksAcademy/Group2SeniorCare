@@ -7,15 +7,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			successMessage: "",
 			token: null,
 			patients: [],
+			recipes: [],
 
 		},
 		actions: {
 			checkSessionStorage: () => {
 				if(sessionStorage.getItem("token")){
-					setStore({
-						token: sessionStorage.getItem("token")
-					})
+					return true
 				}
+				return false
 			},
 			getCaregiverProfile: async () => {
 				// const token = localStorage.getItem("token");
@@ -117,37 +117,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getPatientProfile: async () => {
-				let options = {
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				};
-				try {
-					// other code before merging
-					// let response = await fetch(`${process.env.BACKEND_URL}/api/patient/profile`, options);
-					// if (response.status !== 200) {
-					//   console.log('Failed to fetch patient profile', response.status);
-					//   return false;
-					// }
-					// let data = await response.json();
-					// console.log('Patient profile fetched', data);
-					// setStore({ patient: data.patient });
-					// return data.patient;
-					let response = await fetch(`${process.env.BACKEND_URL}/api/patient/profile`, options);
-					if (response.status !== 200) {
-						console.log('Failed to fetch patient profile', response.status);
-						return false;
-					}
-					let data = await response.json();
-					console.log('Patient profile fetched', data);
-					setStore({ patient: data.patient });
-					return data.patient;
-				} catch (error) {
-					console.log('Error fetching patient profile', error);
-					return false;
-				}
-			},
+		
 			updateSuccessMessage: (newMessage) => {
 				setStore({ successMessage: newMessage })
 			},
@@ -328,24 +298,93 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(data);
 				setStore({ patient: data.user });
 				return true;
-				// },
-				// getCaregiverProfile: async () => {
-				// 	let options = {
-				// 		headers: {
-				// 			'Content-Type': 'application/json',
-				// 			Authorization: 'Bearer ' + sessionStorage.getItem('token')
-				// 		}
-				// 	};
-				// 	let response = await fetch(`${process.env.BACKEND_URL}/api/caregiver`, options);
-				// 	if (response.status !== 200) {
-				// 		console.log('Unable to access your account', response.status);
-				// 		return false;
-				// 	}
-				// 	let data = await response.json();
-				// 	console.log(data);
-				// 	setStore({ caregiver: data.caregiver });
-				// 	return true;
-			}
+				
+
+			},
+
+			updatePatientProfile: async (patientdata) => {
+				const options = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					},
+					body: JSON.stringify(patientdata),
+				};
+
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/user`, options);
+
+					if (response.status !== 200) {
+						console.log("Edit failed", response.status);
+						return false;
+					}
+
+					const data = await response.json();
+					console.log("Edit successful", data);
+
+					getActions().getPatientProfile()
+
+					return true;
+				} catch (error) {
+					console.log("Error during Edit", error); // Corrected the log message
+					return false;
+				}
+			},
+			updateCaregiverProfile: async (caregiverdata) => {
+				const options = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
+					},
+					body: JSON.stringify(caregiverdata),
+				};
+
+				try {
+					const response = await fetch(`${process.env.BACKEND_URL}/api/caregiver`, options);
+
+					if (response.status !== 200) {
+						console.log("Edit failed", response.status);
+						return false;
+					}
+
+					const data = await response.json();
+					console.log("Edit successful", data);
+
+					getActions().getCaregiverProfile()
+
+					return true;
+				} catch (error) {
+					console.log("Error during Edit", error); // Corrected the log message
+					return false;
+				}
+			},
+
+			recipeApi: async () => {
+				let options = {
+					headers: {
+							'x-rapidapi-key': `${process.env.RECIPES_API}`,
+							'x-rapidapi-host': 'tasty.p.rapidapi.com'
+					}
+				};
+				// let response = await fetch(`${process.env.BACKEND_URL}/api/user`, options);
+				let response = await fetch("https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=under_30_minutes", options);
+				if (response.status !== 200) {
+					console.log('Unable to access recipes', response.status);
+					return false;
+				}
+				let data = await response.json();
+				console.log(data,"recipes");
+				setStore({ recipes: data.results });
+				return true;
+				
+
+			},
+
+
+
+
 		}
 	};
 };

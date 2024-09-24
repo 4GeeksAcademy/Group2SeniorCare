@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* outline: 1px solid red; */
 }
 
 /* Ensure body has a smooth flow */
@@ -120,7 +121,7 @@ body:hover .container-backround {
     
 }
 .cta-button-1 {
-    background-color: #359de3;
+    /* background-color: #359de3; */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -129,6 +130,11 @@ body:hover .container-backround {
     cursor: pointer;
     text-align: center;
     font-size: 2rem;
+    text-decoration: none;
+}
+
+.signupbutton .no-underline {
+    text-decoration: none !important;
 }
 
 
@@ -171,7 +177,7 @@ body:hover .container-backround {
 }
 
 .card-1:hover {
-    animation: hoverScale 0.3s ease-in-out;
+    /* animation: hoverScale 0.3s ease-in-out; */
 }
 
 @keyframes hoverScale {
@@ -221,7 +227,7 @@ body:hover .container-backround {
     padding: 20px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); */
     margin-bottom: 20px;
     height: 15vw;
     width: fit-content;
@@ -295,7 +301,7 @@ body:hover .container-backround {
     line-height: 1.5;
     color: #333;
     text-align: left;
-    float: left; /* Add this line to float the section to the right */
+    /* float: left; Add this line to float the section to the right */
     width: 50%; /* Add this line to set the width of the section */
     margin-left: auto;
     margin-right: auto;
@@ -311,7 +317,7 @@ body:hover .container-backround {
 .section-1 { 
     /* margin: 20px auto; */
     display: center;
-    max-width: fit-content;
+    /* max-width: fit-content; */
     
     /* align-items: center; */
 } 
@@ -350,7 +356,7 @@ body:hover .container-backround {
 footer {
     text-align: center;
     z-index: 2; 
-    position: relative;
+    /* position: relative; */
 }
 
 .hero-text h1 {
