@@ -9,7 +9,7 @@ export const CaregiversList = () => {
     const [caregivers, setCaregivers] = useState([]);
     const [error, setError] = useState(null);
     const [usaState, setUsaState] = useState("");
-    const [yearsExp, setYearsExp] = useState(0);
+    const [experience, setExperience] = useState("");
     const [gender, setGender] = useState("");
     const [loading, setLoading] = useState(true);
 
@@ -17,10 +17,11 @@ export const CaregiversList = () => {
         setLoading(true);
         try {
             const query = new URLSearchParams(filters).toString();
-            const url = `${process.env.BACKEND_URL}/api/caregivers${query}`;
+            const url = `${process.env.BACKEND_URL}/api/caregivers${"?" + query}`;
             let response = await fetch(url, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: "Bearer " + sessionStorage.getItem("token")
                 }
             });
             if (!response.ok) {
@@ -43,7 +44,7 @@ export const CaregiversList = () => {
         const fetchData = async () => {
             const filters = {};
             if (usaState) filters.location = usaState;
-            if (yearsExp > 0) filters.experience = yearsExp;
+            if (experience) filters.experience = experience;
             if (gender) filters.gender = gender;
     
             try {
@@ -58,8 +59,21 @@ export const CaregiversList = () => {
         fetchData();
     
         return () => controller.abort();
-    }, [usaState, yearsExp, gender]);
-    
+    }, [usaState, experience, gender]);
+
+    const experienceOptions = [
+        { value: "", label: "All" },
+        { value: "1", label: "1 year" },
+        { value: "2", label: "2 years" },
+        { value: "3", label: "3 years" },
+        { value: "4", label: "4 years" },
+        { value: "5", label: "5 years" },
+        { value: "6", label: "6 years" },
+        { value: "7", label: "7 years" },
+        { value: "8", label: "8 years" },
+        { value: "9", label: "9 years" },
+        { value: "10", label: "10 or more years" }
+    ];
 
     const usaStates = [
         { name: "Alabama", abv: "AL" }, { name: "Alaska", abv: "AK" }, { name: "Arizona", abv: "AZ" },
@@ -109,18 +123,18 @@ export const CaregiversList = () => {
                         <option value="Other">Other</option>
                     </select>
                 </div>
-                <div className='nav-item'>
-                    <label htmlFor="rangeInput">Years of experience: {yearsExp}</label>
-                    <input
-                        type="range"
-                        value={yearsExp}
-                        onChange={(e) => setYearsExp(Number(e.target.value))}
-                        className="form-range"
-                        min="0"
-                        max="25"
-                        step="1"
-                        id="customRange3"
-                    />
+                <div className='me-3'>
+                    <select
+                        className="form-select"
+                        value={experience}
+                        onChange={(e) => setExperience(e.target.value)}
+                    >
+                        {experienceOptions.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             </nav>
 

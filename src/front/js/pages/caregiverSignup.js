@@ -122,10 +122,17 @@ export const SignUp = () => {
 									onChange={handleChange}
 									className="form-control bg-light"
 								>
-									<option>Select your experience level</option>
-									<option>Beginner</option>
-									<option>Intermediate</option>
-									<option>Expert</option>
+									<option>Select your years of experience</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10 or more</option>
 								</select>
 							</div>
 							<div className="form-group my-4">

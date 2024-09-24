@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import "./CaregiverPortal.css";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const CaregiverPortal = () => {
 
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   let getCaregiverInfo = async () => {
     let success = await actions.getCaregiverProfile();
@@ -16,9 +18,13 @@ export const CaregiverPortal = () => {
   };
 
   useEffect(() => {
-    console.log("caregiver useffect")
-    getCaregiverInfo();
-
+    actions.checkSessionStorage();
+    if(!store.token){
+      navigate("/caregiver-login");
+    } else{
+      console.log("caregiver useffect")
+      getCaregiverInfo();
+    }
   }, []); // Added 'actions' to the dependency array
 
   const handleReply = async (patientId, requestId, reply) => {

@@ -4,18 +4,25 @@ import { CaregiversList } from "../component/CaregiversList";
 import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faCheck, faUndo, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'; // Import the icons you need
+import { useNavigate } from "react-router-dom";
 
 
 export const PatientPortal = () => {
   const { store, actions } = useContext(Context);
   const [acceptedAppointments, setAcceptedAppointments] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAppointments = async () => {
+      actions.checkSessionStorage();
       try {
-        console.log("fetching appointments");
-        await actions.getAppointments();
-        setAcceptedAppointments(store.getPatientAppointments);
+        if(!store.token){
+          navigate("/patient-login");
+        } else {
+          console.log("fetching appointments");
+          await actions.getAppointments();
+          setAcceptedAppointments(store.getPatientAppointments);
+        }
       } catch (error) {
         console.error("Failed to fetch appointments:", error);
       }

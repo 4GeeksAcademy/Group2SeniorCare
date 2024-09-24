@@ -10,7 +10,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
-
+			checkSessionStorage: () => {
+				if(sessionStorage.getItem("token")){
+					setStore({
+						token: sessionStorage.getItem("token")
+					})
+				}
+			},
 			getCaregiverProfile: async () => {
 				// const token = localStorage.getItem("token");
 				let options = {
@@ -92,6 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let options = {
 					headers: {
 						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("token")
 					}
 				};
 				try {

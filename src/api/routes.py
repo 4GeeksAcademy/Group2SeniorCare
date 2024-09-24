@@ -9,7 +9,7 @@ from sqlalchemy import func
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from datetime import datetime
 from pytz import UTC
-
+from api.decorators import caregiver_required, patient_required
 
 
 api = Blueprint('api', __name__)
@@ -64,7 +64,10 @@ def login ():
     if user.password != password: 
         return jsonify({"msg": "The password provided does not match our records"}), 401
 
-    access_token = create_access_token(identity=user.id)
+    access_token = create_access_token(
+        identity=user.id,
+        additional_claims={"role": "patient"}
+        )
     return jsonify({"token":access_token}), 200
 
 @api.route('/user', methods=['GET'])
@@ -76,15 +79,6 @@ def get_userprofile():
         
     return jsonify({'msg': 'User profile info', 'user': user.serialize()}), 200
 
-# @api.route('/caregiver', methods=['GET'])
-# @jwt_required()
-# def get_caregiverprofile():
-#     user = Caregiver.query.filter_by(id = get_jwt_identity()).first()
-#     if Caregiver is None:
-#         return jsonify({'msg': "There's no cargiver with this id"}), 404
-        
-#     return jsonify({'msg': 'Cargiver profile info', 'caregiver': user.serialize()}), 200
-    
 
 @api.route('/login/caregiver', methods=['POST'])
 def login_caregiver ():
@@ -99,18 +93,11 @@ def login_caregiver ():
     if user.password != password: 
         return jsonify({"msg": "The password provided does not match our records"}), 401
 
-    access_token = create_access_token(identity=user.id)
+    access_token = create_access_token(
+        identity=user.id,
+        additional_claims={"role": "caregiver"}
+        )
     return jsonify(access_token=access_token), 200
-
-
-# @api.route("/user", methods=["GET"])
-# @jwt_required()
-# def get_user():
-#     user_id = get_jwt_identity()
-#     print(user_id,"user!!!!!!!!!!!!!")
-#     user = User.query.filter_by(id=user_id).first()
-#     return jsonify(user.serialize())
-
 
 @api.route('/caregiver/signup', methods=['POST'])
 def signup_caregiver ():
@@ -156,7 +143,7 @@ def signup_caregiver ():
          return jsonify({'error': 'Username and password are required'}), 400
 
 @api.route('/caregiver', methods=['GET'])
-@jwt_required()
+@caregiver_required()
 def get_profile():
     caregiver = Caregiver.query.filter_by(id = get_jwt_identity()).first()
     if caregiver is None:
@@ -180,7 +167,7 @@ def get_profile():
     return jsonify({'msg': 'Caregiver profile info', 'caregiver': serialized_caregiver}), 200
     
 @api.route('/caregivers', methods=['GET'])
-# @jwt_required()
+@patient_required()
 def get_caregivers():
     # Get query parameters from the request
     location = request.args.get('location')
@@ -275,8 +262,9 @@ def handle_reply():
         db.session.commit()
         return jsonify({'message': "request accepted successfully."}), 200
 
-# @api.route('/patient/appointments', methods=['GET'])
+
 @api.route('/appointments', methods=['GET'])
+@patient_required()
 def get_appointments():
     userRequestCaregivers = UserRequestCaregiver.query.all()
 
