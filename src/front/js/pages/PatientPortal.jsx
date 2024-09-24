@@ -136,10 +136,11 @@ export const PatientPortal = () => {
                       <div>
                         <h5 className="mb-0">{appointment.caregiver.name}</h5>
                         <p className="text-muted mb-0">{appointment.caregiver.email}</p>
+                        <p className="text-muted mb-0">{appointment.caregiver.location}</p>
                         <button className="btn btn-outline-primary btn-sm mt-2">Contact</button>
                       </div>
                     </div>
-                    <div className="appointment-info">
+                    <div className="appointment-info text-muted">
                       <p><strong>Date and time:</strong>{formatDate(appointment.date_time)}</p>
                       <p><strong>Reason for visit:</strong> {appointment.appointment_reason}</p>
                       <p><strong>Status:</strong> <span className={`status-badge ${appointment.request_status.toLowerCase()}`}>{appointment.request_status}</span></p>

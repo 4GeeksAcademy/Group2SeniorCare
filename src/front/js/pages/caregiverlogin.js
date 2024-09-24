@@ -3,10 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-
-
-
-
 const CaregiverLogin = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
@@ -18,6 +14,7 @@ const CaregiverLogin = () => {
             navigate("/caregiver")
         } else {
             console.log("log in failed")
+            alert("Login Failed. Check your credentials and try again.")
         }
 
     };

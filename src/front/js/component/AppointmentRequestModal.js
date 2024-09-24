@@ -34,6 +34,7 @@ export const AppointmentRequestModal= ({caregiver})=>{
           [e.target.name]: e.target.value,
         });
         console.log("Updated formData:", formData)
+        
       };
     
     //   const handleSubmit = async () => {
@@ -52,9 +53,11 @@ export const AppointmentRequestModal= ({caregiver})=>{
         let success = await actions.requestCaregiver({
           ...formData,
           dateTime: selectedDateTime, 
+          
         });
-      
-        if (!success) {
+        if (success){
+          alert("Appointment Request Successful.")
+        } else if (!success) {
           alert("An error occurred while sending your request. Please try again later.");
         }
       };

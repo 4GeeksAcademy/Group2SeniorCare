@@ -115,15 +115,13 @@ export const SignUp = () => {
 								/>
 							</div>
 							<div className="form-group my-4">
-								<label htmlFor="experience"><strong>Experience Level</strong></label>
+								<label htmlFor="experience"><strong>Select your years of experience</strong></label>
 								<select
 									id="experience"
 									value={formData.experience}
 									onChange={handleChange}
 									className="form-control bg-light"
 								>
-									<option>Select your years of experience</option>
-									<option>1</option>
 									<option>2</option>
 									<option>3</option>
 									<option>4</option>
@@ -132,7 +130,7 @@ export const SignUp = () => {
 									<option>7</option>
 									<option>8</option>
 									<option>9</option>
-									<option>10 or more</option>
+									<option>10</option>
 								</select>
 							</div>
 							<div className="form-group my-4">

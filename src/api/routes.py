@@ -218,6 +218,50 @@ def signup_caregiver ():
     else: 
          return jsonify({'error': 'Username and password are required'}), 400
 
+@api.route('/caregivers/signups', methods=['POST'])
+def signups_caregivers():
+    data = request.get_json()
+
+    if not isinstance(data, list): 
+        return jsonify({"msg":"Expected an array of caregivers"}), 400
+
+    for caregiver in data:
+        name = caregiver.get('name')
+        email = caregiver.get('email')
+        phone = caregiver.get('phone')
+        experience = caregiver.get('experience')
+        qualifications = caregiver.get('qualifications')
+        availability = caregiver.get('availability')
+        location = caregiver.get('location')
+        password = caregiver.get('password')
+        gender = caregiver.get('gender')
+
+        if name is None or email is None or phone is None or experience is None or qualifications is None or availability is None or location is None or password is None or gender is None: 
+            return jsonify({"msg": f"Some fields are missing for caregiver {name or 'unknown'}"}), 400
+
+        existing_user = Caregiver.query.filter_by(name=name).first()
+        if existing_user:
+            return jsonify({'error': f'Username {name} already exists'}), 400
+        else:
+            new_user = Caregiver(
+                name=name, 
+                password=password,
+                email=email,
+                phone=phone,
+                experience=experience,
+                qualifications=qualifications,
+                availability=availability,
+                location=location,
+                gender=gender,
+                is_active=True,
+                is_current=False
+            )
+            db.session.add(new_user)
+
+    db.session.commit()
+    return jsonify({'message': 'Caregivers successfully created'}), 200
+
+
 @api.route('/caregiver', methods=['GET'])
 @caregiver_required()
 def get_profile():
@@ -241,13 +285,14 @@ def get_profile():
             serialized_requests.append(request_details)
     serialized_caregiver["requests"] = serialized_requests
     return jsonify({'msg': 'Caregiver profile info', 'caregiver': serialized_caregiver}), 200
-    
+
+# Within patient portal to retrieve the list of Caregivers with filter
 @api.route('/caregivers', methods=['GET'])
 @patient_required()
 def get_caregivers():
     # Get query parameters from the request
     location = request.args.get('location')
-    experience = request.args.get('experience', type=int)  # Ensure experience is treated as an integer
+    experience = request.args.get('experience')  # Ensure experience is treated as an integer
     gender = request.args.get('gender')
 
     # Build the query. Obtains all caregivers in database. 

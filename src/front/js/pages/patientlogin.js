@@ -17,6 +17,7 @@ const PatientLogin = () => {
             navigate("/patient")
         } else {
             console.log("log in failed")
+            alert("Login Failed. Check your credentials and try again.")
         }
 
     };
