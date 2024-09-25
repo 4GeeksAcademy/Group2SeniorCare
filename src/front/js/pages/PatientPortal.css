@@ -150,4 +150,22 @@ button:hover {
   .btn-link:hover {
     text-decoration: underline;
   }
+
+  .caregiver-info p {
+    font-style: normal; /* Reset any inherited italics */
+  }
+  
+  .caregiver-info .text-muted {
+    font-style: italic; /* Specifically italicize email and location */
+  }
+  
+  .appointment-info strong {
+    font-weight: bold;
+  }
+  
+  .appointment-info p {
+    font-style: normal; /* Regular style for the appointment details */
+    color: #212529; /* Make sure it's visible with a proper text color */
+  }
+  
   

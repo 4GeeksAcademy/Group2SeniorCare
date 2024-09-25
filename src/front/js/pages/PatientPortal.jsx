@@ -12,7 +12,7 @@ export const PatientPortal = () => {
   const [acceptedAppointments, setAcceptedAppointments] = useState([]);
   const [refresh, setRefresh] = useState(false)
   const navigate = useNavigate()
-  
+
   useEffect(() => {
     const fetchUserProfile = async () => {
       let success = await actions.getPatientProfile()
@@ -59,7 +59,7 @@ export const PatientPortal = () => {
 
   return (
     <div className="patient-portal">
-      <h1>Welcome {store.patient?.name}</h1>
+      <h1>Welcome {store.patient?.name}!</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -129,29 +129,48 @@ export const PatientPortal = () => {
             {acceptedAppointments.length > 0 ? (
               acceptedAppointments.map((appointment) => (
                 <div key={appointment.id} className="card appointment-card mb-3">
-                  <div className="card-body">
-                    <h4 className="card-title">Appointment Details</h4>
-                    <div className="doctor-info d-flex align-items-center mb-3">
-                      <img src={appointment.caregiver.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt={appointment.caregiver.name} className="doctor-image me-3" />
+                  <div className="card-body" style={{ color: "#212529" }}> {/* Explicitly set the text color */}
+                    {/* Caregiver Information */}
+                    <div className="caregiver-info d-flex align-items-center mb-3">
+                      <img
+                        src={appointment.caregiver.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                        alt={appointment.caregiver.name}
+                        className="caregiver-image rounded-circle me-3"
+                        style={{ width: "60px", height: "60px" }}
+                      />
                       <div>
-                        <h5 className="mb-0">{appointment.caregiver.name}</h5>
-                        <p className="text-muted mb-0">{appointment.caregiver.email}</p>
-                        <p className="text-muted mb-0">{appointment.caregiver.location}</p>
+                        <h5 className="mb-1 text-dark">{appointment.caregiver.name}</h5>
+                        <p className="text-muted fst-italic mb-0">{appointment.caregiver.email}</p>
+                        <p className="text-muted fst-italic mb-0">{appointment.caregiver.location}</p>
                         <button className="btn btn-outline-primary btn-sm mt-2">Contact</button>
                       </div>
                     </div>
-                    <div className="appointment-info text-muted">
-                      <p><strong>Date and time:</strong>{formatDate(appointment.date_time)}</p>
-                      <p><strong>Reason for visit:</strong> {appointment.appointment_reason}</p>
-                      <p><strong>Status:</strong> <span className={`status-badge ${appointment.request_status.toLowerCase()}`}>{appointment.request_status}</span></p>
-                      <p><strong>Location:</strong> {appointment.caregiver.location}</p>
+
+                    {/* Appointment Details */}
+                    <div className="appointment-info">
+                      <p className="mb-1">
+                        <strong>Date & Time:</strong> {formatDate(appointment.date_time)}
+                      </p>
+                      <p className="mb-1">
+                        <strong>Reason:</strong> {appointment.appointment_reason}
+                      </p>
+                      <p className="mb-1">
+                        <strong>Status:</strong> <span className={`badge ${appointment.request_status.toLowerCase()}`}>{appointment.request_status}</span>
+                      </p>
+                      <p className="mb-1">
+                        <strong>Location:</strong> {appointment.caregiver.location}
+                      </p>
                     </div>
-                    <div className="d-flex justify-content-between mt-3">
-                      <button className="btn btn-primary">Confirm</button>
+
+                    {/* Actions */}
+                    <div className="d-flex justify-content-between align-items-center mt-4">
+                      <button className="btn btn-danger">Cancel</button>
                       <button className="btn btn-outline-secondary">Reschedule</button>
                     </div>
-                    <button className="btn btn-link mt-2 w-100 text-center">
-                      <i class="fa-solid fa-map-location-dot"></i> View on map
+
+                    {/* Map Link */}
+                    <button className="btn btn-link mt-3 w-100 text-center text-decoration-none">
+                      <i className="fa-solid fa-map-location-dot me-2"></i> View on Map
                     </button>
                   </div>
                 </div>

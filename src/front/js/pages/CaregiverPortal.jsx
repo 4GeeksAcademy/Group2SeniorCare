@@ -61,7 +61,7 @@ export const CaregiverPortal = () => {
 
   return (
     <div className="patient-portal">
-      <h1>Welcome {store.caregiver?.name} Caregiver!</h1>
+      <h1>Welcome {store.caregiver?.name}!</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul
@@ -266,9 +266,9 @@ export const CaregiverPortal = () => {
                     >
                       <div className="accordion-body">
                         <ul className="list-group list-group-flush">
-                          <li className="list-group-item">
+                          {/* <li className="list-group-item">
                             <h5 className="card-title">{item.name}</h5>
-                          </li>
+                          </li> */}
                           <li className="list-group-item">
                             Date of Birth: {item.date_of_birth}
                           </li>
