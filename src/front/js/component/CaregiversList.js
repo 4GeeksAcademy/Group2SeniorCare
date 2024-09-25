@@ -95,6 +95,7 @@ export const CaregiversList = () => {
         { name: "Wisconsin", abv: "WI" }, { name: "Wyoming", abv: "WY" }
     ];
 
+
     return (
         <div className="caregivers-container">
             <h2>List of Caregivers</h2>
@@ -111,7 +112,7 @@ export const CaregiversList = () => {
                         ))}
                     </select>
                 </div>
-                <div className='me-3'>
+                <div className='me-3 shadow border'>
                     <select
                         className="form-select"
                         value={gender}
@@ -119,8 +120,7 @@ export const CaregiversList = () => {
                     >
                         <option value="">Gender</option>
                         <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option style={{}} value="Female">Female</option>
                     </select>
                 </div>
                 <div className='me-3'>
@@ -146,7 +146,7 @@ export const CaregiversList = () => {
                 <div className="caregiver-list">
                     {caregivers.length > 0 ? (
                         caregivers.map((caregiver, index) => (
-                            <div className="card mb-3" key={index}>
+                            <div className="card mb-3 shadow" key={index}>
                                 <div className="row g-0">
                                     <div className="col-md-4 d-flex flex-column justify-content-center align-items-center my-3">
                                         <img

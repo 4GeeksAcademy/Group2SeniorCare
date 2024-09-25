@@ -36,3 +36,80 @@
 .request-button {
   width: 80%;
 }
+/* 
+input[type="range"] {
+  accent-color: #0f4c81; /* Custom color for thumb and track */
+
+
+input[type="range"] {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #0f4c81, #ddd); /* Track color */
+  border-radius: 5px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #0f4c81; /* Thumb color */
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #0f4c81; /* Thumb color */
+  cursor: pointer;
+}
+
+
+/* Style the select dropdown */
+.form-select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.375rem;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  appearance: none; /* Remove default arrow for custom styles */
+}
+
+
+/* Focused state */
+/* .form-select:focus {
+  border-color: #0f4c81 !important;
+  box-shadow: 0 0 5px rgba(15, 76, 129, 0.5) !important;
+} */
+
+/* Hover and selected state for options 
+.form-select option:hover {
+  background-color: #0f4c81 !important;
+  color: #fff !important;
+}
+
+/* Selected state 
+.form-select option:checked {
+  background-color: #0f4c81 !important;
+  color: #fff !important;
+}*/
+
+/* Optional: style for a shadowed border if needed 
+.shadow.border {
+  border-color: #0f4c81 !important;
+  box-shadow: 0 2px 5px rgba(15, 76, 129, 0.25) !important;
+}
+
+
+/* .dropdown-item:hover {
+  background-color: #0f4c81;
+} */
+
+

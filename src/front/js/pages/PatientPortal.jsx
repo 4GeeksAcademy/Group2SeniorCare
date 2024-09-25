@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import "./PatientPortal.css";
+import "../../styles/PatientPortal.css";
 import { CaregiversList } from "../component/CaregiversList";
 import { Context } from "../store/appContext";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

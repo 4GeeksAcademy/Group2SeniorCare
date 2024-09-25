@@ -25,11 +25,11 @@ const CaregiverLogin = () => {
 
     return (
         <div className="d-flex align-items-center justify-content-center vh-100"> {/* Center vertically and horizontally */}
-            <div className="card shadow-lg p-4" style={{ maxWidth: "25rem", width: "100%" }}> {/* Using rem for max-width */}
+            <div className="card-1 shadow-lg p-4 rounded-3" style={{ maxWidth: "25rem", width: "100%" }}> {/* Using rem for max-width */}
                 <h2 className="text-center mb-4">Caregiver Log-in</h2> {/* Professional-looking header */}
                 <form onSubmit={handleLogin}>
                     <div className="form-group mb-3">
-                        <label htmlFor="email">Email address</label>
+                        <label className="d-flex justify-content" htmlFor="email">Email address</label>
                         <input
                             type="email"
                             className="form-control"
@@ -40,7 +40,7 @@ const CaregiverLogin = () => {
                         />
                     </div>
                     <div className="form-group mb-4">
-                        <label htmlFor="password">Password</label>
+                        <label className="d-flex justify-content" htmlFor="password">Password</label>
                         <div className="input-group">
                             <input
                                 type={showPassword ? "text" : "password"} // Dynamically set type
@@ -61,7 +61,7 @@ const CaregiverLogin = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">Submit</button> {/* Full width button */}
+                    <button type="submit" className="btn text-white w-100" style={{background: "#0f4c81"}}>Submit</button> {/* Full width button */}
                 </form>
             </div>
         </div>

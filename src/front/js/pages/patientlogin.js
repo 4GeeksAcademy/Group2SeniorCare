@@ -27,11 +27,11 @@ const PatientLogin = () => {
 
     return (
         <div className="d-flex align-items-center justify-content-center vh-100">
-            <div className="card shadow-lg p-4" style={{ maxWidth: "25rem", width: "100%" }}>
+            <div className="card-1 shadow-lg p-4" style={{ maxWidth: "25rem", width: "100%" }}>
                 <h2 className="text-center mb-4">Patient Log-in</h2> {/* Professional-looking header */}
                 <form onSubmit={handleLogin}>
                     <div className="form-group mb-3">
-                        <label htmlFor="email">Email address</label>
+                        <label className="d-flex justify-content" htmlFor="email">Email address</label>
                         <input
                             type="email"
                             className="form-control"
@@ -44,7 +44,7 @@ const PatientLogin = () => {
                         />
                     </div>
                     <div className="form-group mb-4">
-                        <label htmlFor="password">Password</label>
+                        <label className="d-flex justify-content" htmlFor="password">Password</label>
                         <div className="input-group">
                             <input
                                 type={showPassword ? "text" : "password"} // Dynamically set type
@@ -67,7 +67,8 @@ const PatientLogin = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">Submit</button> {/* Full width button */}
+                    <button type="submit" className="btn text-white w-100" style={{background: "#0f4c81",
+    color: "white !important"}}>Submit</button> {/* Full width button */}
                 </form>
             </div>
         </div>
