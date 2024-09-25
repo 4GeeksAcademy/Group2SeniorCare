@@ -137,9 +137,9 @@ button:hover {
     color: white;
   }
   
-  .status-badge.not.confirmed {
+  .pending{
     background-color: #ffc107;
-    color: black;
+    color: white;
   }
   
   .btn-link {

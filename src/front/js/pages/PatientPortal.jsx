@@ -128,7 +128,7 @@ export const PatientPortal = () => {
             <h3>Your Accepted Appointments:</h3>
             {acceptedAppointments.length > 0 ? (
               acceptedAppointments.map((appointment) => (
-                <div key={appointment.id} className="card appointment-card mb-3">
+                <div key={appointment.id} className="card shadow appointment-card mb-3">
                   <div className="card-body" style={{ color: "#212529" }}> {/* Explicitly set the text color */}
                     {/* Caregiver Information */}
                     <div className="caregiver-info d-flex align-items-center mb-3">
@@ -136,30 +136,32 @@ export const PatientPortal = () => {
                         src={appointment.caregiver.image || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
                         alt={appointment.caregiver.name}
                         className="caregiver-image rounded-circle me-3"
-                        style={{ width: "60px", height: "60px" }}
+                        style={{ width: "110px", height: "110px" }}
                       />
                       <div>
-                        <h5 className="mb-1 text-dark">{appointment.caregiver.name}</h5>
-                        <p className="text-muted fst-italic mb-0">{appointment.caregiver.email}</p>
-                        <p className="text-muted fst-italic mb-0">{appointment.caregiver.location}</p>
-                        <button className="btn btn-outline-primary btn-sm mt-2">Contact</button>
+                        <li className="list-group-item fw-bold fs-4">{appointment.caregiver.name}</li>
+                        <li className="list-group-item">
+                          <h5 className="card-title">{appointment.caregiver.email}</h5>
+                        </li>
+                        {/* <button className="btn btn-outline-primary btn-sm mt-2">Contact</button> */}
                       </div>
                     </div>
 
                     {/* Appointment Details */}
                     <div className="appointment-info">
-                      <p className="mb-1">
+                      <li className="list-group-item fst-normal">
                         <strong>Date & Time:</strong> {formatDate(appointment.date_time)}
-                      </p>
-                      <p className="mb-1">
+                      </li>
+                      <li className="list-group-item fst-normal">
                         <strong>Reason:</strong> {appointment.appointment_reason}
-                      </p>
-                      <p className="mb-1">
+                      </li>
+                      <li className="list-group-item fst-normal">
                         <strong>Status:</strong> <span className={`badge ${appointment.request_status.toLowerCase()}`}>{appointment.request_status}</span>
-                      </p>
-                      <p className="mb-1">
+                      </li>
+                      <li className="list-group-item fst-normal">
                         <strong>Location:</strong> {appointment.caregiver.location}
-                      </p>
+                      </li>
+
                     </div>
 
                     {/* Actions */}
