@@ -128,7 +128,7 @@ export const PatientPortal = () => {
             <h3>Your Accepted Appointments:</h3>
             {acceptedAppointments.length > 0 ? (
               acceptedAppointments.map((appointment) => (
-                <div key={appointment.id} className="card shadow appointment-card mb-3">
+                <div key={appointment.id} className="card p-3 shadow appointment-card mb-3">
                   <div className="card-body" style={{ color: "#212529" }}> {/* Explicitly set the text color */}
                     {/* Caregiver Information */}
                     <div className="caregiver-info d-flex align-items-center mb-3">
@@ -165,7 +165,7 @@ export const PatientPortal = () => {
                     </div>
 
                     {/* Actions */}
-                    <div className="d-flex justify-content-between align-items-center mt-4">
+                    <div className="d-flex justify-content-between align-items-center mt-3 px-5">
                       <button className="btn btn-danger">Cancel</button>
                       <button className="btn btn-outline-secondary">Reschedule</button>
                     </div>
