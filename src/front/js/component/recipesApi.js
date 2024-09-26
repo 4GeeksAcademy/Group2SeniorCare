@@ -20,9 +20,9 @@ const RecipesApi = () => {
                     (recipeObj, index) => {
                         return (
                             <div key={index}>
-                                <div class="card">
+                                <div class=" w-25 h-25 m-auto">
                                     <img src={recipeObj.thumbnail_url} class="card-img-top" alt={recipeObj.name} />
-                                    <div class="card-body">
+                                    <div class="card-body text-dark">
                                         <h5 class="card-title text-dark">{recipeObj.name}</h5>
                                         <p class="card-text">{recipeObj.description}</p>
                                         <a 

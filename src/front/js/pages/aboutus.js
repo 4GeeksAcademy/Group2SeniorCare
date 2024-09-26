@@ -21,6 +21,7 @@ const AboutUs = () => {
                     <p>
                     We are a team of passionate developers who want to make a positive impact in people's life. We believe that technology can be a powerful tool for improving the quality of life of others. We are committed to helping people find the right caregiver for their needs.
                     </p>
+                 
                 </div>
             </div>
         </div>

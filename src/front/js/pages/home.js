@@ -202,11 +202,34 @@ const Home = () => {
                     {/* </div> */}
                 </div>
 
-                {/* <RecipesApi/> */}
+                
 
 
             </div>
             <div class="row me-0 justify-content-center">{testimonialData.map((testimonial) => <Testimonial data={testimonial} />)}</div>
+
+                        <div>
+            <Link to="/recipes">
+                            <div className="header-buttons  d-flex justify-content-left">
+
+                                <button className="cta-button-2 "> (Healthy Recipes)Bonus Gift</button>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className="d-flex signupbutton justify-content-center">
+                        <Link to="/signup-caregiver ">
+                            <div className="header-buttons d-flex justify-content-center">
+                                <button className="cta-button-1 text-decoration-none ">Become A Caregiver</button>
+
+                            </div>
+                        </Link>
+                        <Link to="/signup-patient">
+                            <div className="header-buttons  d-flex justify-content-center">
+
+                                <button className="cta-button-1 ">Join As A Patient</button>
+                            </div>
+                        </Link>
+                    </div>
 
 
             <footer></footer>

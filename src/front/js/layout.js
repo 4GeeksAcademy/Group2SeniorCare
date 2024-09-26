@@ -19,6 +19,7 @@ import AboutUs from "./pages/aboutus.js";
 import PatientProfile from "./pages/patientprofile.js";
 import { ProfileSettings } from "./pages/profilesettings.js";
 import CaregiverProfile from "./pages/caregiverprofile.js";
+import { Recipes } from "./pages/recipes.js";
 
 
 
@@ -48,6 +49,7 @@ const Layout = () => {
                         <Route element={<PatientProfile />} path="/patient-profile" />
                         <Route element={<CaregiverProfile />} path="/caregiver-profile" />
                         <Route element={<ProfileSettings />} path="/profilesettings" />
+                        <Route element={<Recipes />} path="/recipes" />
                         <Route element={<AboutUs />} path="/about-us" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
