@@ -137,9 +137,9 @@ button:hover {
     color: white;
   }
   
-  .status-badge.not.confirmed {
+  .pending{
     background-color: #ffc107;
-    color: black;
+    color: white;
   }
   
   .btn-link {
@@ -150,4 +150,49 @@ button:hover {
   .btn-link:hover {
     text-decoration: underline;
   }
+
+  .caregiver-info p {
+    font-style: normal; /* Reset any inherited italics */
+  }
+  
+  .caregiver-info .text-muted {
+    font-style: italic; /* Specifically italicize email and location */
+  }
+  
+  .appointment-info strong {
+    font-weight: bold;
+  }
+  
+  .appointment-info p {
+    font-style: normal; /* Regular style for the appointment details */
+    color: #212529; /* Make sure it's visible with a proper text color */
+  }
+
+  /* css imported from home for login card */
+  
+
+  .card-1 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    max-width: 350px;
+    text-align: center;
+    z-index: 1;
+}
+
+.card-1 h4 {
+    font-size: 1.5rem;
+    color: #0f4c81;
+}
+
+.card-1 p {
+    font-size: 1.2rem;
+    color: #555;
+}
   
