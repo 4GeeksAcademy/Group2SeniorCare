@@ -26,7 +26,7 @@ export const CaregiverPortal = () => {
   };
 
   useEffect(() => {
-    if (actions.checkSessionStorage()){
+    if (actions.checkSessionStorage()) {
       getCaregiverInfo();
     }
   }, []); // Added 'actions' to the dependency array
@@ -61,7 +61,7 @@ export const CaregiverPortal = () => {
 
   return (
     <div className="patient-portal">
-      <h1>Welcome {store.caregiver?.name} Caregiver!</h1>
+      <h1>Welcome {store.caregiver?.name}!</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul
@@ -140,6 +140,8 @@ export const CaregiverPortal = () => {
             </button>
           </li>
         </ul>
+
+        {/* Current Requests */}
         <div className="tab-content" id="myTabContent">
           <div
             className="tab-pane fade show active"
@@ -153,75 +155,58 @@ export const CaregiverPortal = () => {
                 ?.filter((item) => item.request_status === "Pending")
                 .map((item, index) => {
                   return (
-                    <div
-                      className="card mb-3 mx-auto"
-                      style={{ maxWidth: "540px" }}
-                      key={index}
-                    >
-                      <div className="row g-0">
-                        <div className="col-md-6">
-                          <div className="card-body">
+                    <div key={index} className="card p-3 shadow appointment-card mb-3">
+                      <div className="card-body" style={{ color: "#212529" }}>
+                        {/* Patient Information */}
+                        <div className="patient-info d-flex align-items-center mb-3">
+                          <img
+                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                            alt="Patient"
+                            className="patient-image rounded-circle me-3"
+                            style={{ width: "110px", height: "110px" }}
+                          />
+                          <div>
+                            <li className="list-group-item fw-bold fs-4">{item.patient.name}</li>
                             <li className="list-group-item">
-                              <h5 className="card-title">
-                                {item.patient.name}
-                              </h5>
+                              <h5 className="card-title">{item.patient.email}</h5>
                             </li>
-                            <li className="list-group-item">
-                              Email: {item.patient.email}
-                            </li>
-                            <li className="list-group-item">
-                              Phone: {item.patient.phone}
-                            </li>
+                            <li className="list-group-item">Phone: {item.patient.phone}</li>
                           </div>
                         </div>
-                        <div className="col-md-6">
-                          <div className="card-body">
-                            <ul className="list-group list-group-flush">
-                              <li className="list-group-item">
-                                Reason for the Appointment:{" "}
-                                <i className="float-end">
-                                  {item.appointment_reason}
-                                </i>
-                              </li>
 
-                              <li className="list-group-item">
-                                Date and Time:{" "}
-                                <span className="float-end">
-                                  {formatDate(item.date_time)}
-                                </span>
-                              </li>
-                              <li className="list-group-item">
-                                Status: {item.request_status}
-                              </li>
-                            </ul>
-                            <div className="btnGroup">
-                              <button
-                                onClick={() => {
-                                  handleReply(
-                                    item.patient.id,
-                                    item.request_id,
-                                    "accept"
-                                  );
-                                }}
-                                className="btn btn-success m-1"
-                              >
-                                Accept
-                              </button>
-                              <button
-                                onClick={() => {
-                                  handleReply(
-                                    item.patient.id,
-                                    item.request_id,
-                                    "deny"
-                                  );
-                                }}
-                                className="btn btn-secondary m-1"
-                              >
-                                Deny
-                              </button>
-                            </div>
-                          </div>
+                        {/* Appointment Details */}
+                        <div className="appointment-info">
+                          <li className="list-group-item fst-normal">
+                            <strong>Date & Time:</strong> {formatDate(item.date_time)}
+                          </li>
+                          <li className="list-group-item fst-normal">
+                            <strong>Reason:</strong> {item.appointment_reason}
+                          </li>
+                          <li className="list-group-item fst-normal">
+                            <strong>Status:</strong> <span className={`badge ${item.request_status.toLowerCase()}`}>{item.request_status}</span>
+                          </li>
                         </div>
+
+                        {/* Accept and Deny Buttons */}
+                        <div className="d-flex justify-content-between align-items-center mt-3 px-5">
+                          <button
+                            className="btn btn-success"
+                            onClick={() => handleReply(item.patient.id, item.request_id, 'accept')}
+                          >
+                            Accept
+                          </button>
+                          <button
+                            className="btn btn-secondary"
+                            onClick={() => handleReply(item.patient.id, item.request_id, 'deny')}
+                          >
+                            Deny
+                          </button>
+                        </div>
+
+                        {/* Map Link */}
+                        <button className="btn btn-link mt-3 w-100 text-center text-decoration-none">
+                          <i className="fa-solid fa-map-location-dot me-2"></i> View on Map
+                        </button>
                       </div>
                     </div>
                   );
@@ -266,9 +251,9 @@ export const CaregiverPortal = () => {
                     >
                       <div className="accordion-body">
                         <ul className="list-group list-group-flush">
-                          <li className="list-group-item">
+                          {/* <li className="list-group-item">
                             <h5 className="card-title">{item.name}</h5>
-                          </li>
+                          </li> */}
                           <li className="list-group-item">
                             Date of Birth: {item.date_of_birth}
                           </li>

@@ -95,6 +95,7 @@ export const CaregiversList = () => {
         { name: "Wisconsin", abv: "WI" }, { name: "Wyoming", abv: "WY" }
     ];
 
+
     return (
         <div className="caregivers-container">
             <h2>List of Caregivers</h2>
@@ -111,7 +112,7 @@ export const CaregiversList = () => {
                         ))}
                     </select>
                 </div>
-                <div className='me-3'>
+                <div className='me-3 shadow border'>
                     <select
                         className="form-select"
                         value={gender}
@@ -119,8 +120,7 @@ export const CaregiversList = () => {
                     >
                         <option value="">Gender</option>
                         <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
+                        <option style={{}} value="Female">Female</option>
                     </select>
                 </div>
                 <div className='me-3'>
@@ -146,14 +146,14 @@ export const CaregiversList = () => {
                 <div className="caregiver-list">
                     {caregivers.length > 0 ? (
                         caregivers.map((caregiver, index) => (
-                            <div className="card mb-3" key={index}>
+                            <div className="card mb-3 shadow ps-4" key={index}>
                                 <div className="row g-0">
-                                    <div className="col-md-4 d-flex flex-column justify-content-center align-items-center my-3">
+                                    <div className="col-md-4 d-flex flex-column justify-content-center align-items-center my-5 ">
                                         <img
                                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                                            className="img-fluid rounded-start mb-1"
+                                            className="img-fluid rounded"
                                             alt="Caregiver"
-                                            width="150px"
+                                            width="230px"
                                         />
                                         <button
                                             type="button"
@@ -169,13 +169,16 @@ export const CaregiversList = () => {
                                     <div className="col-md-8">
                                         <div className="card-body">
                                             <ul className="list-group list-group-flush">
+                                                <li className="list-group-item fw-bold fs-4">
+                                                    {caregiver.name}
+                                                </li>
                                                 <li className="list-group-item">
                                                     <h5 className="card-title">{caregiver.email}</h5>
                                                 </li>
-                                                <li className="list-group-item">Qualifications: {caregiver.qualifications}</li>
-                                                <li className="list-group-item">Years of experience: {caregiver.experience}</li>
-                                                <li className="list-group-item">Location: {caregiver.location}</li>
-                                                <li className="list-group-item">Gender: {caregiver.gender}</li>
+                                                <li className="list-group-item fst-normal">Qualifications: {caregiver.qualifications}</li>
+                                                <li className="list-group-item fst-normal">Years of experience: {caregiver.experience}</li>
+                                                <li className="list-group-item fst-normal">Location: {caregiver.location}</li>
+                                                <li className="list-group-item fst-normal">Gender: {caregiver.gender}</li>
                                             </ul>
                                         </div>
                                     </div>

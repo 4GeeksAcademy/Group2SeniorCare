@@ -176,10 +176,6 @@ body:hover .container-backround {
     }
 }
 
-.card-1:hover {
-    /* animation: hoverScale 0.3s ease-in-out; */
-}
-
 @keyframes hoverScale {
     0% {
         transform: scale(1);
@@ -551,4 +547,7 @@ header {
         
         height: 100px;
 }
+
+
+
 
