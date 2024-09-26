@@ -5,7 +5,7 @@ import "../../styles/home.css";
 // import { Testimonial } from "../component/testimonial";
 import { Link } from "react-router-dom";
 import { Testimonial } from "../component/testimonal";
-import RecipesApi  from "../component/recipesApi";
+import RecipesApi from "../component/recipesApi";
 
 const Home = () => {
     const { store, actions } = useContext(Context);
@@ -24,28 +24,28 @@ const Home = () => {
 
     const testimonialData = [
         {
-            name: "John Rivers",
-            description: "A 34-year-old software engineer who loves hiking and photography. Known for his calm demeanor and problem-solving skills.",
+            name: "Sarah Collins",
+            description: "I was hesitant at first, but CareConnect delivered! The caregiver they provided was attentive, patient, and genuinely caring. They exceeded my expectations and made me feel comfortable and supported. Five stars!",
             image: "https://randomuser.me/api/portraits/women/2.jpg"
         },
         {
-            name: "Sarah Collins",
-            description: "A 28-year-old graphic designer with a passion for modern art. She enjoys painting and often volunteers at local art galleries.",
+            name: "John Rivers",
+            description: "I was blown away by the quality of care and compassion provided by the caregiver from CareConnect. They truly went above and beyond to make sure my loved one was comfortable and happy. Highly recommend!",
             image: "https://randomuser.me/api/portraits/men/1.jpg"
         },
         {
             name: "David Thompson",
-            description: "A 42-year-old history professor with a deep knowledge of ancient civilizations. He enjoys traveling and exploring historical landmarks.",
+            description: "The caregiver from CareConnect was a godsend! They helped my mother with her daily routines and even took her to appointments. We couldn't have asked for a more caring and professional service. Thank you!",
             image: "https://randomuser.me/api/portraits/men/5.jpg"
         },
         {
             name: "Emily Rodriguez",
-            description: "A 30-year-old marketing specialist with a knack for social media strategy. She’s an avid reader and frequently attends book clubs.",
+            description: "I was skeptical about hiring a caregiver, but the team at CareConnect made the process seamless and stress-free. The caregiver they provided was kind, patient, and knowledgeable. I couldn't be happier with the service!",
             image: "https://randomuser.me/api/portraits/women/4.jpg"
         },
         {
             name: "Michael Adams",
-            description: "A 25-year-old fitness instructor who’s passionate about health and wellness. He enjoys running marathons and teaching yoga.",
+            description: "The caregiver from CareConnect was more than just a caregiver - they were a friend to my father. They went above and beyond to make sure he was comfortable and happy. We're so grateful to have found them!",
             image: "https://randomuser.me/api/portraits/men/3.jpg"
         },
 
@@ -93,29 +93,26 @@ const Home = () => {
                 </div>
             </div>
             <div className="row me-0">
-                
+
                 <div className="col-5 d-flex justify-content-center align-items-center">
-                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner-text">
-                    <div class="carousel-item active">
-                    <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner-text">
+                            <div class="carousel-item active">
+                                <h2 className="quote-mid" style={{ color: "darkblue" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
+                            </div>
+                            <div class="carousel-item">
+                                <h2 className="quote-mid" style={{ color: "darkblue" }}>"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease."</h2>
+                            </div>
+                            <div class="carousel-item">
+                                <h2 className="quote-mid" style={{ color: "darkblue" }}>"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus."</h2>
+                            </div>
+                        </div>
                     </div>
-                    <div class="carousel-item">
-                    <h2 className="quote-mid">"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease." </h2>
-                    </div>
-                    <div class="carousel-item">
-                    <h2 className="quote-mid">"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus." </h2>
-                    </div>
-                </div>
-                </div>
-                    {/* <div className="text-dark"> */}
-                        {/* <h2 className="quote-mid">“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.” </h2> */}
-                    {/* </div> */}
                 </div>
 
 
 
-                <div className="col-7">
+                <div className="col-7 ">
                     {/* <Carousel /> */}
                     <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-indicators">
@@ -124,27 +121,29 @@ const Home = () => {
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1606940743881-b33f4b04d661?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D" className="d-block w-100" alt="..."></img>
+                            <div className="carousel-item active ">
+                                <img src="https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyZWdpdmVyfGVufDB8fDB8fHww" className="d-block w-100" alt="..."></img>
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5>First slide label</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
+                                    <h5 style={{ textShadow: "2px 2px 2px black" }}>Professional Caregivers</h5>
+                                    {/* <p>Some representative placeholder content for the first slide.</p> */}
                                 </div>
                             </div>
                             <div className="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1606940743881-b33f4b04d661?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D" className="d-block w-100" alt="..."></img>
+                                <img src="https://plus.unsplash.com/premium_photo-1661581883801-56a4b46f9495?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9tZSUyMHZpc2l0fGVufDB8fDB8fHww" className="d-block w-100" alt="..."></img>
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5>Second slide label</h5>
-                                    <p>Some representative placeholder content for the second slide.</p>
+                                    <h5 style={{ textShadow: "2px 2px 2px black" }}>Percriptions & Medication Assitance</h5>
+                                    {/* <p>Some representative placeholder content for the second slide.</p> */}
                                 </div>
                             </div>
                             <div className="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1606940743881-b33f4b04d661?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D" className="d-block w-100" alt="..."></img>
+                                <img src="https://media.istockphoto.com/id/1296176596/photo/nurse-assisting-senior-with-walking-cane.webp?a=1&b=1&s=612x612&w=0&k=20&c=luIP6wRVIPSkj2O58CoiZPiLO4p9qImjoGEwaoktC3w=" className="d-block w-100" alt="..."></img>
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5>Third slide label</h5>
-                                    <p>Some representative placeholder content for the third slide.</p>
+                                    <h5 style={{ textShadow: "2px 2px 2px black" }}>Walking & Movement Assitance</h5>
+                                    {/* <p>Some representative placeholder content for the third slide.</p> */}
                                 </div>
                             </div>
+
+
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -160,40 +159,40 @@ const Home = () => {
 
 
             </div>
+            \
 
 
 
-          
 
-                <div className="section-1 justify-content-center">
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>
-                        <p className="card-text">We'll match you with a caregiver within 24 hours</p>
-                    </div>
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-heart p-2"></i>Experienced Caregivers</h4>
-                        <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
-                    </div>
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
-                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
-                    </div>
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
-                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
-                    </div>
-                    <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                        <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
-                        <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
-                    </div>
+            <div className="section-1 justify-content-center">
+                <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                    <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>
+                    <p className="card-text">We'll match you with a caregiver within 24 hours</p>
                 </div>
-                
-                <div className="row m-8">
-                    <div className="col-12">
-                        </div>
-
+                <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                    <h4 className="card-title"><i className="fa-solid fa-heart p-2"></i>Experienced Caregivers</h4>
+                    <p className="card-text">All caregivers have at least 2 years of experience and have completed a background check</p>
                 </div>
-            
+                <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                    <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
+                    <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
+                </div>
+                <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                    <h4 className="card-title"><i class="fa-solid fa-user-group"></i>Personalized Care</h4>
+                    <p className="card-text">We tailor our services to meet your unique needs, ensuring you get the best care possible.</p>
+                </div>
+                <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
+                    <h4 className="card-title"><i class="fa-solid fa-user-tie"></i>Certified Professionals</h4>
+                    <p className="card-text">All our caregivers are certified in CPR and First Aid, providing you with peace of mind and quality care.</p>
+                </div>
+            </div>
+
+            <div className="row m-8">
+                <div className="col-12">
+                </div>
+
+            </div>
+
             <div>
                 <div className="section" >
                     <h2>Why Choose Us</h2>
@@ -203,12 +202,12 @@ const Home = () => {
                     {/* </div> */}
                 </div>
 
-                <RecipesApi/>
+                {/* <RecipesApi/> */}
 
 
             </div>
-            <div class="row me-0 justify-content-center">{testimonialData.map((testimonial)=> <Testimonial data = {testimonial}/> )}</div>
-            
+            <div class="row me-0 justify-content-center">{testimonialData.map((testimonial) => <Testimonial data={testimonial} />)}</div>
+
 
             <footer></footer>
         </>
