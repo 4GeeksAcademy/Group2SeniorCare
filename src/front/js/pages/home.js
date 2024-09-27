@@ -80,14 +80,20 @@ const Home = () => {
             </header>
             <div className="container-background" style={{ position: "relative" }}>
                 <div className="hero container">
-                    <div className="hero-text">
-                        <h1 className="text-custom-1">Find a caregiver in 24 hours or less</h1>
-                        <input type="text" placeholder="Enter city or zip code" />
-                        <button className="cta-button">Find a caregiver now!</button>
-                        <div className="card-body">
-                            <blockquote className="blockquote mb-0">
-                                <p>“One person caring about another represents life’s most significant value.” – Jim Rohn</p>
-                            </blockquote>
+                    <div className="row">
+                        <div className="col-6">
+                            <div className="card-body">
+                                <blockquote className="blockquote mb-0">
+                                    <p>“One person caring about another represents life’s most significant value.” – Jim Rohn</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="hero-text">
+                                <h1 className="text-custom-1" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)', padding: '10px' }}>Find a caregiver in 24 hours or less</h1>
+                                <input type="text" placeholder="Enter city or zip code" />
+                                <button className="cta-button">Find a caregiver now!</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,7 +105,7 @@ const Home = () => {
                             <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
-                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
+                                        <h2 className="quote-mid" style={{ color: "#0a3b6a" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
                                     </div>
                                     <div className="carousel-item">
                                         <h2 className="quote-mid" style={{ color: "#0f4c81" }}>"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease."</h2>
@@ -200,7 +206,7 @@ const Home = () => {
 
                         <div>
             <Link to="/recipes">
-                            <div className="header-buttons  d-flex justify-content-left">
+                            <div className="header-buttons d-flex justify-content-left">
 
                                 <button className="cta-button-2 "> (Healthy Recipes)Bonus Gift</button>
                             </div>

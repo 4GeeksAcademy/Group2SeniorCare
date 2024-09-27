@@ -113,7 +113,7 @@ body:hover .container-backround {
     text-decoration: underline;
 }
 .cta-button {
-    background-color: #359de3;
+    background-color: #0f4c81;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -293,10 +293,6 @@ body:hover .container-backround {
 
 }
 
-.hero-text {
-    margin-left: 35vw;
-    margin-top: 10vh;
-}
 .section {
     margin-bottom: 20px;
     max-width: 1200px;
@@ -364,19 +360,6 @@ footer {
     /* position: relative; */
 }
 
-.hero-text h1 {
-    font-size: 2.5rem;
-}
-
-.hero-text input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-top: 20px;
-    width: 80%;
-    max-width: 400px;
-}
-
 
 .carousel{
     max-width: fit-content;
@@ -384,10 +367,7 @@ footer {
     margin-top: 20px; /* add some space after section-1 */
   }
 
-.hero-text button.cta-button {
-    margin-top: 20px;
-    font-size: 1.2rem;
-}
+
 
 /* Card Section */
 .section-1 {
@@ -519,37 +499,93 @@ header {
     width: 100%; 
 }
 
+
+
+.header-buttons{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 10px;
+    height: 100px;
+    /* background-color: #0F4C81; */
+}
+
+.container-background {
+    position: relative;
+    background: url('https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=800') no-repeat center;
+    background-size: cover;
+    padding: 40px 0;
+}
+
+.hero.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero .row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero .col-6 {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
+
+.card-body {
+    
+    /* background: rgba(0, 0, 0, 0.5); */
+    padding: 1rem;
+    border-radius: 5px;
+}
+
 .hero-text {
     text-align: center;
-    z-index: 2; 
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
+
 .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .hero-text input {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    margin-top: 20px;
-    width: 80%;
-    max-width: 400px;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 300px;
 }
 
-.hero-text button.cta-button {
-    margin-top: 20px;
+.hero-text .cta-button {
+    margin-top: 1rem;
     font-size: 1.2rem;
+    width: 100%;
+    max-width: 300px;
 }
 
-.header-buttons{
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-left: 10px;
-   
-        
-        height: 100px;
+@media (max-width: 768px) {
+    .hero .row {
+        flex-direction: column;
+    }
+
+    .hero .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
 }
+
+
 
 
 
