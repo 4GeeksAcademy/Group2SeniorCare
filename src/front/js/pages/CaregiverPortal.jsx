@@ -61,7 +61,7 @@ export const CaregiverPortal = () => {
 
   return (
     <div className="patient-portal">
-      <h1>Welcome {store.caregiver?.name}!</h1>
+      <h1>Welcome {store.caregiver?.name.split(' ')[0]}!</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul

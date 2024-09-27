@@ -240,6 +240,12 @@ body:hover .container-backround {
     object-fit: cover;
 }
 
+.carousel-inner {
+    max-height: 500px;
+    overflow: hidden;
+
+}
+
 /* Style for card */
 .card {
     margin-top: 20px;
@@ -475,9 +481,7 @@ footer {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.carousel-item{
-    width: 58rem;
-}
+
 
 #testimonial-img {
     border-radius: 50%;
@@ -486,10 +490,6 @@ footer {
 }
 .Testimonial-container {
     justify-content: center;
-}
-
-.quote-mid {
-    padding-Left: 193px
 }
 
 header {

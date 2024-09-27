@@ -92,78 +92,68 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="row me-0">
-
-                <div className="col-5 d-flex justify-content-center align-items-center">
-                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner-text">
-                            <div class="carousel-item active">
-                                <h2 className="quote-mid" style={{ color: "darkblue" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
+            <div className="container-fluid">
+                <div className="row me-0">
+                    <div className="col-5 d-flex justify-content-center align-items-center">
+                        <div className="container-flex ">
+                            <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+                                <div className="carousel-inner">
+                                    <div className="carousel-item active">
+                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease."</h2>
+                                    </div>
+                                    <div className="carousel-item">
+                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus."</h2>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-item">
-                                <h2 className="quote-mid" style={{ color: "darkblue" }}>"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease."</h2>
+                        </div>    
+                    </div>    
+                    <div className="col-7 ">
+                        {/* <Carousel /> */}
+                        <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+                            <div className="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
-                            <div class="carousel-item">
-                                <h2 className="quote-mid" style={{ color: "darkblue" }}>"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus."</h2>
+                            <div className="carousel-inner">
+                                <div className="carousel-item active ">
+                                    <img src="https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyZWdpdmVyfGVufDB8fDB8fHww" className="d-block w-100" alt="..."></img>
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h5 style={{ textShadow: "2px 2px 2px black" }}>Professional Caregivers</h5>
+                                        {/* <p>Some representative placeholder content for the first slide.</p> */}
+                                    </div>
+                                </div>
+                                <div className="carousel-item">
+                                    <img src="https://plus.unsplash.com/premium_photo-1661581883801-56a4b46f9495?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9tZSUyMHZpc2l0fGVufDB8fDB8fHww" className="d-block w-100" alt="..."></img>
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h5 style={{ textShadow: "2px 2px 2px black" }}>Percriptions & Medication Assitance</h5>
+                                        {/* <p>Some representative placeholder content for the second slide.</p> */}
+                                    </div>
+                                </div>
+                                <div className="carousel-item">
+                                    <img src="https://media.istockphoto.com/id/1296176596/photo/nurse-assisting-senior-with-walking-cane.webp?a=1&b=1&s=612x612&w=0&k=20&c=luIP6wRVIPSkj2O58CoiZPiLO4p9qImjoGEwaoktC3w=" className="d-block w-100" alt="..."></img>
+                                    <div className="carousel-caption d-none d-md-block">
+                                        <h5 style={{ textShadow: "2px 2px 2px black" }}>Walking & Movement Assitance</h5>
+                                        {/* <p>Some representative placeholder content for the third slide.</p> */}
+                                    </div>
+                                </div>
                             </div>
+                            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Previous</span>
+                            </button>
+                            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span className="visually-hidden">Next</span>
+                            </button>
                         </div>
                     </div>
                 </div>
-
-
-
-                <div className="col-7 ">
-                    {/* <Carousel /> */}
-                    <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-                        <div className="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div className="carousel-inner">
-                            <div className="carousel-item active ">
-                                <img src="https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y2FyZWdpdmVyfGVufDB8fDB8fHww" className="d-block w-100" alt="..."></img>
-                                <div className="carousel-caption d-none d-md-block">
-                                    <h5 style={{ textShadow: "2px 2px 2px black" }}>Professional Caregivers</h5>
-                                    {/* <p>Some representative placeholder content for the first slide.</p> */}
-                                </div>
-                            </div>
-                            <div className="carousel-item">
-                                <img src="https://plus.unsplash.com/premium_photo-1661581883801-56a4b46f9495?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9tZSUyMHZpc2l0fGVufDB8fDB8fHww" className="d-block w-100" alt="..."></img>
-                                <div className="carousel-caption d-none d-md-block">
-                                    <h5 style={{ textShadow: "2px 2px 2px black" }}>Percriptions & Medication Assitance</h5>
-                                    {/* <p>Some representative placeholder content for the second slide.</p> */}
-                                </div>
-                            </div>
-                            <div className="carousel-item">
-                                <img src="https://media.istockphoto.com/id/1296176596/photo/nurse-assisting-senior-with-walking-cane.webp?a=1&b=1&s=612x612&w=0&k=20&c=luIP6wRVIPSkj2O58CoiZPiLO4p9qImjoGEwaoktC3w=" className="d-block w-100" alt="..."></img>
-                                <div className="carousel-caption d-none d-md-block">
-                                    <h5 style={{ textShadow: "2px 2px 2px black" }}>Walking & Movement Assitance</h5>
-                                    {/* <p>Some representative placeholder content for the third slide.</p> */}
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Previous</span>
-                        </button>
-                        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Next</span>
-                        </button>
-                    </div>
-
-                </div>
-
-
-            </div>
-            \
-
-
-
-
+            </div>    
             <div className="section-1 justify-content-center">
                 <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
                     <h4 className="card-title"><i className="fa-solid fa-user-group p-2"></i>Fast Matching</h4>
@@ -178,11 +168,11 @@ const Home = () => {
                     <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
                 </div>
                 <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                    <h4 className="card-title"><i class="fa-solid fa-user-group"></i>Personalized Care</h4>
+                    <h4 className="card-title"><i className="fa-solid fa-user-group"></i>Personalized Care</h4>
                     <p className="card-text">We tailor our services to meet your unique needs, ensuring you get the best care possible.</p>
                 </div>
                 <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
-                    <h4 className="card-title"><i class="fa-solid fa-user-tie"></i>Certified Professionals</h4>
+                    <h4 className="card-title"><i className="fa-solid fa-user-tie"></i>Certified Professionals</h4>
                     <p className="card-text">All our caregivers are certified in CPR and First Aid, providing you with peace of mind and quality care.</p>
                 </div>
             </div>
@@ -197,7 +187,7 @@ const Home = () => {
                 <div className="section" >
                     <h2>Why Choose Us</h2>
                     <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
-                    {/* <div class="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}> */}
+                    {/* <div className="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}> */}
 
                     {/* </div> */}
                 </div>
@@ -206,7 +196,7 @@ const Home = () => {
 
 
             </div>
-            <div class="row me-0 justify-content-center">{testimonialData.map((testimonial) => <Testimonial data={testimonial} />)}</div>
+            <div className="row me-0 justify-content-center">{testimonialData.map((testimonial) => <Testimonial data={testimonial} />)}</div>
 
                         <div>
             <Link to="/recipes">
