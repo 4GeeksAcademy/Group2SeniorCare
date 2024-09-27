@@ -46,7 +46,7 @@ export const CaregiversList = () => {
             if (usaState) filters.location = usaState;
             if (yearsExp > 0) filters.experience = yearsExp;
             if (gender) filters.gender = gender;
-    
+
             try {
                 await fetchCaregivers(filters, { signal: controller.signal });
             } catch (err) {
@@ -55,9 +55,9 @@ export const CaregiversList = () => {
                 }
             }
         };
-    
+
         fetchData();
-    
+
         return () => controller.abort();
     }, [usaState, yearsExp, gender]);
 
@@ -112,15 +112,16 @@ export const CaregiversList = () => {
                         ))}
                     </select>
                 </div>
-                <div className='me-3 shadow border'>
+                <div className='me-3'>
                     <select
                         className="form-select"
+                        style={{ paddingRight: '40px' }} // Add padding to the right
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
                     >
                         <option value="">Gender</option>
                         <option value="Male">Male</option>
-                        <option style={{}} value="Female">Female</option>
+                        <option value="Female">Female</option>
                     </select>
                 </div>
                 <div className='me-3'>
@@ -148,22 +149,33 @@ export const CaregiversList = () => {
                         caregivers.map((caregiver, index) => (
                             <div className="card mb-3 shadow ps-4" key={index}>
                                 <div className="row g-0">
-                                    <div className="col-md-4 d-flex flex-column justify-content-center align-items-center my-5 ">
+                                    <div className="col-md-4 d-flex flex-column justify-content-center align-items-center my-5">
                                         <img
                                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
                                             className="img-fluid rounded"
                                             alt="Caregiver"
-                                            width="230px"
+                                            style={{
+                                                width: '10rem',   // Increased image size
+                                                height: 'auto',   // Maintain aspect ratio
+                                                marginBottom: '20px'  // Add margin for spacing
+
+                                            }}
                                         />
                                         <button
                                             type="button"
                                             className="btn btn-sm mt-auto request-button"
                                             data-bs-toggle="modal"
                                             data-bs-target={"#staticBackdrop" + caregiver.id}
+                                            style={{
+                                                marginTop: '10px',  // Space between image and button
+                                                padding: '13px 9px',  // Keep current padding
+                                                fontSize: '14px',  // Same font size
+                                                fontWeight: '300'   // Lighter weight to match content
+                                            }}
                                         >
                                             Request Caregiver
                                         </button>
-                                        {/* <p>{store.successMessage == "" ? "": store.successMessage}</p> */}
+
                                         <AppointmentRequestModal caregiver={caregiver} />
                                     </div>
                                     <div className="col-md-8">
@@ -175,10 +187,22 @@ export const CaregiversList = () => {
                                                 <li className="list-group-item">
                                                     <h5 className="card-title">{caregiver.email}</h5>
                                                 </li>
-                                                <li className="list-group-item fst-normal">Qualifications: {caregiver.qualifications}</li>
-                                                <li className="list-group-item fst-normal">Years of experience: {caregiver.experience}</li>
-                                                <li className="list-group-item fst-normal">Location: {caregiver.location}</li>
-                                                <li className="list-group-item fst-normal">Gender: {caregiver.gender}</li>
+                                                <li className="list-group-item">
+                                                    <span className="fw-bold">Qualifications:</span>
+                                                    <span style={{ fontWeight: '300' }}> {caregiver.qualifications}</span>
+                                                </li>
+                                                <li className="list-group-item">
+                                                    <span className="fw-bold">Years of experience:</span>
+                                                    <span style={{ fontWeight: '300' }}> {caregiver.experience}</span>
+                                                </li>
+                                                <li className="list-group-item">
+                                                    <span className="fw-bold">Location:</span>
+                                                    <span style={{ fontWeight: '300' }}> {caregiver.location}</span>
+                                                </li>
+                                                <li className="list-group-item">
+                                                    <span className="fw-bold">Gender:</span>
+                                                    <span style={{ fontWeight: '300' }}> {caregiver.gender}</span>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

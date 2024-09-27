@@ -59,7 +59,7 @@ export const PatientPortal = () => {
 
   return (
     <div className="patient-portal">
-      <h1>Welcome {store.patient?.name}!</h1>
+      <h1>Welcome {store.patient?.name.split(' ')[0]}!</h1>
       <h3>What do you want to do today?</h3>
       <div className="container">
         <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
