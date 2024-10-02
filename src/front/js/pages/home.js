@@ -80,14 +80,20 @@ const Home = () => {
             </header>
             <div className="container-background" style={{ position: "relative" }}>
                 <div className="hero container">
-                    <div className="hero-text">
-                        <h1 className="text-custom-1">Find a caregiver in 24 hours or less</h1>
-                        <input type="text" placeholder="Enter city or zip code" />
-                        <button className="cta-button">Find a caregiver now!</button>
-                        <div className="card-body">
-                            <blockquote className="blockquote mb-0">
-                                <p>“One person caring about another represents life’s most significant value.” – Jim Rohn</p>
-                            </blockquote>
+                    <div className="row">
+                        <div className="col-6">
+                            <div className="card-body">
+                                <blockquote className="blockquote mb-0">
+                                    <p>“One person caring about another represents life’s most significant value.” – Jim Rohn</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div className="col-6">
+                            <div className="hero-text">
+                                <h1 className="text-custom-1" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)', padding: '10px' }}>Find a caregiver in 24 hours or less</h1>
+                                <input type="text" placeholder="Enter city or zip code" />
+                                <button className="cta-button">Find a caregiver now!</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,20 +105,20 @@ const Home = () => {
                             <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
-                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
+                                        <h2 className="quote-mid" style={{ color: "#0a3b6a" }}>“We are dedicated to providing exceptional in-home care precisely when you need it, ensuring your comfort and enhancing your quality of life.”</h2>
                                     </div>
                                     <div className="carousel-item">
-                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease."</h2>
+                                        <h2 className="quote-mid" style={{ color: "#0a3b6a" }}>"When you need it most, we provide attentive in-home care that supports your comfort and day-to-day ease."</h2>
                                     </div>
                                     <div className="carousel-item">
-                                        <h2 className="quote-mid" style={{ color: "#0f4c81" }}>"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus."</h2>
+                                        <h2 className="quote-mid" style={{ color: "#0a3b6a" }}>"We offer compassionate in-home care precisely when needed, with your comfort and daily comfort as our focus."</h2>
                                     </div>
                                 </div>
                             </div>
                         </div>    
                     </div>    
                     <div className="col-7 ">
-                        {/* <Carousel /> */}
+                        {/* <Carousel Images RIght Side/> */}
                         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
                             <div className="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -165,7 +171,7 @@ const Home = () => {
                 </div>
                 <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
                     <h4 className="card-title"><i className="fa-solid fa-helmet-safety p-2"></i>Safety First</h4>
-                    <p className="card-text">We require all caregivers to be fully vaccinated for COVID-19</p>
+                    <p className="card-text">We ensure caregivers are trained in proper health protocols and safety measures.</p>
                 </div>
                 <div className="card-1" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", width: "300px", height: "200px", margin: "10px", backgroundColor: "#fff" }}>
                     <h4 className="card-title"><i className="fa-solid fa-user-group"></i>Personalized Care</h4>
@@ -176,7 +182,6 @@ const Home = () => {
                     <p className="card-text">All our caregivers are certified in CPR and First Aid, providing you with peace of mind and quality care.</p>
                 </div>
             </div>
-
             <div className="row m-8">
                 <div className="col-12">
                 </div>
@@ -184,11 +189,10 @@ const Home = () => {
             </div>
 
             <div>
-                <div className="section" >
+                <div className="section" style={{ paddingBottom: '30px' }}>
                     <h2>Why Choose Us</h2>
                     <p>Finding the right caregiver can take time, but we're here to help. Our team will work with you to find a caregiver who meets your needs, whether it's helping with daily tasks, providing companionship, or caring for a loved one. Here's why people love our service:</p>
-                    {/* <div className="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}> */}
-
+                    {/* <div className="card text-bg-dark" style={{ width: "300px", height: "200px", backgroundImage: "url(https://plus.unsplash.com/premium_photo-1664475811964-75af7d90ee4b?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)", backgroundSize: "cover" }}> */}  
                     {/* </div> */}
                 </div>
 
@@ -200,7 +204,7 @@ const Home = () => {
 
                         <div>
             <Link to="/recipes">
-                            <div className="header-buttons  d-flex justify-content-left">
+                            <div className="header-buttons d-flex justify-content-left">
 
                                 <button className="cta-button-2 "> (Healthy Recipes)Bonus Gift</button>
                             </div>
